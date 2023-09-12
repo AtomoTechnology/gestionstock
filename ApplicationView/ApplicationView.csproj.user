@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="Forms\Account\frmchangepass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Account\frmlistuser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Account\frmlogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Account\frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Account\newaccount\newfrmlogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Business\frmbusiness.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Category\frmcategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Category\frmlistcategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Configurations\frmIncreasePriceAfterTwelve.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Loading\frmloading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Loading\SplashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MsgBox\FormMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\principal\frmprincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Product\frmiexpiredDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Product\frmlistproduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Product\frmoffer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Product\frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Product\frmsingleupdatestock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Product\frmupdateprice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Product\frmupdatesingleproduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Product\frmupdatestock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Provider\frmlistprovider.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Provider\frmprovider.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Roles\frmmodifyrol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Roles\frmrole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Roles\frmrolelist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Roles\frmuserpermision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sale\frmautorizedeleteproductsale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sale\frmcheckprice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sale\frmclosepay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sale\frmdetailLegit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sale\frmlegit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sale\frmreprinttiket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sale\frmsale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sale\frmsalehistoric.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\turnswork\frmopenworkturns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\turnswork\frmturns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\User\frmusr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

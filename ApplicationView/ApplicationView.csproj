@@ -1,0 +1,105 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>Resources\sistema-de-gestion.ico</ApplicationIcon>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Platforms>AnyCPU;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="CDO">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>cd000000-8b95-11d1-82db-00c04fb1625d</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="MSComctlLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>2</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>831fdd16-0c5c-11d2-a9fc-0000f8754da1</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="MpComExportsLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>8c389764-f036-48f2-9ae2-88c260dcf43b</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WMPNSSCDS">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>73c381a8-548c-49f8-8ad3-c845d12d3c22</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\sistema-de-gestion.ico" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+		<PackageReference Include="Dapper" Version="2.0.143" />
+		<PackageReference Include="EPPlus.Core" Version="1.5.4" />
+		<PackageReference Include="Microsoft.AspNetCore" Version="2.1.7" />
+		<PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.1.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.1.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.9">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="QrCode.Net" Version="0.4.0" />
+		<PackageReference Include="WinForms.DataVisualization" Version="1.8.0" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsetting.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+	
+    <PropertyGroup>
+		<BuilDir>Build</BuilDir>
+    </PropertyGroup>
+	
+</Project>

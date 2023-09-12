@@ -1,0 +1,346 @@
+23/08/2023 12:38:52 Ingresa en el producto servicio
+23/08/2023 12:38:52 Ingresa en el producto
+23/08/2023 12:38:52 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+23/08/2023 12:38:53 Ingresa en el producto entities count 3
+23/08/2023 12:38:53 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+23/08/2023 12:38:53 Ingresa en el producto servicio after entity 
+23/08/2023 03:40:58 Error ApiBusinessException;
+23/08/2023 03:40:58 Message error:  NO hay venta para eliminar
+23/08/2023 03:40:58 Message error:  Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+23/08/2023 03:40:58 Error: ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException: Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+   at ApplicationView.DataModel.Repositories.Repository.SaleRepository.RemoveNoneSale(SaleDetail saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataModel\Repositories\Repository\SaleRepository.cs:line 209
+23/08/2023 03:40:58 Error ApiBusinessException;
+23/08/2023 03:40:58 Message error:  NO hay venta para eliminar
+23/08/2023 03:40:58 Message error:  Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+23/08/2023 03:40:58 Error: ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException: Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+   at ApplicationView.DataModel.Repositories.Repository.SaleRepository.RemoveNoneSale(SaleDetail saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataModel\Repositories\Repository\SaleRepository.cs:line 243
+   at ApplicationView.DataService.Service.SaleService.RemoveNoneSale(SaleDetailDto saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataService\Service\SaleService.cs:line 136
+23/08/2023 03:44:35 Error ApiBusinessException;
+23/08/2023 03:44:35 Message error:  NO hay venta para eliminar
+23/08/2023 03:44:35 Message error:  Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+23/08/2023 03:44:35 Error: ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException: Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+   at ApplicationView.DataModel.Repositories.Repository.SaleRepository.RemoveNoneSale(SaleDetail saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataModel\Repositories\Repository\SaleRepository.cs:line 209
+23/08/2023 03:44:35 Error ApiBusinessException;
+23/08/2023 03:44:35 Message error:  NO hay venta para eliminar
+23/08/2023 03:44:35 Message error:  Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+23/08/2023 03:44:35 Error: ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException: Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+   at ApplicationView.DataModel.Repositories.Repository.SaleRepository.RemoveNoneSale(SaleDetail saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataModel\Repositories\Repository\SaleRepository.cs:line 243
+   at ApplicationView.DataService.Service.SaleService.RemoveNoneSale(SaleDetailDto saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataService\Service\SaleService.cs:line 136
+23/08/2023 03:44:57 Error ApiBusinessException;
+23/08/2023 03:44:57 Message error:  NO hay venta para eliminar
+23/08/2023 03:44:57 Message error:  Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+23/08/2023 03:44:57 Error: ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException: Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+   at ApplicationView.DataModel.Repositories.Repository.SaleRepository.RemoveNoneSale(SaleDetail saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataModel\Repositories\Repository\SaleRepository.cs:line 209
+23/08/2023 03:44:57 Error ApiBusinessException;
+23/08/2023 03:44:57 Message error:  NO hay venta para eliminar
+23/08/2023 03:44:57 Message error:  Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+23/08/2023 03:44:57 Error: ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException: Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+   at ApplicationView.DataModel.Repositories.Repository.SaleRepository.RemoveNoneSale(SaleDetail saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataModel\Repositories\Repository\SaleRepository.cs:line 243
+   at ApplicationView.DataService.Service.SaleService.RemoveNoneSale(SaleDetailDto saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataService\Service\SaleService.cs:line 136
+23/08/2023 03:45:20 Error ApiBusinessException;
+23/08/2023 03:45:20 Message error:  NO hay venta para eliminar
+23/08/2023 03:45:20 Message error:  Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+23/08/2023 03:45:20 Error: ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException: Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+   at ApplicationView.DataModel.Repositories.Repository.SaleRepository.RemoveNoneSale(SaleDetail saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataModel\Repositories\Repository\SaleRepository.cs:line 209
+23/08/2023 03:45:20 Error ApiBusinessException;
+23/08/2023 03:45:20 Message error:  NO hay venta para eliminar
+23/08/2023 03:45:20 Message error:  Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+23/08/2023 03:45:20 Error: ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException: Exception of type 'ApplicationView.Resolver.HelperError.IExceptions.ApiBusinessException' was thrown.
+   at ApplicationView.DataModel.Repositories.Repository.SaleRepository.RemoveNoneSale(SaleDetail saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataModel\Repositories\Repository\SaleRepository.cs:line 243
+   at ApplicationView.DataService.Service.SaleService.RemoveNoneSale(SaleDetailDto saleDetailId, String LotId, String accountId, DeleteSaleEnum enumtype) in C:\GestionStock\ApplicationView\DataService\Service\SaleService.cs:line 136
+24/08/2023 12:43:19 Ingresa en el producto servicio
+24/08/2023 12:43:19 Ingresa en el producto
+24/08/2023 12:43:19 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 12:43:19 Ingresa en el producto entities count 3
+24/08/2023 12:43:19 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 12:43:19 Ingresa en el producto servicio after entity 
+24/08/2023 01:08:17 Ingresa en el producto servicio
+24/08/2023 01:08:17 Ingresa en el producto
+24/08/2023 01:08:18 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 01:08:18 Ingresa en el producto entities count 3
+24/08/2023 01:08:18 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 01:08:18 Ingresa en el producto servicio after entity 
+24/08/2023 01:08:56 Ingresa en el producto servicio
+24/08/2023 01:08:56 Ingresa en el producto
+24/08/2023 01:08:57 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 01:08:57 Ingresa en el producto entities count 3
+24/08/2023 01:08:57 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 01:08:57 Ingresa en el producto servicio after entity 
+24/08/2023 01:09:09 Ingresa en el producto servicio
+24/08/2023 01:09:09 Ingresa en el producto
+24/08/2023 01:09:09 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 01:09:09 Ingresa en el producto entities count 3
+24/08/2023 01:09:09 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 01:09:09 Ingresa en el producto servicio after entity 
+24/08/2023 09:28:24 Ingresa en el producto servicio
+24/08/2023 09:28:24 Ingresa en el producto
+24/08/2023 09:28:24 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 09:28:24 Ingresa en el producto entities count 3
+24/08/2023 09:28:24 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 09:28:25 Ingresa en el producto servicio after entity 
+24/08/2023 11:58:01 Ingresa en el producto servicio
+24/08/2023 11:58:01 Ingresa en el producto
+24/08/2023 11:58:01 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 11:58:01 Ingresa en el producto entities count 3
+24/08/2023 11:58:01 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 11:58:01 Ingresa en el producto servicio after entity 
+24/08/2023 12:02:56 Ingresa en el producto servicio
+24/08/2023 12:02:56 Ingresa en el producto
+24/08/2023 12:02:56 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 12:02:56 Ingresa en el producto entities count 3
+24/08/2023 12:02:56 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 12:02:56 Ingresa en el producto servicio after entity 
+24/08/2023 12:39:57 Ingresa en el producto servicio
+24/08/2023 12:39:57 Ingresa en el producto
+24/08/2023 12:39:57 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 12:39:57 Ingresa en el producto entities count 3
+24/08/2023 12:39:57 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 12:39:57 Ingresa en el producto servicio after entity 
+24/08/2023 12:40:22 Ingresa en el producto servicio
+24/08/2023 12:40:22 Ingresa en el producto
+24/08/2023 12:40:22 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 12:40:22 Ingresa en el producto entities count 3
+24/08/2023 12:40:22 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 12:40:22 Ingresa en el producto servicio after entity 
+24/08/2023 04:26:11 Ingresa en el producto servicio
+24/08/2023 04:26:11 Ingresa en el producto
+24/08/2023 04:26:11 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 04:26:11 Ingresa en el producto entities count 3
+24/08/2023 04:26:11 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 04:26:11 Ingresa en el producto servicio after entity 
+24/08/2023 04:26:22 Ingresa en el producto servicio
+24/08/2023 04:26:22 Ingresa en el producto
+24/08/2023 04:26:22 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 04:26:22 Ingresa en el producto entities count 3
+24/08/2023 04:26:22 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 04:26:22 Ingresa en el producto servicio after entity 
+24/08/2023 04:26:36 Ingresa en el producto servicio
+24/08/2023 04:26:36 Ingresa en el producto
+24/08/2023 04:26:36 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 04:26:36 Ingresa en el producto entities count 3
+24/08/2023 04:26:36 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+24/08/2023 04:26:36 Ingresa en el producto servicio after entity 
+25/08/2023 09:28:05 Ingresa en el producto servicio
+25/08/2023 09:28:05 Ingresa en el producto
+25/08/2023 09:28:05 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+25/08/2023 09:28:05 Ingresa en el producto entities count 3
+25/08/2023 09:28:05 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+25/08/2023 09:28:05 Ingresa en el producto servicio after entity 
+25/08/2023 09:28:35 Ingresa en el producto servicio
+25/08/2023 09:28:35 Ingresa en el producto
+25/08/2023 09:28:35 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+25/08/2023 09:28:35 Ingresa en el producto entities count 3
+25/08/2023 09:28:35 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+25/08/2023 09:28:35 Ingresa en el producto servicio after entity 
+25/08/2023 09:36:23 Ingresa en el producto servicio
+25/08/2023 09:36:23 Ingresa en el producto
+25/08/2023 09:36:23 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+25/08/2023 09:36:23 Ingresa en el producto entities count 3
+25/08/2023 09:36:23 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+25/08/2023 09:36:23 Ingresa en el producto servicio after entity 
+25/08/2023 11:57:00 Ingresa en el producto servicio
+25/08/2023 11:57:00 Ingresa en el producto
+25/08/2023 11:57:00 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+25/08/2023 11:57:00 Ingresa en el producto entities count 3
+25/08/2023 11:57:00 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+25/08/2023 11:57:00 Ingresa en el producto servicio after entity 
+26/08/2023 12:02:32 Ingresa en el producto servicio
+26/08/2023 12:02:32 Ingresa en el producto
+26/08/2023 12:02:32 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+26/08/2023 12:02:32 Ingresa en el producto entities count 3
+26/08/2023 12:02:32 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+26/08/2023 12:02:32 Ingresa en el producto servicio after entity 
+26/08/2023 01:27:33 Ingresa en el primer if del DeleteSaleEnum.Admin Admin
+26/08/2023 01:27:33 Ingresa en el segundo if del DeleteSaleEnum.Admin entity.SaleDetail.Any() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.SaleDetail]
+26/08/2023 01:27:33 Ingresa en el segundo if del DeleteSaleEnum.Admin entitycontext ApplicationView.DataModel.Entities.Lot
+26/08/2023 01:27:33 Ingresa en el segundo if del DeleteSaleEnum.Admin detail ApplicationView.DataModel.Entities.SaleDetail
+26/08/2023 01:27:33 Ingresa en el segundo if del DeleteSaleEnum.Admin history 
+26/08/2023 01:27:33 Ingresa en el segundo if del DeleteSaleEnum.Admin if (SaleDetail.quantity > 1) 
+26/08/2023 01:27:33 Ingresa en el segundo if del DeleteSaleEnum.Admin _context.SaveChanges() 
+26/08/2023 01:27:33 Ingresa en el segundo if del DeleteSaleEnum.Admin after _context.SaveChanges() 
+26/08/2023 02:43:38 Ingresa en el producto servicio
+26/08/2023 02:43:38 Ingresa en el producto
+26/08/2023 02:43:38 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+26/08/2023 02:43:39 Ingresa en el producto entities count 3
+26/08/2023 02:43:39 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+26/08/2023 02:43:39 Ingresa en el producto servicio after entity 
+26/08/2023 02:45:02 Ingresa en el producto servicio
+26/08/2023 02:45:02 Ingresa en el producto
+26/08/2023 02:45:02 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+26/08/2023 02:45:02 Ingresa en el producto entities count 3
+26/08/2023 02:45:02 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+26/08/2023 02:45:02 Ingresa en el producto servicio after entity 
+27/08/2023 05:06:46 Ingresa en el producto servicio
+27/08/2023 05:06:46 Ingresa en el producto
+27/08/2023 05:06:46 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 05:06:47 Ingresa en el producto entities count 3
+27/08/2023 05:06:47 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 05:06:47 Ingresa en el producto servicio after entity 
+27/08/2023 05:06:53 Ingresa en el frmsingleupdatestock
+27/08/2023 05:06:53 RepoPathern.ProductService.GetLotByIdProduct(be.Id)
+27/08/2023 05:06:53 after RepoPathern.ProductService.GetLotByIdProduct(be.Id) ApplicationView.BusnessEntities.BE.LotBE
+27/08/2023 05:06:53 this.lblsalecode.Text 2
+27/08/2023 05:07:17 Ingresa en el producto servicio
+27/08/2023 05:07:17 Ingresa en el producto
+27/08/2023 05:07:17 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 05:07:17 Ingresa en el producto entities count 3
+27/08/2023 05:07:17 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 05:07:17 Ingresa en el producto servicio after entity 
+27/08/2023 11:03:53 Ingresa en el producto servicio
+27/08/2023 11:03:53 Ingresa en el producto
+27/08/2023 11:03:53 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:03:53 Ingresa en el producto entities count 3
+27/08/2023 11:03:53 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:03:53 Ingresa en el producto servicio after entity 
+27/08/2023 11:04:00 Ingresa en el producto servicio
+27/08/2023 11:04:00 Ingresa en el producto
+27/08/2023 11:04:00 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:04:00 Ingresa en el producto entities count 3
+27/08/2023 11:04:00 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:04:00 Ingresa en el producto servicio after entity 
+27/08/2023 11:37:37 Ingresa en el producto servicio
+27/08/2023 11:37:37 Ingresa en el producto
+27/08/2023 11:37:38 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:37:38 Ingresa en el producto entities count 3
+27/08/2023 11:37:38 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:37:38 Ingresa en el producto servicio after entity 
+27/08/2023 11:37:40 Ingresa en el frmsingleupdatestock
+27/08/2023 11:37:40 be ApplicationView.BusnessEntities.BE.ProductBE
+27/08/2023 11:37:40 be.Id 5c402e7a-c1ca-4cee-81ef-f4620667baf6
+27/08/2023 11:37:40 RepoPathern.ProductService.GetLotByIdProduct(be.Id)
+27/08/2023 11:37:40 after RepoPathern.ProductService.GetLotByIdProduct(be.Id) ApplicationView.BusnessEntities.BE.LotBE
+27/08/2023 11:37:40 this.lblsalecode.Text 2
+27/08/2023 11:39:44 Ingresa en el producto servicio
+27/08/2023 11:39:44 Ingresa en el producto
+27/08/2023 11:39:44 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:39:44 Ingresa en el producto entities count 3
+27/08/2023 11:39:44 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:39:44 Ingresa en el producto servicio after entity 
+27/08/2023 11:40:53 Ingresa en el producto servicio
+27/08/2023 11:40:53 Ingresa en el producto
+27/08/2023 11:40:53 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:40:53 Ingresa en el producto entities count 3
+27/08/2023 11:40:53 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:40:53 Ingresa en el producto servicio after entity 
+27/08/2023 11:48:47 Ingresa en el producto servicio
+27/08/2023 11:48:47 Ingresa en el producto
+27/08/2023 11:48:47 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:48:47 Ingresa en el producto entities count 3
+27/08/2023 11:48:48 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:48:48 Ingresa en el producto servicio after entity 
+27/08/2023 11:50:18 Ingresa en el producto servicio
+27/08/2023 11:50:18 Ingresa en el producto
+27/08/2023 11:50:18 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:50:18 Ingresa en el producto entities count 3
+27/08/2023 11:50:19 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:50:19 Ingresa en el producto servicio after entity 
+27/08/2023 11:50:42 Ingresa en el frmsingleupdatestock
+27/08/2023 11:50:45 be ApplicationView.BusnessEntities.BE.ProductBE
+27/08/2023 11:50:45 be.Id 5c402e7a-c1ca-4cee-81ef-f4620667baf6
+27/08/2023 11:50:45 RepoPathern.ProductService.GetLotByIdProduct(be.Id)
+27/08/2023 11:50:45 after RepoPathern.ProductService.GetLotByIdProduct(be.Id) ApplicationView.BusnessEntities.BE.LotBE
+27/08/2023 11:50:45 this.lblsalecode.Text 2
+27/08/2023 11:50:55 Ingresa en el producto servicio
+27/08/2023 11:50:55 Ingresa en el producto
+27/08/2023 11:50:55 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:50:55 Ingresa en el producto entities count 3
+27/08/2023 11:50:55 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+27/08/2023 11:50:55 Ingresa en el producto servicio after entity 
+28/08/2023 01:50:11 Ingresa en el producto servicio
+28/08/2023 01:50:11 Ingresa en el producto
+28/08/2023 01:50:11 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:50:12 Ingresa en el producto entities count 3
+28/08/2023 01:50:12 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:50:12 Ingresa en el producto servicio after entity 
+28/08/2023 01:51:43 Ingresa en el producto servicio
+28/08/2023 01:51:43 Ingresa en el producto
+28/08/2023 01:51:43 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:51:44 Ingresa en el producto entities count 3
+28/08/2023 01:51:44 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:51:44 Ingresa en el producto servicio after entity 
+28/08/2023 01:53:59 Ingresa en el producto servicio
+28/08/2023 01:53:59 Ingresa en el producto
+28/08/2023 01:53:59 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:53:59 Ingresa en el producto entities count 3
+28/08/2023 01:53:59 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:53:59 Ingresa en el producto servicio after entity 
+28/08/2023 01:54:34 Ingresa en el producto servicio
+28/08/2023 01:54:34 Ingresa en el producto
+28/08/2023 01:54:34 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:54:34 Ingresa en el producto entities count 3
+28/08/2023 01:54:34 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:54:34 Ingresa en el producto servicio after entity 
+28/08/2023 01:57:04 Ingresa en el producto servicio
+28/08/2023 01:57:04 Ingresa en el producto
+28/08/2023 01:57:04 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:57:04 Ingresa en el producto entities count 3
+28/08/2023 01:57:04 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:57:04 Ingresa en el producto servicio after entity 
+28/08/2023 01:59:13 Ingresa en el producto servicio
+28/08/2023 01:59:13 Ingresa en el producto
+28/08/2023 01:59:13 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:59:14 Ingresa en el producto entities count 3
+28/08/2023 01:59:14 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 01:59:14 Ingresa en el producto servicio after entity 
+28/08/2023 02:00:38 Ingresa en el producto servicio
+28/08/2023 02:00:38 Ingresa en el producto
+28/08/2023 02:00:38 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:00:38 Ingresa en el producto entities count 3
+28/08/2023 02:00:38 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:00:38 Ingresa en el producto servicio after entity 
+28/08/2023 02:02:51 Ingresa en el producto servicio
+28/08/2023 02:02:51 Ingresa en el producto
+28/08/2023 02:02:51 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:02:51 Ingresa en el producto entities count 3
+28/08/2023 02:02:51 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:02:51 Ingresa en el producto servicio after entity 
+28/08/2023 02:03:26 Ingresa en el producto servicio
+28/08/2023 02:03:26 Ingresa en el producto
+28/08/2023 02:03:26 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:03:26 Ingresa en el producto entities count 3
+28/08/2023 02:03:26 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:03:26 Ingresa en el producto servicio after entity 
+28/08/2023 02:03:47 Ingresa en el producto servicio
+28/08/2023 02:03:47 Ingresa en el producto
+28/08/2023 02:03:47 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:03:47 Ingresa en el producto entities count 3
+28/08/2023 02:03:47 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:03:47 Ingresa en el producto servicio after entity 
+28/08/2023 02:04:38 Ingresa en el producto servicio
+28/08/2023 02:04:38 Ingresa en el producto
+28/08/2023 02:04:38 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:04:38 Ingresa en el producto entities count 3
+28/08/2023 02:04:38 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:04:38 Ingresa en el producto servicio after entity 
+28/08/2023 02:04:47 Ingresa en el producto servicio
+28/08/2023 02:04:47 Ingresa en el producto
+28/08/2023 02:04:47 Ingresa en el producto entitiesMicrosoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:04:47 Ingresa en el producto entities count 3
+28/08/2023 02:04:47 Ingresa en el producto after page entities.ToList() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.Product]
+28/08/2023 02:04:47 Ingresa en el producto servicio after entity 
+28/08/2023 03:20:23 Ingresa en el producto servicio
+28/08/2023 03:20:23 Ingresa en el producto servicio after entity 
+28/08/2023 06:37:16 Ingresa en el producto servicio
+28/08/2023 06:37:16 Ingresa en el producto servicio after entity 
+28/08/2023 06:37:18 Ingresa en el producto servicio
+28/08/2023 06:37:18 Ingresa en el producto servicio after entity 
+28/08/2023 07:08:28 Ingresa en el producto servicio
+28/08/2023 07:08:28 Ingresa en el producto servicio after entity 
+28/08/2023 07:08:33 Ingresa en el producto servicio
+28/08/2023 07:08:33 Ingresa en el producto servicio after entity 
+01/09/2023 01:53:59 Ingresa en el primer if del DeleteSaleEnum.Admin Admin
+01/09/2023 01:53:59 Ingresa en el segundo if del DeleteSaleEnum.Admin entity.SaleDetail.Any() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.SaleDetail]
+01/09/2023 01:53:59 Ingresa en el segundo if del DeleteSaleEnum.Admin entitycontext ApplicationView.DataModel.Entities.Lot
+01/09/2023 01:53:59 Ingresa en el segundo if del DeleteSaleEnum.Admin detail ApplicationView.DataModel.Entities.SaleDetail
+01/09/2023 01:53:59 Ingresa en el segundo if del DeleteSaleEnum.Admin history 
+01/09/2023 01:53:59 Ingresa en el segundo if del DeleteSaleEnum.Admin if (SaleDetail.quantity > 1) 
+01/09/2023 01:53:59 Ingresa en el segundo if del DeleteSaleEnum.Admin _context.SaveChanges() 
+01/09/2023 01:53:59 Ingresa en el segundo if del DeleteSaleEnum.Admin after _context.SaveChanges() 
+01/09/2023 01:54:09 Ingresa en el primer if del DeleteSaleEnum.Admin Admin
+01/09/2023 01:54:09 Ingresa en el segundo if del DeleteSaleEnum.Admin entity.SaleDetail.Any() System.Collections.Generic.List`1[ApplicationView.DataModel.Entities.SaleDetail]
+01/09/2023 01:54:09 Ingresa en el segundo if del DeleteSaleEnum.Admin entitycontext ApplicationView.DataModel.Entities.Lot
+01/09/2023 01:54:09 Ingresa en el segundo if del DeleteSaleEnum.Admin detail ApplicationView.DataModel.Entities.SaleDetail
+01/09/2023 01:54:09 Ingresa en el segundo if del DeleteSaleEnum.Admin history 
+01/09/2023 01:54:09 Ingresa en el segundo if del DeleteSaleEnum.Admin if (SaleDetail.quantity > 1) 
+01/09/2023 01:54:09 Ingresa en el segundo if del DeleteSaleEnum.Admin _context.SaveChanges() 
+01/09/2023 01:54:09 Ingresa en el segundo if del DeleteSaleEnum.Admin after _context.SaveChanges() 

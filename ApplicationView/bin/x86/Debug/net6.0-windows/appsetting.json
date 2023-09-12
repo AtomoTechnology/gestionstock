@@ -1,0 +1,12 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "data source=DESKTOP-KOS4DK0\\PRADE;initial catalog=bluedbventa_db;user id=sa;password=516euge94324590;MultipleActiveResultSets=True;Trusted_Connection=SSPI;Encrypt=false;TrustServerCertificate=true;App=EntityFramework"
+  },
+  "Runtimeenvironment": {
+    "environment": "dev"
+  },
+  "print": {
+    //"name": "POS-58"
+    "name": "XP-58C"
+  }
+}
