@@ -9,6 +9,7 @@ namespace ApplicationView.DataService.Iservice
     public interface IAccountService
     {
         Task<AccountBE> Login(string username, string userpass);
+        AccountBE GetPermisoAfterLogin(string AccountId);
         String ChangePassword(AccountBE be);
         String UpdatePassword(string oldpass, AccountBE business);
         List<AccountBE> FilterAccountByBusinessId(int state, int page, int top, string businessId, string orderBy, string ascending, string name, ref int count);

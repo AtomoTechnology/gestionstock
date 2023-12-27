@@ -96,6 +96,24 @@ namespace ApplicationView.DataModel.Repositories.Repository
             }
         }
 
+        public Account GetPermisoAfterLogin(string AccountId)
+        {
+            try
+            {
+                Account entity = _context.Accounts.Include(u => u.User).Include(u => u.Role).
+                                        Include(u => u.ModuleAccounts).ThenInclude(u => u.SubModuleAccounts).Include(p => p.ModuleAccounts).
+                                        ThenInclude(u => u.Module).ThenInclude(u => u.SubModules).SingleOrDefault(u => u.state == (Int32)StateEnum.Activeted && u.Id == AccountId);
+
+                if (entity != null)
+                    return entity;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
+
         public string UpdatePassword(string oldpass, Business business) => throw new NotImplementedException();
     }
 }

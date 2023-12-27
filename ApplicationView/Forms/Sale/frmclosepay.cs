@@ -1,12 +1,15 @@
 ﻿using ApplicationView.BusnessEntities.BE;
 using ApplicationView.BusnessEntities.Dtos;
+using ApplicationView.Forms.Loading;
 using ApplicationView.Forms.MsgBox;
 using ApplicationView.Forms.RedesignForm;
 using ApplicationView.Patern.singleton;
 using ApplicationView.print;
+using ApplicationView.print.TiketInfo;
 using ApplicationView.Resolver.Enums;
 using ApplicationView.Resolver.HelperError.IExceptions;
 using ApplicationView.VariableSeesion;
+using BarControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,11 +29,14 @@ namespace ApplicationView.Forms.Sale
         private int _productquantity;
         private int borderRadius = 20;
         private int borderSize = 2;
-        //private Color borderColor = Color.White;
+        bool _isPrint;
+        string _salecode;
         private Color borderColor = Color.FromArgb(128, 128, 255);
 
+        SplashForm loading;
+
         public Boolean iscorrectSale = false;
-        public frmclosepay(string total, String SaleId, int productquantity)
+        public frmclosepay(string total, String SaleId, int productquantity,string salecode, bool isPrint = false)
         {
             InitializeComponent();
             this.label7.Text = total; 
@@ -44,8 +50,8 @@ namespace ApplicationView.Forms.Sale
             this.FormBorderStyle = FormBorderStyle.None;
             this.Padding = new Padding(borderSize);
             this.btnclose.FlatAppearance.BorderSize = 0;
-            //this.panelTitleBar.BackColor = borderColor;
-            //this.BackColor = borderColor;
+            _isPrint = isPrint;
+            _salecode = salecode;
         }
 
         private void LoadList()
@@ -69,6 +75,8 @@ namespace ApplicationView.Forms.Sale
             {
                 if (Convert.ToDecimal(this.label7.Text) <= Convert.ToDecimal(this.txtreceive.Text))
                     label3.Text = "-" + " " + (Convert.ToDecimal(this.txtreceive.Text) - Convert.ToDecimal(this.label7.Text)).ToString();
+                if (Convert.ToDecimal(this.label7.Text) >= Convert.ToDecimal(this.txtreceive.Text))
+                    label3.Text = (Convert.ToDecimal(this.txtreceive.Text) - Convert.ToDecimal(this.label7.Text)).ToString();
             }
         }
 
@@ -83,6 +91,12 @@ namespace ApplicationView.Forms.Sale
                         RJMessageBox.Show("Ingreso el total recibido", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+                    if (Convert.ToDecimal(this.txtreceive.Text) < Convert.ToDecimal(label7.Text))
+                    {
+                        RJMessageBox.Show("El dinero recibo es menor de lo que tiene que pagar", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.txtreceive.Focus();
+                        return;
+                    }
                 }
                 if (cbtypePay.SelectedItem == null || cbtypePay.SelectedItem.Equals("Seleccione metodo de pago"))
                 {
@@ -95,30 +109,40 @@ namespace ApplicationView.Forms.Sale
                     this.txtreceive.Focus();
                     return;
                 }
-                var be = new SaleBE()
+
+                this.ShowLoading();
+                SaleBE be = new SaleBE()
                 {
                     AccountId = LoginInfo.IdAccount,
                     CreatedDate = DateTime.Now,
                     ModifiedDate = DateTime.Now,
                     PaymentTypeId = cbtypePay.SelectedValue.ToString(),
                     finalizeSale = true,
-                    CodeLotePayment = this.IsLotPayment != false ? this.txtreceive.Text : "",
+                    CodeLotePayment = this.IsLotPayment != false ? this.txtreceive.Text : "Efectivo",
                     Total = Convert.ToDecimal(this.label7.Text),
                     state = (Int32)SaleEnum.PayFinished
                 };
 
                 RepoPathern.SaleService.Update(_SaleId, be);
-                PrintFinishSale.Finish(Convert.ToDecimal(this.label7.Text), cbtypePay.Text, _productquantity);
+                if (_isPrint)
+                {
+                    BusinessBE busniss = RepoPathern.BusnessService.GetById(LoginInfo.IdBusiness);
+                    List<SaleDetailDto> result = RepoPathern.SaleService.GetReprintTicket(_salecode);
+                    TiketWithPort.GetInstance().print(busniss.BusinessName, busniss.Address, busniss.Cuit_Cuil, busniss.Grossrevenue, busniss.CreatedDate.Date.ToShortDateString(), LoginInfo.UserName, _salecode, result);
+                }
+                this.CloseLoading();
                 this.iscorrectSale = true;
                 this.Close();
             }
             catch (ApiBusinessException ex)
             {
                 RJMessageBox.Show(ex.MessageError, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.CloseLoading();
             }
             catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.CloseLoading();
             }
         }
         frmlegit frm = null;
@@ -219,12 +243,6 @@ namespace ApplicationView.Forms.Sale
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        //private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
-        //{
-        //    ReleaseCapture();
-        //    SendMessage(this.Handle, 0x112, 0xf012, 0);
-        //}
-
         protected override CreateParams CreateParams
         {
             get
@@ -337,6 +355,18 @@ namespace ApplicationView.Forms.Sale
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void ShowLoading()
+        {
+            loading = new SplashForm();
+            loading.Show();
+        }
+
+        private void CloseLoading()
+        {
+            if (this.loading != null)
+                this.loading.Close();
         }
     }
 }

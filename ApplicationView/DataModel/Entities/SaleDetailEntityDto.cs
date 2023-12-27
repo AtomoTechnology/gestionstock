@@ -25,5 +25,9 @@ namespace ApplicationView.DataModel.Entities
         public Decimal SalePrice { get; set; }
         [NotMapped]
         public Int32 quantity { get; set; }
+        [NotMapped]
+        public DateTime CreatedDate { get; set; }
+        [NotMapped]
+        public String ErrorMessage { get; set; }
     }
 }

@@ -396,7 +396,12 @@ namespace ApplicationView.Forms.turnswork
                     };
 
                     if (Isnuevo)
-                        resp = RepoPathern.OpenWorkRepoService.Create(be);
+                    {
+                        var result =  RepoPathern.OpenWorkRepoService.Create(be);
+                        var rest = result.Split('-');
+                        LoginInfo.OpenWorkTurnId = rest[1];
+                        resp = rest[0];
+                    }                        
                     else
                         resp = RepoPathern.OpenWorkRepoService.Update(txtcode.Text.Trim(), be).ToString();
 
@@ -409,8 +414,8 @@ namespace ApplicationView.Forms.turnswork
                     this.Botones();
                     this.CleanBox();
                     this.LoadList();
-                    this.CloseAfterCreateTurnoWork();
-                    //this.tabControl1.SelectedIndex = 0;
+                    this.tabControl1.SelectedIndex = 0;
+                    //this.CloseAfterCreateTurnoWork();
                 }
 
             }
@@ -427,16 +432,22 @@ namespace ApplicationView.Forms.turnswork
         {
             LoginInfo.ischange = true;
             LoginInfo.changesession = true;
-            LoginInfo.messegeaftercreateturn = "El sistema se reiniciara al crear la caja de apertura o de cierre";
+            LoginInfo.messegeaftercreateturn = "Se debe reiniciarel sistema al crear la caja de apertura.\n¿Desee hacerlo ahora?";
+            //DialogResult result = RJMessageBox.Show("Se debe reiniciarel sistema al crear la caja de apertura \n.¿Desee hacerlo ahora?", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
-            foreach (Form frmlog in Application.OpenForms)
+            if (DialogResult.OK == RJMessageBox.Show("Se debe reiniciarel sistema al crear la caja de apertura.\n¿Desee hacerlo ahora?", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Question))
             {
-                if (frmlog.GetType() == typeof(frmPrincipal))
-                {
-                    frmlog.Close();
-                    break;
-                }
+                this.Close();
+                Application.Restart();
             }
+            //foreach (Form frmlog in Application.OpenForms)
+            //{
+            //    if (frmlog.GetType() == typeof(frmPrincipal))
+            //    {
+            //        frmlog.Close();
+            //        break;
+            //    }
+            //}
         }
         private void btnselectuser_Click(object sender, EventArgs e)
         {
@@ -580,6 +591,30 @@ namespace ApplicationView.Forms.turnswork
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            ShareMethod.GetInstance().goFirst();
+            LoadList();
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            ShareMethod.GetInstance().goPrevious();
+            LoadList();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            ShareMethod.GetInstance().goNext();
+            LoadList();
+        }
+
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            ShareMethod.GetInstance().goLast(this.count);
+            LoadList();
         }
     }
 }

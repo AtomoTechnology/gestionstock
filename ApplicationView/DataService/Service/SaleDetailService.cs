@@ -48,7 +48,9 @@ namespace ApplicationView.DataService.Service
                                 quantity = item.quantity,
                                 InvoiceCode = item.InvoiceCode,
                                 ProductCode = item.ProductCode,
-                                Subtotal = item.SalePrice * item.quantity
+                                Subtotal = item.SalePrice * item.quantity,
+                                CreatedDate = item.CreatedDate,
+                                PaymentName = item.PaymentName
                             });
                         }                        
                     }

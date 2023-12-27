@@ -13,13 +13,15 @@ namespace ApplicationView.DataService.Iservice
         SaleBE GetById(string id);
         List<SaleDetailDto> Create(SaleBE sale, string lotId);
         List<SaleDetailDto> GetReprintTicket(string nroticket);
-        List<SearchSaleSPDTO> GetAllSaleHistoric(DateTime datefrom, DateTime dateto, string turn, int page, int pageSize);
+        List<SearchSaleSPDTO> GetAllSaleHistoric(DateTime datefrom, DateTime dateto, string user, int page, int pageSize);
         List<SearchSaleSPDTO> GetAllSaleHistoricExport(DateTime datefrom, DateTime dateto, string turn);
         List<TurnsBE> GetAllTurn();
         String Update(string id, SaleBE sale);
         String Delete(string id);
         String RemoveNoneSale(SaleDetailDto saleDetailId, string LotId, string accountId, DeleteSaleEnum enumtype);
         String UpdateWithLegit(SaleWithLogitDto dto);
+        ClossCashierBE GetCashier(string AccountId);
+        ClossCashierBE GetAccountredemption(string AccountId, string OpenWorkTurnid);
 
     }
 }

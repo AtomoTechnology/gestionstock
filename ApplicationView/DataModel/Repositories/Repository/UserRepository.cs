@@ -141,6 +141,23 @@ namespace ApplicationView.DataModel.Repositories.Repository
             }
         }
 
+        public List<Account> GetAllAccounts()
+        {
+            try
+            {
+                var entities = _context.Accounts.Where(u => u.state == (Int32)StateEnum.Activeted);    
+                return entities.ToList();
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
+
         public User GetById(string id)
         {
             try

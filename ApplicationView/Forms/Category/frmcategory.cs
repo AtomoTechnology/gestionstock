@@ -23,7 +23,6 @@ namespace ApplicationView.Forms.Category
         int count = 0;
         private int borderRadius = 20;
         private int borderSize = 2;
-        //private Color borderColor = Color.White;
         private Color borderColor = Color.FromArgb(128, 128, 255);
         public frmcategory()
         {
@@ -33,15 +32,13 @@ namespace ApplicationView.Forms.Category
             this.FormBorderStyle = FormBorderStyle.None;
             this.Padding = new Padding(borderSize);
             this.btnclose.FlatAppearance.BorderSize = 0;
-            //this.panelTitleBar.BackColor = borderColor;
-            //this.BackColor = borderColor;
         }
         private void LoadList()
         {
 
             this.dataList.DataSource = RepoPathern.CategoryService.GetAll(1, LoginInfo.pageactual, LoginInfo.pagesize, "Id", "asc", "", ref count);
             this.HideColumn();
-            this.GetPagination(Convert.ToInt32(dataList.Rows.Count));
+            this.GetPagination();
         }
         private void HideColumn()
         {
@@ -52,9 +49,9 @@ namespace ApplicationView.Forms.Category
             this.dataList.Columns["FinalDate"].Visible = false;
             this.dataList.Columns["ModifiedDate"].Visible = false;
         }
-        private void GetPagination(int quantity)
+        private void GetPagination()
         {
-            if (quantity > 0)
+            if (count > 0)
             {
                 LoginInfo.pageamount = count;
                 LoginInfo.page = Math.Ceiling(LoginInfo.pageamount / LoginInfo.pagesize);
@@ -91,7 +88,7 @@ namespace ApplicationView.Forms.Category
             if (!this.txtsearch.Text.Trim().Equals(""))
             {
                 this.dataList.DataSource = RepoPathern.CategoryService.GetAll(1, LoginInfo.pageactual, LoginInfo.pagesize, "Id", "asc", this.txtsearch.Text.Trim(), ref count);
-                this.GetPagination(Convert.ToInt32(dataList.Rows.Count));
+                this.GetPagination();
             }
             else
                 this.LoadList();

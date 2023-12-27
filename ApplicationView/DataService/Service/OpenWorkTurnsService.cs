@@ -1,4 +1,5 @@
 ﻿using ApplicationView.BusnessEntities.BE;
+using ApplicationView.BusnessEntities.Dtos;
 using ApplicationView.DataModel.Entities;
 using ApplicationView.DataModel.Repositories.IRepository;
 using ApplicationView.DataService.Iservice;
@@ -141,5 +142,74 @@ namespace ApplicationView.DataService.Service
         }
 
         public bool ChechCashierOpen(string accountId, string TurnId) => _repo.ChechCashierOpen(accountId, TurnId);
+        public bool CloseWorkUser(string accountId)
+        {
+            try
+            {
+                var entities = _repo.CloseWorkUser(accountId);
+                return entities;
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
+
+        public List<OpenWorkTurnDTO> GetAlll(string AccountId, int page, int top, string orderBy, string ascending, string name, ref int count)
+        {
+            try
+            {
+                var entities = _repo.GetAll(AccountId, page, top, orderBy, ascending,name, ref count);
+                List<OpenWorkTurnDTO> listdtos = new List<OpenWorkTurnDTO>();
+                OpenWorkTurnDTO dto;
+                if (entities.Count > 0)
+                {
+                    foreach (var item in entities)
+                    {
+                        dto = new OpenWorkTurnDTO()
+                        {
+                            AccountId = item.AccountId,
+                            AccountName = item?.Account?.UserName,
+                            DateFrom = item.CreatedDate.ToShortDateString(),
+                            Id = item.Id,
+                            TurnName = item?.Turn?.TurnName,
+                        };
+                        listdtos.Add(dto);
+                    }
+                }
+               
+                return listdtos;
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+
+        }
+
+        public OpenWorkTurnBE GetOpenWorkTurnByAccountId(string AccountId)
+        {
+            try
+            {
+                var entities = _repo.GetOpenWorkTurnByAccountId(AccountId);
+                return _maapper.Map<OpenWorkTurnBE>(entities);
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
     }
 }

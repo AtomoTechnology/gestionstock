@@ -10,7 +10,7 @@ namespace ApplicationView.print
     public class RawPrinterHelper
     {
         // Structure and API declarions:
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         public class DOCINFOA
         {
             [MarshalAs(UnmanagedType.LPStr)]

@@ -19,6 +19,8 @@ using ApplicationView.DataModel.Context;
 using ApplicationView.Resolver.Security;
 using ApplicationView.DataService.Iservice;
 using ApplicationView.DataService.Service;
+using ApplicationView.Forms.Sale;
+using ApplicationView.Forms.Loading;
 
 namespace ApplicationView.Configurations
 {
@@ -44,8 +46,8 @@ namespace ApplicationView.Configurations
                    services.AddScoped<frmturns>();
                    services.AddScoped<frmopenworkturns>();
                    services.AddScoped<frmoffer>();
-                   //services.AddScoped<frmlegit>();
-                   //services.AddScoped<frmdetailLegit>();
+                   services.AddScoped<frmclosecachier>();
+                   //services.AddScoped<SplashForm>();
 
                    //services.AddEntityFrameworkS<DbGestionStockContext>();
 

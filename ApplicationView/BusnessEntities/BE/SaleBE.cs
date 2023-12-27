@@ -7,6 +7,7 @@ namespace ApplicationView.BusnessEntities.BE
     public class SaleBE:BaseBE
     {
         public String AccountId { get; set; }
+        public String? OpenWorkTurnId { get; set; }
         public String PaymentTypeId { get; set; }
         public Decimal Total { get; set; }
         public Boolean finalizeSale { get; set; }

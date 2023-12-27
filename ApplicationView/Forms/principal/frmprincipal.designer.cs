@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmprincipal));
             this.panelSideMenu = new System.Windows.Forms.Panel();
             this.panelSeguridySubMenu = new System.Windows.Forms.Panel();
@@ -71,6 +72,7 @@
             this.btnabmproduct = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
             this.panelSaleSubMenu = new System.Windows.Forms.Panel();
+            this.button20 = new System.Windows.Forms.Button();
             this.btndetailfiar = new System.Windows.Forms.Button();
             this.btnconsultantprize = new System.Windows.Forms.Button();
             this.btnconsultantsale = new System.Windows.Forms.Button();
@@ -80,11 +82,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panelTitleBar = new System.Windows.Forms.Panel();
+            this.lbltime = new System.Windows.Forms.Label();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnCloseChildForm = new System.Windows.Forms.Button();
             this.lblTItle = new System.Windows.Forms.Label();
+            this.tmhour = new System.Windows.Forms.Timer(this.components);
             this.panelSideMenu.SuspendLayout();
             this.panelSeguridySubMenu.SuspendLayout();
             this.panelMovmentSubMenu.SuspendLayout();
@@ -139,9 +142,9 @@
             this.panelSeguridySubMenu.Controls.Add(this.button22);
             this.panelSeguridySubMenu.Controls.Add(this.button23);
             this.panelSeguridySubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSeguridySubMenu.Location = new System.Drawing.Point(0, 899);
+            this.panelSeguridySubMenu.Location = new System.Drawing.Point(0, 996);
             this.panelSeguridySubMenu.Name = "panelSeguridySubMenu";
-            this.panelSeguridySubMenu.Size = new System.Drawing.Size(289, 285);
+            this.panelSeguridySubMenu.Size = new System.Drawing.Size(289, 317);
             this.panelSeguridySubMenu.TabIndex = 18;
             // 
             // btnmodifyrol
@@ -152,12 +155,12 @@
             this.btnmodifyrol.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.btnmodifyrol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnmodifyrol.ForeColor = System.Drawing.Color.Silver;
-            this.btnmodifyrol.Location = new System.Drawing.Point(0, 260);
+            this.btnmodifyrol.Location = new System.Drawing.Point(0, 280);
             this.btnmodifyrol.Name = "btnmodifyrol";
             this.btnmodifyrol.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnmodifyrol.Size = new System.Drawing.Size(289, 34);
             this.btnmodifyrol.TabIndex = 9;
-            this.btnmodifyrol.Text = "Modificar rol";
+            this.btnmodifyrol.Text = "Modificar permiso";
             this.btnmodifyrol.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnmodifyrol.UseVisualStyleBackColor = true;
             this.btnmodifyrol.Click += new System.EventHandler(this.btnmodifyrol_Click);
@@ -170,7 +173,7 @@
             this.button30.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button30.ForeColor = System.Drawing.Color.Silver;
-            this.button30.Location = new System.Drawing.Point(0, 231);
+            this.button30.Location = new System.Drawing.Point(0, 251);
             this.button30.Name = "button30";
             this.button30.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.button30.Size = new System.Drawing.Size(289, 29);
@@ -188,7 +191,7 @@
             this.button29.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button29.ForeColor = System.Drawing.Color.Silver;
-            this.button29.Location = new System.Drawing.Point(0, 203);
+            this.button29.Location = new System.Drawing.Point(0, 223);
             this.button29.Name = "button29";
             this.button29.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.button29.Size = new System.Drawing.Size(289, 28);
@@ -206,7 +209,7 @@
             this.button28.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button28.ForeColor = System.Drawing.Color.Silver;
-            this.button28.Location = new System.Drawing.Point(0, 173);
+            this.button28.Location = new System.Drawing.Point(0, 193);
             this.button28.Name = "button28";
             this.button28.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.button28.Size = new System.Drawing.Size(289, 30);
@@ -224,7 +227,7 @@
             this.button27.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button27.ForeColor = System.Drawing.Color.Silver;
-            this.button27.Location = new System.Drawing.Point(0, 144);
+            this.button27.Location = new System.Drawing.Point(0, 164);
             this.button27.Name = "button27";
             this.button27.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.button27.Size = new System.Drawing.Size(289, 29);
@@ -242,7 +245,7 @@
             this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.ForeColor = System.Drawing.Color.Silver;
-            this.button9.Location = new System.Drawing.Point(0, 115);
+            this.button9.Location = new System.Drawing.Point(0, 135);
             this.button9.Name = "button9";
             this.button9.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.button9.Size = new System.Drawing.Size(289, 29);
@@ -260,7 +263,7 @@
             this.button26.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button26.ForeColor = System.Drawing.Color.Silver;
-            this.button26.Location = new System.Drawing.Point(0, 84);
+            this.button26.Location = new System.Drawing.Point(0, 104);
             this.button26.Name = "button26";
             this.button26.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.button26.Size = new System.Drawing.Size(289, 31);
@@ -278,7 +281,7 @@
             this.button25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button25.ForeColor = System.Drawing.Color.Silver;
-            this.button25.Location = new System.Drawing.Point(0, 53);
+            this.button25.Location = new System.Drawing.Point(0, 73);
             this.button25.Name = "button25";
             this.button25.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.button25.Size = new System.Drawing.Size(289, 31);
@@ -296,10 +299,10 @@
             this.button22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.ForeColor = System.Drawing.Color.Silver;
-            this.button22.Location = new System.Drawing.Point(0, 26);
+            this.button22.Location = new System.Drawing.Point(0, 37);
             this.button22.Name = "button22";
             this.button22.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button22.Size = new System.Drawing.Size(289, 27);
+            this.button22.Size = new System.Drawing.Size(289, 36);
             this.button22.TabIndex = 1;
             this.button22.Text = "ABM Forma de pago";
             this.button22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -316,7 +319,7 @@
             this.button23.Location = new System.Drawing.Point(0, 0);
             this.button23.Name = "button23";
             this.button23.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.button23.Size = new System.Drawing.Size(289, 26);
+            this.button23.Size = new System.Drawing.Size(289, 37);
             this.button23.TabIndex = 0;
             this.button23.Text = "ABM Permiso";
             this.button23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -334,7 +337,7 @@
             this.btnSecurity.ForeColor = System.Drawing.Color.Silver;
             this.btnSecurity.Image = global::ApplicationView.Properties.Resources.candado;
             this.btnSecurity.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSecurity.Location = new System.Drawing.Point(0, 854);
+            this.btnSecurity.Location = new System.Drawing.Point(0, 951);
             this.btnSecurity.Name = "btnSecurity";
             this.btnSecurity.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnSecurity.Size = new System.Drawing.Size(289, 45);
@@ -351,9 +354,9 @@
             this.panelMovmentSubMenu.Controls.Add(this.btntypemouvment);
             this.panelMovmentSubMenu.Controls.Add(this.btnmouvment);
             this.panelMovmentSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMovmentSubMenu.Location = new System.Drawing.Point(0, 796);
+            this.panelMovmentSubMenu.Location = new System.Drawing.Point(0, 874);
             this.panelMovmentSubMenu.Name = "panelMovmentSubMenu";
-            this.panelMovmentSubMenu.Size = new System.Drawing.Size(289, 58);
+            this.panelMovmentSubMenu.Size = new System.Drawing.Size(289, 77);
             this.panelMovmentSubMenu.TabIndex = 16;
             // 
             // btntypemouvment
@@ -401,7 +404,7 @@
             this.btnMovements.ForeColor = System.Drawing.Color.Silver;
             this.btnMovements.Image = global::ApplicationView.Properties.Resources.transaccion;
             this.btnMovements.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMovements.Location = new System.Drawing.Point(0, 762);
+            this.btnMovements.Location = new System.Drawing.Point(0, 840);
             this.btnMovements.Name = "btnMovements";
             this.btnMovements.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnMovements.Size = new System.Drawing.Size(289, 34);
@@ -418,9 +421,9 @@
             this.panelUserSubMenu.Controls.Add(this.btnchangepassword);
             this.panelUserSubMenu.Controls.Add(this.btnabmgestionuser);
             this.panelUserSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUserSubMenu.Location = new System.Drawing.Point(0, 699);
+            this.panelUserSubMenu.Location = new System.Drawing.Point(0, 749);
             this.panelUserSubMenu.Name = "panelUserSubMenu";
-            this.panelUserSubMenu.Size = new System.Drawing.Size(289, 63);
+            this.panelUserSubMenu.Size = new System.Drawing.Size(289, 91);
             this.panelUserSubMenu.TabIndex = 14;
             // 
             // btnchangepassword
@@ -431,7 +434,7 @@
             this.btnchangepassword.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
             this.btnchangepassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnchangepassword.ForeColor = System.Drawing.Color.Silver;
-            this.btnchangepassword.Location = new System.Drawing.Point(0, 24);
+            this.btnchangepassword.Location = new System.Drawing.Point(0, 44);
             this.btnchangepassword.Name = "btnchangepassword";
             this.btnchangepassword.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.btnchangepassword.Size = new System.Drawing.Size(289, 33);
@@ -452,7 +455,7 @@
             this.btnabmgestionuser.Location = new System.Drawing.Point(0, 0);
             this.btnabmgestionuser.Name = "btnabmgestionuser";
             this.btnabmgestionuser.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnabmgestionuser.Size = new System.Drawing.Size(289, 24);
+            this.btnabmgestionuser.Size = new System.Drawing.Size(289, 44);
             this.btnabmgestionuser.TabIndex = 0;
             this.btnabmgestionuser.Text = "ABM Usuario";
             this.btnabmgestionuser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -470,7 +473,7 @@
             this.btnUser.ForeColor = System.Drawing.Color.Silver;
             this.btnUser.Image = global::ApplicationView.Properties.Resources.nuevo;
             this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUser.Location = new System.Drawing.Point(0, 666);
+            this.btnUser.Location = new System.Drawing.Point(0, 716);
             this.btnUser.Name = "btnUser";
             this.btnUser.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnUser.Size = new System.Drawing.Size(289, 33);
@@ -487,7 +490,7 @@
             this.panelSysGesSubMenu.Controls.Add(this.button19);
             this.panelSysGesSubMenu.Controls.Add(this.btnChangeSession);
             this.panelSysGesSubMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelSysGesSubMenu.Location = new System.Drawing.Point(0, 1184);
+            this.panelSysGesSubMenu.Location = new System.Drawing.Point(0, 1313);
             this.panelSysGesSubMenu.Name = "panelSysGesSubMenu";
             this.panelSysGesSubMenu.Size = new System.Drawing.Size(289, 71);
             this.panelSysGesSubMenu.TabIndex = 12;
@@ -535,7 +538,7 @@
             this.panelReportSubMenu.Controls.Add(this.btnproductreport);
             this.panelReportSubMenu.Controls.Add(this.btnsalereport);
             this.panelReportSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelReportSubMenu.Location = new System.Drawing.Point(0, 588);
+            this.panelReportSubMenu.Location = new System.Drawing.Point(0, 638);
             this.panelReportSubMenu.Name = "panelReportSubMenu";
             this.panelReportSubMenu.Size = new System.Drawing.Size(289, 78);
             this.panelReportSubMenu.TabIndex = 11;
@@ -602,7 +605,7 @@
             this.btnReport.ForeColor = System.Drawing.Color.Silver;
             this.btnReport.Image = global::ApplicationView.Properties.Resources.reporte_de_negocios;
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReport.Location = new System.Drawing.Point(0, 549);
+            this.btnReport.Location = new System.Drawing.Point(0, 599);
             this.btnReport.Name = "btnReport";
             this.btnReport.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnReport.Size = new System.Drawing.Size(289, 39);
@@ -624,7 +627,7 @@
             this.btnSysGes.ForeColor = System.Drawing.Color.Silver;
             this.btnSysGes.Image = ((System.Drawing.Image)(resources.GetObject("btnSysGes.Image")));
             this.btnSysGes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSysGes.Location = new System.Drawing.Point(0, 1255);
+            this.btnSysGes.Location = new System.Drawing.Point(0, 1384);
             this.btnSysGes.Name = "btnSysGes";
             this.btnSysGes.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnSysGes.Size = new System.Drawing.Size(289, 46);
@@ -641,7 +644,7 @@
             this.panelProviderSubMenu.Controls.Add(this.btnconsultantproducto);
             this.panelProviderSubMenu.Controls.Add(this.btnambproveedor);
             this.panelProviderSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelProviderSubMenu.Location = new System.Drawing.Point(0, 492);
+            this.panelProviderSubMenu.Location = new System.Drawing.Point(0, 542);
             this.panelProviderSubMenu.Name = "panelProviderSubMenu";
             this.panelProviderSubMenu.Size = new System.Drawing.Size(289, 57);
             this.panelProviderSubMenu.TabIndex = 7;
@@ -693,7 +696,7 @@
             this.btnprovider.ForeColor = System.Drawing.Color.Silver;
             this.btnprovider.Image = global::ApplicationView.Properties.Resources.distribucion;
             this.btnprovider.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnprovider.Location = new System.Drawing.Point(0, 453);
+            this.btnprovider.Location = new System.Drawing.Point(0, 503);
             this.btnprovider.Name = "btnprovider";
             this.btnprovider.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnprovider.Size = new System.Drawing.Size(289, 39);
@@ -713,7 +716,7 @@
             this.panelProductSubMenu.Controls.Add(this.btnconsultantdateexpired);
             this.panelProductSubMenu.Controls.Add(this.btnabmproduct);
             this.panelProductSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelProductSubMenu.Location = new System.Drawing.Point(0, 301);
+            this.panelProductSubMenu.Location = new System.Drawing.Point(0, 351);
             this.panelProductSubMenu.Name = "panelProductSubMenu";
             this.panelProductSubMenu.Size = new System.Drawing.Size(289, 152);
             this.panelProductSubMenu.TabIndex = 4;
@@ -752,6 +755,7 @@
             this.btncreateoffer.Text = "Crear Oferta";
             this.btncreateoffer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btncreateoffer.UseVisualStyleBackColor = true;
+            this.btncreateoffer.Visible = false;
             this.btncreateoffer.Click += new System.EventHandler(this.button16_Click);
             // 
             // btndetailproduct
@@ -819,7 +823,7 @@
             this.btnProduct.ForeColor = System.Drawing.Color.Silver;
             this.btnProduct.Image = global::ApplicationView.Properties.Resources.gestion_de_productos;
             this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.Location = new System.Drawing.Point(0, 254);
+            this.btnProduct.Location = new System.Drawing.Point(0, 304);
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnProduct.Size = new System.Drawing.Size(289, 47);
@@ -833,6 +837,7 @@
             // panelSaleSubMenu
             // 
             this.panelSaleSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelSaleSubMenu.Controls.Add(this.button20);
             this.panelSaleSubMenu.Controls.Add(this.btndetailfiar);
             this.panelSaleSubMenu.Controls.Add(this.btnconsultantprize);
             this.panelSaleSubMenu.Controls.Add(this.btnconsultantsale);
@@ -840,8 +845,27 @@
             this.panelSaleSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSaleSubMenu.Location = new System.Drawing.Point(0, 113);
             this.panelSaleSubMenu.Name = "panelSaleSubMenu";
-            this.panelSaleSubMenu.Size = new System.Drawing.Size(289, 141);
+            this.panelSaleSubMenu.Size = new System.Drawing.Size(289, 191);
             this.panelSaleSubMenu.TabIndex = 2;
+            // 
+            // button20
+            // 
+            this.button20.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button20.FlatAppearance.BorderSize = 0;
+            this.button20.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.button20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button20.ForeColor = System.Drawing.Color.Silver;
+            this.button20.Location = new System.Drawing.Point(0, 137);
+            this.button20.Name = "button20";
+            this.button20.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.button20.Size = new System.Drawing.Size(289, 40);
+            this.button20.TabIndex = 4;
+            this.button20.Text = "Reimprimir tiket";
+            this.button20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click_2);
             // 
             // btndetailfiar
             // 
@@ -978,10 +1002,10 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.panelTitleBar.Controls.Add(this.lbltime);
             this.panelTitleBar.Controls.Add(this.btnMinimize);
             this.panelTitleBar.Controls.Add(this.btnMaximize);
             this.panelTitleBar.Controls.Add(this.btnClose);
-            this.panelTitleBar.Controls.Add(this.btnCloseChildForm);
             this.panelTitleBar.Controls.Add(this.lblTItle);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(310, 0);
@@ -989,6 +1013,17 @@
             this.panelTitleBar.Size = new System.Drawing.Size(1614, 80);
             this.panelTitleBar.TabIndex = 0;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
+            // 
+            // lbltime
+            // 
+            this.lbltime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbltime.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.lbltime.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbltime.ForeColor = System.Drawing.Color.White;
+            this.lbltime.Location = new System.Drawing.Point(1023, 17);
+            this.lbltime.Name = "lbltime";
+            this.lbltime.Size = new System.Drawing.Size(390, 56);
+            this.lbltime.TabIndex = 5;
             // 
             // btnMinimize
             // 
@@ -1035,19 +1070,6 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnCloseChildForm
-            // 
-            this.btnCloseChildForm.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCloseChildForm.FlatAppearance.BorderSize = 0;
-            this.btnCloseChildForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseChildForm.Image = global::ApplicationView.Properties.Resources.cross_out__2_;
-            this.btnCloseChildForm.Location = new System.Drawing.Point(0, 0);
-            this.btnCloseChildForm.Name = "btnCloseChildForm";
-            this.btnCloseChildForm.Size = new System.Drawing.Size(94, 80);
-            this.btnCloseChildForm.TabIndex = 1;
-            this.btnCloseChildForm.UseVisualStyleBackColor = true;
-            this.btnCloseChildForm.Click += new System.EventHandler(this.button20_Click_1);
-            // 
             // lblTItle
             // 
             this.lblTItle.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1059,6 +1081,10 @@
             this.lblTItle.Size = new System.Drawing.Size(235, 31);
             this.lblTItle.TabIndex = 0;
             this.lblTItle.Text = "Venta de producto";
+            // 
+            // tmhour
+            // 
+            this.tmhour.Tick += new System.EventHandler(this.tmhour_Tick);
             // 
             // frmprincipal
             // 
@@ -1165,11 +1191,13 @@
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Label lblTItle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnCloseChildForm;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Label lbltime;
+        private System.Windows.Forms.Timer tmhour;
     }
 }
 

@@ -11,5 +11,6 @@ namespace ApplicationView.DataModel.Repositories.IRepository
         String Create(User user, List<ModuleAccount> mabe);
         String Update(string id, User user);
         Boolean Delete(string id);
+        List<Account> GetAllAccounts();
     }
 }

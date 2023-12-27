@@ -9,22 +9,23 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DataModel.Migrations
+namespace ApplicationView.Migrations
 {
     [DbContext(typeof(DbGestionStockContext))]
-    [Migration("20230718044431_modifylotandproduct")]
-    partial class modifylotandproduct
+    [Migration("20231218222619_updaterol")]
+    partial class updaterol
     {
-        protected  void BuildTargetModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.11")
+                .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("DataModel.Entities.Account", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Account", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -75,7 +76,7 @@ namespace DataModel.Migrations
                         {
                             Id = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             Confirm = true,
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 538, DateTimeKind.Local).AddTicks(2135),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 749, DateTimeKind.Local).AddTicks(1441),
                             RoleId = "82a0bec6-8266-443a-84a2-af85ad69348b",
                             UserId = "362c2637-2ad9-449a-9498-dbd74be87ee8",
                             UserName = "admin",
@@ -84,7 +85,7 @@ namespace DataModel.Migrations
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Business", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Business", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -108,6 +109,9 @@ namespace DataModel.Migrations
                     b.Property<DateTime?>("FinalDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Grossrevenue")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
@@ -128,14 +132,15 @@ namespace DataModel.Migrations
                             Id = "de07358c-3a51-42fb-8690-c383b91b5844",
                             Address = "Argentina",
                             BusinessName = "Almacen",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 543, DateTimeKind.Local).AddTicks(5578),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 753, DateTimeKind.Local).AddTicks(3864),
                             Cuit_Cuil = "30-45785215-9",
+                            Grossrevenue = "21-78458787-5",
                             Phone = "3419875425",
                             state = 1
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Category", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Category", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -177,7 +182,7 @@ namespace DataModel.Migrations
                             Id = "4444da14-84ac-48de-a7da-a4f4ddd28858",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "ABARROTES",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5420),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7500),
                             Description = "Este tipo de recinto comercial ofrece alimentos envasados o de venta al peso, desde panes hasta productos lácteos pasando por conservas. Los abarrotes, en algunos países sudamericanos, se denominan almacenes.",
                             state = 1
                         },
@@ -186,7 +191,7 @@ namespace DataModel.Migrations
                             Id = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "PRODUCTOS ENLATADOS",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5427),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7507),
                             Description = "Un alimento enlatado, es por ende, un alimento fresco, incorporado en un recipiente metálico, herméticamente cerrado el cual se somete a un proceso de calentamiento a temperaturas superiores a los 100 °C, para conservarlo, lo más parecido posible, a su estado en forma natural hasta el momento de consumirlo.",
                             state = 1
                         },
@@ -195,7 +200,7 @@ namespace DataModel.Migrations
                             Id = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "BEBIDAS ALCOHÓLICAS",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5429),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7508),
                             Description = "Las bebidas alcohólicas son aquellas bebidas que contienen etanol en su composición. Las bebidas alcohólicas desempeñan un papel social importante en muchas culturas del mundo, debido a su efecto de droga recreativa depresora.",
                             state = 1
                         },
@@ -204,7 +209,7 @@ namespace DataModel.Migrations
                             Id = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "LÁCTEOS",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5432),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7510),
                             Description = "El grupo de los lácteos (también productos lácteos, lácticos o derivados lácteos) incluye alimentos como la leche y sus derivados procesados. Las plantas industriales que producen estos alimentos pertenecen a la industria láctea y se caracterizan por la manipulación de un producto altamente perecedero, como la leche, que debe vigilarse y analizarse correctamente durante todos los pasos de la cadena de frío hasta su llegada al consumidor.",
                             state = 1
                         },
@@ -213,7 +218,7 @@ namespace DataModel.Migrations
                             Id = "e7c4059e-04a1-4f4a-b5c9-b86da231147f",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "BOTANAS",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5434),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7512),
                             Description = "Es un tipo de aperitivo, ese plato que da inicio a una comida y se comparte entre los comensales. Algunas de las botanas más tradicionales generalmente están hechas con una masa de maíz que termina siendo tortillas, totopos, tostadas… y normalmente se acompañan con diferentes salsas.",
                             state = 1
                         },
@@ -222,7 +227,7 @@ namespace DataModel.Migrations
                             Id = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "CONFITERÍA/DULCERIA",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5437),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7513),
                             Description = "El término repostería es el que se utiliza para denominar al tipo de gastronomía que se basa en la preparación, y decoración de platos dulces tales como pies, tartas, pasteles, galletas, budines, etc.",
                             state = 1
                         },
@@ -231,7 +236,7 @@ namespace DataModel.Migrations
                             Id = "c0f96f74-96cf-438a-b89f-0888182b3e75",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "HARINAS Y PAN",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5439),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7515),
                             Description = "Se encuentra todo sobre perfumeria",
                             state = 1
                         },
@@ -240,7 +245,7 @@ namespace DataModel.Migrations
                             Id = "b296430c-42de-41f8-8fc2-3f7fadb44218",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "FRUTAS Y VERDURAS",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5441),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7517),
                             Description = "Las frutas y verduras se consideran partes comestibles de las plantas (por ejemplo, estructuras portadoras de semillas, flores, brotes, hojas, tallos, brotes y raíces), ya sean cultivadas o cosechadas en forma silvestre, en estado crudo o en forma mínimamente elaborada.",
                             state = 1
                         },
@@ -249,7 +254,7 @@ namespace DataModel.Migrations
                             Id = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "BEBIDAS",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5444),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7519),
                             Description = "Bebida es cualquier líquido que se ingiere. La bebida más consumida es el agua. Otros ejemplos son las bebidas alcohólicas, bebidas gaseosas, infusiones o zumos. En Chile se le llama bebida exclusivamente a las gaseosas.",
                             state = 1
                         },
@@ -258,7 +263,7 @@ namespace DataModel.Migrations
                             Id = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "ALIMENTOS PREPARADOS",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5453),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7521),
                             Description = "Alimento listo para el consumo: alimento que está en forma comestible, sin necesidad de lavado, cocimiento, o preparación adicional por parte del establecimiento de comida o consumidor, y se espera que sea consumido en esa forma.",
                             state = 1
                         },
@@ -267,7 +272,7 @@ namespace DataModel.Migrations
                             Id = "07dd4e15-386e-44c7-8f63-801c1dddeb1a",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "AUTOMEDICACIÓN",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5456),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7523),
                             Description = "La automedicación es la utilización de medicamentos por iniciativa propia sin ninguna intervención por parte del médico (ni en el diagnóstico de la enfermedad, ni en la prescripción o supervisión del tratamiento)",
                             state = 1
                         },
@@ -276,7 +281,7 @@ namespace DataModel.Migrations
                             Id = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "HIGIENE PERSONAL",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5458),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7525),
                             Description = "La higiene personal es el concepto básico del aseo, de la limpieza y del cuidado del cuerpo humano.",
                             state = 1
                         },
@@ -285,7 +290,7 @@ namespace DataModel.Migrations
                             Id = "21fcbb68-3e40-4550-b142-a302fc264a47",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "USO DOMÉSTICO",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5461),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7526),
                             Description = "USO DOMÉSTICO.",
                             state = 1
                         },
@@ -294,7 +299,7 @@ namespace DataModel.Migrations
                             Id = "db2ca371-5ba5-49d9-81cf-f04f49a61b0e",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "HELADOS",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5464),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7528),
                             Description = "En su forma más simple, el helado o crema helada es un alimento congelado que por lo general se hace de productos lácteos tales como leche o crema.",
                             state = 1
                         },
@@ -303,7 +308,7 @@ namespace DataModel.Migrations
                             Id = "27d5e91e-1229-49cd-964b-cc812a81faeb",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "JARCERÍA / PRODUCTOS DE LIMPIEZA",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5466),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7529),
                             Description = "Jarciería es el término que se refiere a toda aquella mercadería que se denomina comúnmente instrumentos de limpieza. Existe gran variedad de jarciería a la venta ya sea en la típica tienda de autoservicio o bien en compañías especializadas.",
                             state = 1
                         },
@@ -312,13 +317,13 @@ namespace DataModel.Migrations
                             Id = "9cb3d8c8-226e-4f1a-b04d-258db3329c75",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             CategoryName = "OTROS PRODUCTOS",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(5468),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(7531),
                             Description = "Que no tiene una categoria especifico",
                             state = 1
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.History", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.History", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -363,7 +368,7 @@ namespace DataModel.Migrations
                     b.ToTable("Histories");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.HistoryPrice", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.HistoryPrice", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -382,10 +387,12 @@ namespace DataModel.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("PricePurchase")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<decimal>("PriceSale")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(450)");
@@ -405,7 +412,7 @@ namespace DataModel.Migrations
                     b.ToTable("HistoryPrices");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.IncreasePriceAfterTwelve", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.IncreasePriceAfterTwelve", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -433,7 +440,8 @@ namespace DataModel.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("Porcent")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<int>("state")
                         .HasColumnType("int");
@@ -445,7 +453,7 @@ namespace DataModel.Migrations
                     b.ToTable("IncreasePriceAfterTwelves");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Legit", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Legit", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -473,7 +481,8 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<int>("state")
                         .HasColumnType("int");
@@ -487,7 +496,7 @@ namespace DataModel.Migrations
                     b.ToTable("Legit");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Lot", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Lot", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -523,7 +532,7 @@ namespace DataModel.Migrations
                     b.ToTable("Lots");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Module", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Module", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -561,7 +570,7 @@ namespace DataModel.Migrations
                         {
                             Id = "dc09b3c4-58ff-4483-91b7-89ed479e6d1a",
                             ActionName = "btnSale",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(9684),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(8540),
                             Description = "Encarga la seguridad de las ventas, permisos, etc",
                             Name = "Ventas",
                             state = 1
@@ -570,7 +579,7 @@ namespace DataModel.Migrations
                         {
                             Id = "8178794d-5f0c-4255-b234-8f0f683e74dd",
                             ActionName = "btnProduct",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(9700),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(8549),
                             Description = "Dar permiso",
                             Name = "Productos",
                             state = 1
@@ -579,7 +588,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a9315906-f7bf-49eb-808e-d24cb39a04ba",
                             ActionName = "btnprovider",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(9703),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(8551),
                             Description = "Dar permiso",
                             Name = "Proveedores",
                             state = 1
@@ -588,7 +597,7 @@ namespace DataModel.Migrations
                         {
                             Id = "e64ac6a7-bf12-4d14-815f-e52cb8252878",
                             ActionName = "btnReport",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(9706),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(8553),
                             Description = "Dar permiso",
                             Name = "Reportes",
                             state = 1
@@ -597,7 +606,7 @@ namespace DataModel.Migrations
                         {
                             Id = "5017aded-60ac-45cc-89b1-993703cd91ab",
                             ActionName = "btnUser",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(9708),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(8554),
                             Description = "Dar permiso",
                             Name = "Gestion de Usuarios",
                             state = 1
@@ -606,7 +615,7 @@ namespace DataModel.Migrations
                         {
                             Id = "f01ea86d-5d66-493d-9df2-4fe211bc8509",
                             ActionName = "btnMovements",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(9710),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(8557),
                             Description = "Dar permiso",
                             Name = "Movimientos",
                             state = 1
@@ -615,14 +624,14 @@ namespace DataModel.Migrations
                         {
                             Id = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
                             ActionName = "btnSecurity",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(9713),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(8558),
                             Description = "Dar permiso",
                             Name = "Seguridades",
                             state = 1
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.ModuleAccount", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.ModuleAccount", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -660,7 +669,7 @@ namespace DataModel.Migrations
                         {
                             Id = "7151993b-b219-4e22-80f2-0ec8002e4b3f",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(1247),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(3860),
                             ModuleId = "dc09b3c4-58ff-4483-91b7-89ed479e6d1a",
                             state = 1
                         },
@@ -668,7 +677,7 @@ namespace DataModel.Migrations
                         {
                             Id = "6bd7fbf4-13b7-4dbc-a64f-caf40bb131fc",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(1285),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(3875),
                             ModuleId = "8178794d-5f0c-4255-b234-8f0f683e74dd",
                             state = 1
                         },
@@ -676,7 +685,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b871ccf3-2421-4861-b7a0-3ed6b070a3c3",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(1287),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(3877),
                             ModuleId = "a9315906-f7bf-49eb-808e-d24cb39a04ba",
                             state = 1
                         },
@@ -684,7 +693,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a2585d96-d782-45c2-b8be-1edbfaaa160e",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(1289),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(3879),
                             ModuleId = "e64ac6a7-bf12-4d14-815f-e52cb8252878",
                             state = 1
                         },
@@ -692,7 +701,7 @@ namespace DataModel.Migrations
                         {
                             Id = "ff020261-95e7-4695-90a0-a16f380aa2f7",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(1291),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(3881),
                             ModuleId = "5017aded-60ac-45cc-89b1-993703cd91ab",
                             state = 1
                         },
@@ -700,7 +709,7 @@ namespace DataModel.Migrations
                         {
                             Id = "826e202c-ef1a-4be0-95eb-7eab6388f878",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(1293),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(3882),
                             ModuleId = "f01ea86d-5d66-493d-9df2-4fe211bc8509",
                             state = 1
                         },
@@ -708,13 +717,13 @@ namespace DataModel.Migrations
                         {
                             Id = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(1296),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(3884),
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
                             state = 1
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.OpenWorkTurn", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.OpenWorkTurn", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -733,7 +742,8 @@ namespace DataModel.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("StartingQuantity")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<string>("TurnId")
                         .IsRequired()
@@ -751,7 +761,7 @@ namespace DataModel.Migrations
                     b.ToTable("OpenWorkTurns");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.PaymentType", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.PaymentType", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -792,7 +802,7 @@ namespace DataModel.Migrations
                         {
                             Id = "f5f737fd-860c-485b-972a-927d385f4ab5",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(1760),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(4889),
                             Description = "Efectivo",
                             PaymentName = "Efectivo",
                             state = 1
@@ -801,7 +811,7 @@ namespace DataModel.Migrations
                         {
                             Id = "4c1ffed9-2f0c-4294-8b82-d236da387b39",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(1769),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(4896),
                             Description = "Tarjeta de debito",
                             PaymentName = "Tarjeta de debito",
                             state = 1
@@ -810,7 +820,7 @@ namespace DataModel.Migrations
                         {
                             Id = "3700a7b3-0e1b-49e2-87ce-490d06d2512c",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(1772),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(4899),
                             Description = "Tarjeta de credito",
                             PaymentName = "Tarjeta de credito",
                             state = 1
@@ -819,7 +829,7 @@ namespace DataModel.Migrations
                         {
                             Id = "50e82295-a08f-42fa-aae0-26813bc261db",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(1774),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(4906),
                             Description = "Cheques",
                             PaymentName = "Cheques",
                             state = 1
@@ -828,7 +838,7 @@ namespace DataModel.Migrations
                         {
                             Id = "1535f60d-2db1-4c65-90bc-c1ded55b07aa",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(1778),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(4908),
                             Description = "Mercado pago",
                             PaymentName = "Mercado pago",
                             state = 1
@@ -837,7 +847,7 @@ namespace DataModel.Migrations
                         {
                             Id = "876d4600-b062-4e84-937d-8a79f88c1e47",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(1781),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(4910),
                             Description = "Transferencia bancaria",
                             PaymentName = "Transferencia bancaria",
                             state = 1
@@ -846,7 +856,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c3eb2f61-7bd0-47ed-8a16-98e1b7d24b44",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(1783),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(4912),
                             Description = "Especie",
                             PaymentName = "Especie",
                             state = 1
@@ -855,7 +865,7 @@ namespace DataModel.Migrations
                         {
                             Id = "da40a532-f06a-4fff-8f66-a7563fef8941",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(1785),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(4915),
                             Description = "Cuenta Corriente",
                             PaymentName = "Cuenta Corriente",
                             state = 1
@@ -864,7 +874,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b9d03d21-52ed-486f-8b60-bd871505e6b5",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(1790),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(4917),
                             Description = "Fiar",
                             PaymentName = "Fiar",
                             state = 1
@@ -873,14 +883,14 @@ namespace DataModel.Migrations
                         {
                             Id = "db3de6dc-b1f3-44f1-bb24-648e6eb9e65a",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 545, DateTimeKind.Local).AddTicks(1792),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(4919),
                             Description = "Billetera Santa Fe",
                             PaymentName = "Billetera Santa Fe",
                             state = 1
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Product", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Product", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -913,10 +923,12 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("PurchasePrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<decimal>("SalePrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<int>("state")
                         .HasColumnType("int");
@@ -932,7 +944,89 @@ namespace DataModel.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Provider", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Promotion", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("FinalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FinalPromotion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
+
+                    b.Property<string>("PromoCode")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("PromoName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("state")
+                        .HasColumnType("int");
+
+                    b.Property<int>("stock")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("untilstockexhausted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Promotions");
+                });
+
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.PromotionDetail", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FinalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PromotionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("state")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("PromotionId");
+
+                    b.ToTable("PromotionDetails");
+                });
+
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Provider", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -977,7 +1071,7 @@ namespace DataModel.Migrations
                     b.ToTable("Providers");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Role", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Role", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -1011,7 +1105,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "82a0bec6-8266-443a-84a2-af85ad69348b",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 544, DateTimeKind.Local).AddTicks(8196),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(2484),
                             Description = "Tiene acceso en todo",
                             RoleName = "Admin",
                             state = 1
@@ -1019,7 +1113,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "66e3d763-3f6c-49f1-ad72-3b64051c4879",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 544, DateTimeKind.Local).AddTicks(8206),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(2491),
                             Description = "Tiene acceso para realizar ventas, con limite",
                             RoleName = "Empleado(a)",
                             state = 1
@@ -1027,14 +1121,14 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "0ac46b16-ef03-452c-9586-ba4251496b3f",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 544, DateTimeKind.Local).AddTicks(8209),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 754, DateTimeKind.Local).AddTicks(2493),
                             Description = "Solo puede hacer control de stock",
                             RoleName = "Almacenero(a)",
                             state = 1
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Sale", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Sale", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -1065,7 +1159,8 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<bool>("finalizeSale")
                         .HasColumnType("bit");
@@ -1080,7 +1175,7 @@ namespace DataModel.Migrations
                     b.ToTable("Sales");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SaleDetail", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SaleDetail", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -1098,7 +1193,8 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(14, 2)
+                        .HasColumnType("decimal(14,2)");
 
                     b.Property<string>("productId")
                         .HasColumnType("nvarchar(450)");
@@ -1118,7 +1214,7 @@ namespace DataModel.Migrations
                     b.ToTable("SaleDetails");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SettingBusiness", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SettingBusiness", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -1161,7 +1257,7 @@ namespace DataModel.Migrations
                     b.ToTable("SettingBusiness");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SubCategory", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SubCategory", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -1202,7 +1298,7 @@ namespace DataModel.Migrations
                         {
                             Id = "81806b92-46ce-4177-bcad-3c572857aec5",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(276),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2319),
                             Description = "Aceite comestibles",
                             SubCategoryName = "Aceite comestibles",
                             state = 1
@@ -1211,7 +1307,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c4a81f89-6f44-4c1c-bfd6-adf1f0a312e3",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(286),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2330),
                             Description = "Aderezos",
                             SubCategoryName = "Aderezos",
                             state = 1
@@ -1220,7 +1316,7 @@ namespace DataModel.Migrations
                         {
                             Id = "51858237-ae9b-4731-88c2-f19a2d344c3c",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(300),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2332),
                             Description = "Crema para café",
                             SubCategoryName = "Crema para café",
                             state = 1
@@ -1229,7 +1325,7 @@ namespace DataModel.Migrations
                         {
                             Id = "dc85f186-d18b-4a8b-a504-698fda19a9b6",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(303),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2334),
                             Description = "Pure de tomate",
                             SubCategoryName = "Pure de tomate",
                             state = 1
@@ -1238,7 +1334,7 @@ namespace DataModel.Migrations
                         {
                             Id = "9a15a184-1821-4b06-9b6d-8624e62f42fb",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(305),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2336),
                             Description = "Alimento para bebe",
                             SubCategoryName = "Alimento para bebe",
                             state = 1
@@ -1247,7 +1343,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a4d3cc0d-8e39-460c-a02d-18fc2dced014",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(307),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2338),
                             Description = "Alimento para mascotas",
                             SubCategoryName = "Alimento para mascotas",
                             state = 1
@@ -1256,7 +1352,7 @@ namespace DataModel.Migrations
                         {
                             Id = "6c9aa2b5-8cef-4621-b526-d94b08c17e46",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(310),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2339),
                             Description = "Avena",
                             SubCategoryName = "Avena",
                             state = 1
@@ -1265,7 +1361,7 @@ namespace DataModel.Migrations
                         {
                             Id = "fd74c75f-db36-4101-bcd4-9b5d672f2c5a",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(312),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2341),
                             Description = "Azúcar",
                             SubCategoryName = "Azúcar",
                             state = 1
@@ -1274,7 +1370,7 @@ namespace DataModel.Migrations
                         {
                             Id = "84990688-e3f9-45af-8f22-03c77262c614",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(314),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2343),
                             Description = "Cereales",
                             SubCategoryName = "Cereales",
                             state = 1
@@ -1283,7 +1379,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b21274b8-1f85-4034-aa24-f47ae1f46d00",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(317),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2344),
                             Description = "Especias",
                             SubCategoryName = "Especias",
                             state = 1
@@ -1292,7 +1388,7 @@ namespace DataModel.Migrations
                         {
                             Id = "77c79cbb-b53e-40aa-aa80-043d4f221bec",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(321),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2346),
                             Description = "Harina",
                             SubCategoryName = "Harina",
                             state = 1
@@ -1301,7 +1397,7 @@ namespace DataModel.Migrations
                         {
                             Id = "e5eab8bf-d214-4bb2-a42a-e73d6c8890d8",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(324),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2348),
                             Description = "Sal",
                             SubCategoryName = "Sal",
                             state = 1
@@ -1310,7 +1406,7 @@ namespace DataModel.Migrations
                         {
                             Id = "995a74e1-98b5-4489-977d-f84113df2bc1",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(327),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2351),
                             Description = "Sopas en sobre",
                             SubCategoryName = "Sopas en sobre",
                             state = 1
@@ -1319,7 +1415,7 @@ namespace DataModel.Migrations
                         {
                             Id = "1579c57f-cf33-4645-bfcc-4d09f92a70a3",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(331),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2352),
                             Description = "Catsup",
                             SubCategoryName = "Catsup",
                             state = 1
@@ -1328,7 +1424,7 @@ namespace DataModel.Migrations
                         {
                             Id = "24a73edb-d737-42fa-a380-b2fdddd9ef44",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(334),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2354),
                             Description = "Mayonesa",
                             SubCategoryName = "Mayonesa",
                             state = 1
@@ -1337,7 +1433,7 @@ namespace DataModel.Migrations
                         {
                             Id = "1a3985b7-65b2-4fc3-bf00-7d5764bd59f2",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(337),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2356),
                             Description = "Mermelada",
                             SubCategoryName = "Mermelada",
                             state = 1
@@ -1346,7 +1442,7 @@ namespace DataModel.Migrations
                         {
                             Id = "208b7941-a0a1-47bb-8b6c-5108c0f4cc2b",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(339),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2357),
                             Description = "Miel",
                             SubCategoryName = "Miel",
                             state = 1
@@ -1355,7 +1451,7 @@ namespace DataModel.Migrations
                         {
                             Id = "005dc5af-61c1-4b54-9266-03407ca75d10",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(341),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2359),
                             Description = "Te",
                             SubCategoryName = "Te",
                             state = 1
@@ -1364,7 +1460,7 @@ namespace DataModel.Migrations
                         {
                             Id = "84bb56bb-c36d-4117-a4cf-e768990761eb",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(345),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2361),
                             Description = "Vinagre",
                             SubCategoryName = "Vinagre",
                             state = 1
@@ -1373,7 +1469,7 @@ namespace DataModel.Migrations
                         {
                             Id = "524bbae4-38ca-4f9b-9603-aebcd65ecf84",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(348),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2362),
                             Description = "Huevo",
                             SubCategoryName = "Huevo",
                             state = 1
@@ -1382,7 +1478,7 @@ namespace DataModel.Migrations
                         {
                             Id = "7fc35ef8-08f5-4504-b578-012b873574d9",
                             CategoryId = "4444da14-84ac-48de-a7da-a4f4ddd28858",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(350),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2364),
                             Description = "Pastas",
                             SubCategoryName = "Pastas",
                             state = 1
@@ -1391,7 +1487,7 @@ namespace DataModel.Migrations
                         {
                             Id = "82fe357c-af4b-436b-b648-983a6092aa65",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(352),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2367),
                             Description = "Aceitunas",
                             SubCategoryName = "Aceitunas",
                             state = 1
@@ -1400,7 +1496,7 @@ namespace DataModel.Migrations
                         {
                             Id = "41e9e143-03db-4b0f-a51b-6b9160d357fc",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(354),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2368),
                             Description = "Champiñones enteros/rebanados",
                             SubCategoryName = "Champiñones enteros/rebanados",
                             state = 1
@@ -1409,7 +1505,7 @@ namespace DataModel.Migrations
                         {
                             Id = "90bb3117-ea6e-4868-9fc3-7504f685c03e",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(356),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2370),
                             Description = "Chícharo con zanahoria",
                             SubCategoryName = "Chícharo con zanahoria",
                             state = 1
@@ -1418,7 +1514,7 @@ namespace DataModel.Migrations
                         {
                             Id = "13722a31-d37e-4c44-9226-fef2dd6ab09e",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(358),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2372),
                             Description = "Chícharos enlatados",
                             SubCategoryName = "Chícharos enlatados",
                             state = 1
@@ -1427,7 +1523,7 @@ namespace DataModel.Migrations
                         {
                             Id = "07735a2d-1e10-404d-8ae4-28c05bab0e6b",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(362),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2373),
                             Description = "Frijoles enlatados",
                             SubCategoryName = "Frijoles enlatados",
                             state = 1
@@ -1436,7 +1532,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a8f90356-989c-47a5-a6f6-ab338f283018",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(364),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2375),
                             Description = "Frutas en almíbar",
                             SubCategoryName = "Frutas en almíbar",
                             state = 1
@@ -1445,7 +1541,7 @@ namespace DataModel.Migrations
                         {
                             Id = "42496afc-b727-48cb-ae26-eb20c859bba7",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(366),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2377),
                             Description = "Sardinas",
                             SubCategoryName = "Sardinas",
                             state = 1
@@ -1454,7 +1550,7 @@ namespace DataModel.Migrations
                         {
                             Id = "9d6c9083-6b73-45c9-a61b-28800cfc5d0a",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(368),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2379),
                             Description = "Atún en agua/aceite",
                             SubCategoryName = "Atún en agua/aceite",
                             state = 1
@@ -1463,7 +1559,7 @@ namespace DataModel.Migrations
                         {
                             Id = "e3a46fc4-de62-41cc-8a11-305cbbf77ebb",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(370),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2380),
                             Description = "Chiles enlatados",
                             SubCategoryName = "Chiles enlatados",
                             state = 1
@@ -1472,7 +1568,7 @@ namespace DataModel.Migrations
                         {
                             Id = "1bc53107-6800-4b35-b4f3-c3363fb89a19",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(372),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2382),
                             Description = "Chiles envasados",
                             SubCategoryName = "Chiles envasados",
                             state = 1
@@ -1481,7 +1577,7 @@ namespace DataModel.Migrations
                         {
                             Id = "2cd8ebea-b8e5-408e-b098-4a6f635bc6bd",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(379),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2384),
                             Description = "Ensaladas enlatadas",
                             SubCategoryName = "Ensaladas enlatadas",
                             state = 1
@@ -1490,7 +1586,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c3165ffb-7ad1-4730-8b00-a335edac1cc5",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(381),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2385),
                             Description = "Granos de elote enlatados",
                             SubCategoryName = "Granos de elote enlatados",
                             state = 1
@@ -1499,7 +1595,7 @@ namespace DataModel.Migrations
                         {
                             Id = "9c8dde52-8d6c-4b7c-9651-fef58287be61",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(383),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2387),
                             Description = "Sopa en lata",
                             SubCategoryName = "Sopa en lata",
                             state = 1
@@ -1508,7 +1604,7 @@ namespace DataModel.Migrations
                         {
                             Id = "25202d3f-46e2-4706-aa39-f1100063aeca",
                             CategoryId = "96e050b3-4f1c-4280-8ce0-1f32b6af87f1",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(389),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2388),
                             Description = "Vegetales en conserva",
                             SubCategoryName = "Vegetales en conserva",
                             state = 1
@@ -1517,7 +1613,7 @@ namespace DataModel.Migrations
                         {
                             Id = "30c5ec35-19f7-4d52-aaa1-cfcf21987603",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(391),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2440),
                             Description = "Bebidas preparadas",
                             SubCategoryName = "Bebidas preparadas",
                             state = 1
@@ -1526,7 +1622,7 @@ namespace DataModel.Migrations
                         {
                             Id = "6ad37caa-6ee5-4f73-ab41-ea2be3d77828",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(394),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2442),
                             Description = "Cerveza",
                             SubCategoryName = "Cerveza",
                             state = 1
@@ -1535,7 +1631,7 @@ namespace DataModel.Migrations
                         {
                             Id = "cf17f4d4-cfc1-4c06-9f6a-6eac5062ede9",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(396),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2444),
                             Description = "Anís",
                             SubCategoryName = "Anís",
                             state = 1
@@ -1544,7 +1640,7 @@ namespace DataModel.Migrations
                         {
                             Id = "7027f120-3478-4896-81cf-21bcff739315",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(398),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2445),
                             Description = "Brandy",
                             SubCategoryName = "Brandy",
                             state = 1
@@ -1553,7 +1649,7 @@ namespace DataModel.Migrations
                         {
                             Id = "55136ca5-1c33-4e44-9e4d-34a06c6086f8",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(400),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2447),
                             Description = "Ginebra.",
                             SubCategoryName = "Ginebra",
                             state = 1
@@ -1562,7 +1658,7 @@ namespace DataModel.Migrations
                         {
                             Id = "dd56fb2d-90d1-404d-bf33-3a2163a6fc20",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(402),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2449),
                             Description = "Cordiales",
                             SubCategoryName = "Cordiales",
                             state = 1
@@ -1571,7 +1667,7 @@ namespace DataModel.Migrations
                         {
                             Id = "1a27fb1d-7b20-41a2-9c53-43e5afa27698",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(404),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2450),
                             Description = "Mezcal",
                             SubCategoryName = "Mezcal",
                             state = 1
@@ -1580,7 +1676,7 @@ namespace DataModel.Migrations
                         {
                             Id = "247700b0-7887-45b1-b670-4e97c0b90b44",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(406),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2452),
                             Description = "Jerez",
                             SubCategoryName = "Jerez",
                             state = 1
@@ -1589,7 +1685,7 @@ namespace DataModel.Migrations
                         {
                             Id = "bca46483-d119-4a9a-a72b-676d761ebb6a",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(408),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2453),
                             Description = "Ron",
                             SubCategoryName = "Ron",
                             state = 1
@@ -1598,7 +1694,7 @@ namespace DataModel.Migrations
                         {
                             Id = "dd2d472b-252b-4963-a802-6e615657df04",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(410),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2455),
                             Description = "Tequila",
                             SubCategoryName = "Tequila",
                             state = 1
@@ -1607,7 +1703,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a5b8701d-c62c-476e-b22f-e666def4152a",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(412),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2457),
                             Description = "Sidra",
                             SubCategoryName = "Sidra",
                             state = 1
@@ -1616,7 +1712,7 @@ namespace DataModel.Migrations
                         {
                             Id = "def25cbf-86db-4ae4-ae45-7a63a8d71c6c",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(414),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2459),
                             Description = "Whiskey",
                             SubCategoryName = "Whiskey",
                             state = 1
@@ -1625,7 +1721,7 @@ namespace DataModel.Migrations
                         {
                             Id = "fef25062-8fc1-4006-8514-e234bfa63a05",
                             CategoryId = "eeb60ffd-ff0d-4367-afc6-e28bef23f1ef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(416),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2460),
                             Description = "Vodka",
                             SubCategoryName = "Vodka",
                             state = 1
@@ -1634,7 +1730,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c7b90037-1c6d-4ad4-8397-5f04014ba97f",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(420),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2463),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "Leche condensada",
                             state = 1
@@ -1643,7 +1739,7 @@ namespace DataModel.Migrations
                         {
                             Id = "1d5721d3-a787-4b8d-9d6f-ffb5d5262b21",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(423),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2464),
                             Description = "Leche en polvo",
                             SubCategoryName = "Leche deslactosada",
                             state = 1
@@ -1652,7 +1748,7 @@ namespace DataModel.Migrations
                         {
                             Id = "6f9c9a1a-7ea6-40a2-9a50-feaa658493c7",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(425),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2466),
                             Description = "Leche evaporada",
                             SubCategoryName = "Leche evaporada",
                             state = 1
@@ -1661,7 +1757,7 @@ namespace DataModel.Migrations
                         {
                             Id = "0c64e944-3a0b-49f4-a323-6edccc48ba35",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(427),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2467),
                             Description = "Leche light",
                             SubCategoryName = "Leche light",
                             state = 1
@@ -1670,7 +1766,7 @@ namespace DataModel.Migrations
                         {
                             Id = "d75240b2-f901-46af-80be-fcb9a7bd174b",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(429),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2469),
                             Description = "Leche pasteurizada",
                             SubCategoryName = "Leche pasteurizada",
                             state = 1
@@ -1679,7 +1775,7 @@ namespace DataModel.Migrations
                         {
                             Id = "6d2eac00-615c-4802-8706-ed8f3b339e26",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(431),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2471),
                             Description = "Leche saborizada",
                             SubCategoryName = "Leche saborizada",
                             state = 1
@@ -1688,7 +1784,7 @@ namespace DataModel.Migrations
                         {
                             Id = "3e237426-d168-4f88-bdd5-44236546870a",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(434),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2472),
                             Description = "Leche semidescremada",
                             SubCategoryName = "Leche semidescremada",
                             state = 1
@@ -1697,7 +1793,7 @@ namespace DataModel.Migrations
                         {
                             Id = "62664ce7-b8a0-4531-bfb9-932595f7d7a4",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(436),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2474),
                             Description = "Crema",
                             SubCategoryName = "Crema",
                             state = 1
@@ -1706,7 +1802,7 @@ namespace DataModel.Migrations
                         {
                             Id = "ad74e8ce-c6cf-4f0d-a7c3-0b86a5690808",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(439),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2476),
                             Description = "Yoghurt",
                             SubCategoryName = "Yoghurt",
                             state = 1
@@ -1715,7 +1811,7 @@ namespace DataModel.Migrations
                         {
                             Id = "35532f1d-0adf-460a-ad91-63e270f7a4db",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(441),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2477),
                             Description = "Mantequilla",
                             SubCategoryName = "Mantequilla",
                             state = 1
@@ -1724,7 +1820,7 @@ namespace DataModel.Migrations
                         {
                             Id = "410e6eda-1fb4-4ced-84d2-3542b87ada40",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(443),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2480),
                             Description = "Margarina",
                             SubCategoryName = "Margarina",
                             state = 1
@@ -1733,7 +1829,7 @@ namespace DataModel.Migrations
                         {
                             Id = "3861c055-4277-4c56-8114-5f2c1b898f5c",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(445),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2481),
                             Description = "Media crema",
                             SubCategoryName = "Media crema",
                             state = 1
@@ -1742,7 +1838,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b0848172-c1be-469b-b874-5143c420a137",
                             CategoryId = "4af6f8b7-b1a5-4375-8319-079e3d8487fe",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(446),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2483),
                             Description = "Queso",
                             SubCategoryName = "Queso",
                             state = 1
@@ -1751,7 +1847,7 @@ namespace DataModel.Migrations
                         {
                             Id = "6399abe6-056a-425c-a41e-371e7f135bce",
                             CategoryId = "e7c4059e-04a1-4f4a-b5c9-b86da231147f",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(449),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2485),
                             Description = "Papas",
                             SubCategoryName = "Papas",
                             state = 1
@@ -1760,7 +1856,7 @@ namespace DataModel.Migrations
                         {
                             Id = "e28f8d28-5cb6-4f56-918e-c822a0060452",
                             CategoryId = "e7c4059e-04a1-4f4a-b5c9-b86da231147f",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(452),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2487),
                             Description = "Palomitas",
                             SubCategoryName = "Palomitas",
                             state = 1
@@ -1769,7 +1865,7 @@ namespace DataModel.Migrations
                         {
                             Id = "46c73d3e-d21b-4914-87a9-ebac432901e7",
                             CategoryId = "e7c4059e-04a1-4f4a-b5c9-b86da231147f",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(454),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2489),
                             Description = "Frituras de maíz",
                             SubCategoryName = "Frituras de maíz",
                             state = 1
@@ -1778,7 +1874,7 @@ namespace DataModel.Migrations
                         {
                             Id = "5c19e99c-2b96-49cc-a968-7e5d270b1201",
                             CategoryId = "e7c4059e-04a1-4f4a-b5c9-b86da231147f",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(457),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2490),
                             Description = "Cacahuates",
                             SubCategoryName = "Cacahuates",
                             state = 1
@@ -1787,7 +1883,7 @@ namespace DataModel.Migrations
                         {
                             Id = "bc0083b3-7fce-4fb2-92df-9d6be798366a",
                             CategoryId = "e7c4059e-04a1-4f4a-b5c9-b86da231147f",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(459),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2492),
                             Description = "Botanas saladas",
                             SubCategoryName = "Botanas saladas",
                             state = 1
@@ -1796,7 +1892,7 @@ namespace DataModel.Migrations
                         {
                             Id = "82305cb1-de65-4b90-8734-87c5a768e7b3",
                             CategoryId = "e7c4059e-04a1-4f4a-b5c9-b86da231147f",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(461),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2493),
                             Description = "Barras alimenticias",
                             SubCategoryName = "Barras alimenticias",
                             state = 1
@@ -1805,7 +1901,7 @@ namespace DataModel.Migrations
                         {
                             Id = "0e59c12d-d29f-4667-a3af-c1060d16ae94",
                             CategoryId = "e7c4059e-04a1-4f4a-b5c9-b86da231147f",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(481),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2495),
                             Description = "Nueces y semillas",
                             SubCategoryName = "Nueces y semillas",
                             state = 1
@@ -1814,7 +1910,7 @@ namespace DataModel.Migrations
                         {
                             Id = "0be5b0f7-62f6-4411-b540-82b51abc865a",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(484),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2496),
                             Description = "Caramelos",
                             SubCategoryName = "Caramelos",
                             state = 1
@@ -1823,7 +1919,7 @@ namespace DataModel.Migrations
                         {
                             Id = "dbcc02e0-7b1e-406e-b3e0-a0f333b0062e",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(486),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2498),
                             Description = "Dulces enchilados",
                             SubCategoryName = "Dulces enchilados",
                             state = 1
@@ -1832,7 +1928,7 @@ namespace DataModel.Migrations
                         {
                             Id = "8bac1ef3-473c-41a7-95a3-209fbea0c9b7",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(488),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2500),
                             Description = "Chocolate de mesa",
                             SubCategoryName = "Chocolate de mesa",
                             state = 1
@@ -1841,7 +1937,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a93bf77b-505b-46f8-8442-795bd47d83b2",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(490),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2501),
                             Description = "Chocolate en polvo",
                             SubCategoryName = "Chocolate en polvo",
                             state = 1
@@ -1850,7 +1946,7 @@ namespace DataModel.Migrations
                         {
                             Id = "52cd0e99-22b0-4e17-ba9f-ad448b3b8766",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(492),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2503),
                             Description = "Chocolates",
                             SubCategoryName = "Chocolates",
                             state = 1
@@ -1859,7 +1955,7 @@ namespace DataModel.Migrations
                         {
                             Id = "dca0c0d8-69a7-451c-bbe3-db4e4237daaf",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(495),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2504),
                             Description = "Gomas de mascar",
                             SubCategoryName = "Gomas de mascar",
                             state = 1
@@ -1868,7 +1964,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a37d971a-c292-4b59-8883-04362047cb2f",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(496),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2506),
                             Description = "Mazapán",
                             SubCategoryName = "Mazapán",
                             state = 1
@@ -1877,7 +1973,7 @@ namespace DataModel.Migrations
                         {
                             Id = "eb4ed592-7499-4ea3-9c4d-aea95c4a86b1",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(498),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2508),
                             Description = "Malvaviscos",
                             SubCategoryName = "Malvaviscos",
                             state = 1
@@ -1886,7 +1982,7 @@ namespace DataModel.Migrations
                         {
                             Id = "0c71411a-1acc-44ce-b5ba-c2bb01fac508",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(500),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2509),
                             Description = "Pulpa de tamarindo",
                             SubCategoryName = "Pulpa de tamarindo",
                             state = 1
@@ -1895,7 +1991,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c8cb23d4-2d87-41ec-a592-9535d366f9db",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(502),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2511),
                             Description = "Pastillas de dulce",
                             SubCategoryName = "Pastillas de dulce",
                             state = 1
@@ -1904,7 +2000,7 @@ namespace DataModel.Migrations
                         {
                             Id = "95dc66d1-1de1-46de-a588-a5080f197aae",
                             CategoryId = "f350cdda-f912-4fd3-85c9-f99863ab6c2e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(505),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2512),
                             Description = "Paletas de dulce",
                             SubCategoryName = "Paletas de dulce",
                             state = 1
@@ -1913,7 +2009,7 @@ namespace DataModel.Migrations
                         {
                             Id = "9cdba6b6-d54a-467c-ae55-baa752ec67c7",
                             CategoryId = "c0f96f74-96cf-438a-b89f-0888182b3e75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(507),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2514),
                             Description = "Tortillas de harina/maíz",
                             SubCategoryName = "Tortillas de harina/maíz",
                             state = 1
@@ -1922,7 +2018,7 @@ namespace DataModel.Migrations
                         {
                             Id = "4ba4eaad-c72c-4bf4-8715-2d1d58f1901b",
                             CategoryId = "c0f96f74-96cf-438a-b89f-0888182b3e75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(509),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2516),
                             Description = "Galletas dulces",
                             SubCategoryName = "Galletas dulces",
                             state = 1
@@ -1931,7 +2027,7 @@ namespace DataModel.Migrations
                         {
                             Id = "d571e083-40cd-41db-8448-f55d4cc16780",
                             CategoryId = "c0f96f74-96cf-438a-b89f-0888182b3e75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(515),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2518),
                             Description = "Galletas saladas",
                             SubCategoryName = "Galletas saladas",
                             state = 1
@@ -1940,7 +2036,7 @@ namespace DataModel.Migrations
                         {
                             Id = "86775899-0796-4ede-b76f-b2fb4b30aced",
                             CategoryId = "c0f96f74-96cf-438a-b89f-0888182b3e75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(517),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2519),
                             Description = "Pastelillos",
                             SubCategoryName = "Pastelillos",
                             state = 1
@@ -1949,7 +2045,7 @@ namespace DataModel.Migrations
                         {
                             Id = "bd91bd5a-4f03-48d5-ab41-ff3900b3b566",
                             CategoryId = "c0f96f74-96cf-438a-b89f-0888182b3e75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(518),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2521),
                             Description = "Pan de caja",
                             SubCategoryName = "Pan de caja",
                             state = 1
@@ -1958,7 +2054,7 @@ namespace DataModel.Migrations
                         {
                             Id = "1faacaec-d09a-4fb5-ab7f-3ca55c754ccd",
                             CategoryId = "c0f96f74-96cf-438a-b89f-0888182b3e75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(520),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2522),
                             Description = "Pan dulce",
                             SubCategoryName = "Pan dulce",
                             state = 1
@@ -1967,7 +2063,7 @@ namespace DataModel.Migrations
                         {
                             Id = "f467869a-bbb7-4647-bb04-82e7bfd07eb5",
                             CategoryId = "c0f96f74-96cf-438a-b89f-0888182b3e75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(524),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2524),
                             Description = "Pan molido",
                             SubCategoryName = "Pan molido",
                             state = 1
@@ -1976,7 +2072,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c346edb2-02df-4453-9ba6-a8c718d671bd",
                             CategoryId = "c0f96f74-96cf-438a-b89f-0888182b3e75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(528),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2526),
                             Description = "Pan tostado",
                             SubCategoryName = "Pan tostado",
                             state = 1
@@ -1985,7 +2081,7 @@ namespace DataModel.Migrations
                         {
                             Id = "4b799d8f-ee08-4e8e-930e-ab8403392c4b",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(530),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2527),
                             Description = "Aguacates",
                             SubCategoryName = "Aguacates",
                             state = 1
@@ -1994,7 +2090,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a39c1fd6-2a60-4b29-8ba9-3e263406caf2",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(532),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2529),
                             Description = "Ajos",
                             SubCategoryName = "Ajos",
                             state = 1
@@ -2003,7 +2099,7 @@ namespace DataModel.Migrations
                         {
                             Id = "bb789c84-5913-4a64-984b-20ad85a99de1",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(536),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2530),
                             Description = "Cebollas",
                             SubCategoryName = "Cebollas",
                             state = 1
@@ -2012,7 +2108,7 @@ namespace DataModel.Migrations
                         {
                             Id = "6cf0328c-d542-43be-baed-72af19417433",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(539),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2532),
                             Description = "Chiles",
                             SubCategoryName = "Chiles",
                             state = 1
@@ -2021,7 +2117,7 @@ namespace DataModel.Migrations
                         {
                             Id = "ce775a23-82b1-4cdf-9736-a378cdb88c8c",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(541),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2534),
                             Description = "Cilantro/Perejil",
                             SubCategoryName = "Cilantro/Perejil",
                             state = 1
@@ -2030,7 +2126,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a64360a1-d91a-4405-9996-56ef3a89e32c",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(544),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2535),
                             Description = "Jitomate",
                             SubCategoryName = "Jitomate",
                             state = 1
@@ -2039,7 +2135,7 @@ namespace DataModel.Migrations
                         {
                             Id = "63efd264-3e31-480b-b86c-27c500705826",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(546),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2537),
                             Description = "Papas",
                             SubCategoryName = "Papas",
                             state = 1
@@ -2048,7 +2144,7 @@ namespace DataModel.Migrations
                         {
                             Id = "5656e6aa-f9cb-4add-99cb-a9f2696480a0",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(548),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2538),
                             Description = "Limones",
                             SubCategoryName = "Limones",
                             state = 1
@@ -2057,7 +2153,7 @@ namespace DataModel.Migrations
                         {
                             Id = "20db2648-207a-474b-a97d-d53451152de3",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(550),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2540),
                             Description = "Manzanas",
                             SubCategoryName = "Manzanas",
                             state = 1
@@ -2066,7 +2162,7 @@ namespace DataModel.Migrations
                         {
                             Id = "5df74c33-8b66-4999-a511-6aecc01faa33",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(552),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2541),
                             Description = "Naranjas",
                             SubCategoryName = "Naranjas",
                             state = 1
@@ -2075,7 +2171,7 @@ namespace DataModel.Migrations
                         {
                             Id = "8f762c3f-368d-412b-bd04-3090847b30ea",
                             CategoryId = "b296430c-42de-41f8-8fc2-3f7fadb44218",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(554),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2543),
                             Description = "Plátanos",
                             SubCategoryName = "Plátanos",
                             state = 1
@@ -2084,7 +2180,7 @@ namespace DataModel.Migrations
                         {
                             Id = "d8fa7bc2-e8b5-44c4-b4ee-79f0db884832",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(556),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2545),
                             Description = "Agua mineral",
                             SubCategoryName = "Agua mineral",
                             state = 1
@@ -2093,7 +2189,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a1746970-5277-4100-87fb-27843e3e7572",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(560),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2546),
                             Description = "Agua natural",
                             SubCategoryName = "Agua natural",
                             state = 1
@@ -2102,7 +2198,7 @@ namespace DataModel.Migrations
                         {
                             Id = "6d5403fe-eb3b-4e6a-b66f-5584d61c75d5",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(561),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2548),
                             Description = "Agua saborizada",
                             SubCategoryName = "Agua saborizada",
                             state = 1
@@ -2111,7 +2207,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b94e325c-2fa5-4c2e-ae97-66c53f7f23b1",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(565),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2549),
                             Description = "Jarabes",
                             SubCategoryName = "Jarabes",
                             state = 1
@@ -2120,7 +2216,7 @@ namespace DataModel.Migrations
                         {
                             Id = "530edb0d-938c-4ae4-869a-567bf6bb529c",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(568),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2551),
                             Description = "Jugos/Néctares",
                             SubCategoryName = "Jugos/Néctares",
                             state = 1
@@ -2129,7 +2225,7 @@ namespace DataModel.Migrations
                         {
                             Id = "7b3bdb7e-f9d4-4bfc-ab00-ad75b1e32185",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(570),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2552),
                             Description = "Naranjadas",
                             SubCategoryName = "Naranjadas",
                             state = 1
@@ -2138,7 +2234,7 @@ namespace DataModel.Migrations
                         {
                             Id = "f586c0df-265a-46d3-9f7d-1219f269c2d6",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(573),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2554),
                             Description = "Bebidas de soya",
                             SubCategoryName = "Bebidas de soya",
                             state = 1
@@ -2147,7 +2243,7 @@ namespace DataModel.Migrations
                         {
                             Id = "7002138f-f7fb-4a43-a880-060188703c09",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(576),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2555),
                             Description = "Bebidas en polvo",
                             SubCategoryName = "Bebidas en polvo",
                             state = 1
@@ -2156,7 +2252,7 @@ namespace DataModel.Migrations
                         {
                             Id = "74bd441c-c526-4aa8-9948-467be87158e6",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(579),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2557),
                             Description = "Bebidas infantiles",
                             SubCategoryName = "Bebidas infantiles",
                             state = 1
@@ -2165,7 +2261,7 @@ namespace DataModel.Migrations
                         {
                             Id = "25bb2d73-56d5-4479-bce5-a63aa1ca63d6",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(582),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2559),
                             Description = "Bebidas isotónicas",
                             SubCategoryName = "Bebidas isotónicas",
                             state = 1
@@ -2174,7 +2270,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c5ebff6a-ea3a-426c-a06c-38cfdf3fcc31",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(584),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2560),
                             Description = "Energetizantes",
                             SubCategoryName = "Energetizantes",
                             state = 1
@@ -2183,7 +2279,7 @@ namespace DataModel.Migrations
                         {
                             Id = "09e77b14-a1c5-4094-8ae2-5af32ab26d5d",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(586),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2562),
                             Description = "Isotónicos",
                             SubCategoryName = "Isotónicos",
                             state = 1
@@ -2192,7 +2288,7 @@ namespace DataModel.Migrations
                         {
                             Id = "fa7b0ef7-a5b5-48a8-80dd-bdbb51b3827a",
                             CategoryId = "087aa814-3f3d-4cfb-83ef-e11256d6ecdb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(588),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2564),
                             Description = "Refrescos",
                             SubCategoryName = "Refrescos",
                             state = 1
@@ -2201,7 +2297,7 @@ namespace DataModel.Migrations
                         {
                             Id = "e06b976c-4745-4368-a615-3d011811589e",
                             CategoryId = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(590),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2566),
                             Description = "Pastas listas para comer",
                             SubCategoryName = "Pastas listas para comer",
                             state = 1
@@ -2210,7 +2306,7 @@ namespace DataModel.Migrations
                         {
                             Id = "1174d492-edd1-4f9c-b7cf-ce8a6f68abc3",
                             CategoryId = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(592),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2567),
                             Description = "Sopas en vaso",
                             SubCategoryName = "Sopas en vaso",
                             state = 1
@@ -2219,7 +2315,7 @@ namespace DataModel.Migrations
                         {
                             Id = "8a195233-1a00-4dbf-a41d-3c4c0d18b574",
                             CategoryId = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(599),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2608),
                             Description = "Carnes y Embutidos",
                             SubCategoryName = "Carnes y Embutidos",
                             state = 1
@@ -2228,7 +2324,7 @@ namespace DataModel.Migrations
                         {
                             Id = "6557a6d3-5317-44c2-98fd-333064c87b13",
                             CategoryId = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(601),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2610),
                             Description = "Salchicha",
                             SubCategoryName = "Salchicha",
                             state = 1
@@ -2237,7 +2333,7 @@ namespace DataModel.Migrations
                         {
                             Id = "77e2ee32-b9fc-4600-b28b-1ec5b0190e7d",
                             CategoryId = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(604),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2612),
                             Description = "Mortadela",
                             SubCategoryName = "Mortadela",
                             state = 1
@@ -2246,7 +2342,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a055a422-56d0-4852-ac24-5a5925002c35",
                             CategoryId = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(606),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2613),
                             Description = "Tocino",
                             SubCategoryName = "Tocino",
                             state = 1
@@ -2255,7 +2351,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a93e6d6a-fe84-4977-88f9-9eb5dac3c7e4",
                             CategoryId = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(615),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2615),
                             Description = "Jamón",
                             SubCategoryName = "Jamón",
                             state = 1
@@ -2264,7 +2360,7 @@ namespace DataModel.Migrations
                         {
                             Id = "14348004-c92e-45b9-8cd4-c82060d3f291",
                             CategoryId = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(620),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2616),
                             Description = "Manteca",
                             SubCategoryName = "Manteca",
                             state = 1
@@ -2273,7 +2369,7 @@ namespace DataModel.Migrations
                         {
                             Id = "e5bc3319-2a58-4df3-89bd-17edc123cc0a",
                             CategoryId = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(621),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2618),
                             Description = "Chorizo",
                             SubCategoryName = "Chorizo",
                             state = 1
@@ -2282,7 +2378,7 @@ namespace DataModel.Migrations
                         {
                             Id = "88cfed2e-4469-4d95-8f08-252ce4f74e8f",
                             CategoryId = "13e20bf2-8bff-4201-b3bf-30cf7e2cdb12",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(625),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2619),
                             Description = "Carne de puerco/res/pollo",
                             SubCategoryName = "Carne de puerco/res/pollo",
                             state = 1
@@ -2291,7 +2387,7 @@ namespace DataModel.Migrations
                         {
                             Id = "ee9c7eb3-842a-4671-a046-96facfb2bcb6",
                             CategoryId = "07dd4e15-386e-44c7-8f63-801c1dddeb1a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(629),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2621),
                             Description = "Suero",
                             SubCategoryName = "Suero",
                             state = 1
@@ -2300,7 +2396,7 @@ namespace DataModel.Migrations
                         {
                             Id = "19fe7044-5f20-4720-9bf3-9214b1d9fbef",
                             CategoryId = "07dd4e15-386e-44c7-8f63-801c1dddeb1a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(631),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2623),
                             Description = "Agua oxigenada",
                             SubCategoryName = "Agua oxigenada",
                             state = 1
@@ -2309,7 +2405,7 @@ namespace DataModel.Migrations
                         {
                             Id = "8ac143dd-a639-4bad-9243-5706bf358ae1",
                             CategoryId = "07dd4e15-386e-44c7-8f63-801c1dddeb1a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(633),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2624),
                             Description = "Preservativos",
                             SubCategoryName = "Preservativos",
                             state = 1
@@ -2318,7 +2414,7 @@ namespace DataModel.Migrations
                         {
                             Id = "ad774f0a-e895-47c4-8b7e-9593c5d37f8e",
                             CategoryId = "07dd4e15-386e-44c7-8f63-801c1dddeb1a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(635),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2626),
                             Description = "Alcohol",
                             SubCategoryName = "Alcohol",
                             state = 1
@@ -2327,7 +2423,7 @@ namespace DataModel.Migrations
                         {
                             Id = "fefb0f12-c610-44ba-a425-b58344af0a3c",
                             CategoryId = "07dd4e15-386e-44c7-8f63-801c1dddeb1a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(637),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2627),
                             Description = "Gasas",
                             SubCategoryName = "Gasas",
                             state = 1
@@ -2336,7 +2432,7 @@ namespace DataModel.Migrations
                         {
                             Id = "9f8fff37-92e9-465b-ae5d-8940ae1e1cd3",
                             CategoryId = "07dd4e15-386e-44c7-8f63-801c1dddeb1a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(642),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2629),
                             Description = "Analgésicos",
                             SubCategoryName = "Analgésicos",
                             state = 1
@@ -2345,7 +2441,7 @@ namespace DataModel.Migrations
                         {
                             Id = "198c65d6-cb58-4d3f-be56-f1bc93fc0277",
                             CategoryId = "07dd4e15-386e-44c7-8f63-801c1dddeb1a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(644),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2630),
                             Description = "Antigripales",
                             SubCategoryName = "Antigripales",
                             state = 1
@@ -2354,7 +2450,7 @@ namespace DataModel.Migrations
                         {
                             Id = "0d2d3a77-64c7-4fb3-aee0-366d262d3ce3",
                             CategoryId = "07dd4e15-386e-44c7-8f63-801c1dddeb1a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(646),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2632),
                             Description = "Antiácidos",
                             SubCategoryName = "Antiácidos",
                             state = 1
@@ -2363,7 +2459,7 @@ namespace DataModel.Migrations
                         {
                             Id = "ed6b2c4a-bcf3-4d0b-8e98-83ddd98653b6",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(648),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2634),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2372,7 +2468,7 @@ namespace DataModel.Migrations
                         {
                             Id = "65ade45e-c4b5-4b7d-9d71-2cfae455fe31",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(651),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2635),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2381,7 +2477,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c7296d61-4b18-46e9-8e26-7a809e636cb8",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(653),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2637),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2390,7 +2486,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b3ae5bf6-5836-4e90-9c69-637afde26bd7",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(655),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2638),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2399,7 +2495,7 @@ namespace DataModel.Migrations
                         {
                             Id = "8efb933d-b689-4110-8cff-4a4e20f46104",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(658),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2640),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2408,7 +2504,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c31961f5-e6ab-4f1f-a398-04ff4c7c2368",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(660),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2643),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2417,7 +2513,7 @@ namespace DataModel.Migrations
                         {
                             Id = "10db0819-5466-420d-acca-5ecaa864ec0a",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(662),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2645),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2426,7 +2522,7 @@ namespace DataModel.Migrations
                         {
                             Id = "4d85744f-add3-4f9e-88c8-2c34ab4f815a",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(664),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2646),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2435,7 +2531,7 @@ namespace DataModel.Migrations
                         {
                             Id = "9ba0b0c7-d09a-42e5-920d-fac472cfdad9",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(667),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2648),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2444,7 +2540,7 @@ namespace DataModel.Migrations
                         {
                             Id = "933336aa-5883-46b4-b6af-3f5c89b5b973",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(669),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2649),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2453,7 +2549,7 @@ namespace DataModel.Migrations
                         {
                             Id = "8aee87a6-643f-4197-abe7-ee9956cfe636",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(671),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2651),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2462,7 +2558,7 @@ namespace DataModel.Migrations
                         {
                             Id = "796cfb96-7b0d-4558-a4a9-08a9fed29071",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(674),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2653),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2471,7 +2567,7 @@ namespace DataModel.Migrations
                         {
                             Id = "8126f485-7a77-49c9-a3cb-de1be3b682bd",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(676),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2654),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2480,7 +2576,7 @@ namespace DataModel.Migrations
                         {
                             Id = "85bb728e-2c64-4d40-9189-735313307bf8",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(678),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2656),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2489,7 +2585,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b71dd199-bb0d-44d2-98a1-71466e29b4ae",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(680),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2657),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2498,7 +2594,7 @@ namespace DataModel.Migrations
                         {
                             Id = "70bc49ab-7e64-461a-a350-d18323fe6743",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(683),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2659),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2507,7 +2603,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b9d66a36-38d6-4d57-bad3-b0e949a5a574",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(714),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2660),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2516,7 +2612,7 @@ namespace DataModel.Migrations
                         {
                             Id = "08bf4c2a-55b9-4449-ba44-7a18e61157fa",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(717),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2662),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2525,7 +2621,7 @@ namespace DataModel.Migrations
                         {
                             Id = "65749701-c848-42a3-8549-b90938b0a98f",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(719),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2663),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2534,7 +2630,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c90a0767-fb77-4136-ab65-7719945e803a",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(722),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2665),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2543,7 +2639,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a77e5bf6-0d96-4922-999e-09b4909ebae5",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(724),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2667),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2552,7 +2648,7 @@ namespace DataModel.Migrations
                         {
                             Id = "cb924254-4f5b-4e25-aafc-b3c6e51a26a7",
                             CategoryId = "9fc02177-e0ba-42cf-bc95-cd2f7abc4418",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(726),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2669),
                             Description = "Se encuentra todo sobre perfumeria",
                             SubCategoryName = "HIGIENE PERSONAL",
                             state = 1
@@ -2561,7 +2657,7 @@ namespace DataModel.Migrations
                         {
                             Id = "e7af707d-2029-4d1d-a10b-9a5c55d98ca2",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(732),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2670),
                             Description = "Suavizante de telas",
                             SubCategoryName = "Suavizante de telas",
                             state = 1
@@ -2570,7 +2666,7 @@ namespace DataModel.Migrations
                         {
                             Id = "fec5fe83-b884-4d56-a5fe-6d7ab2156574",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(734),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2672),
                             Description = "Ácido muriático",
                             SubCategoryName = "Ácido muriático",
                             state = 1
@@ -2579,7 +2675,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a2a399bc-e461-40b5-85e0-dddc7b5ddea4",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(736),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2673),
                             Description = "Sosa caustica",
                             SubCategoryName = "Sosa caustica",
                             state = 1
@@ -2588,7 +2684,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b0a7966c-e4ab-426c-8628-c86106fbf3fe",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(744),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2675),
                             Description = "Aluminio",
                             SubCategoryName = "Aluminio",
                             state = 1
@@ -2597,7 +2693,7 @@ namespace DataModel.Migrations
                         {
                             Id = "7be30abf-7504-480b-b0af-580ccc0be9ec",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(747),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2677),
                             Description = "Pilas",
                             SubCategoryName = "Pilas",
                             state = 1
@@ -2606,7 +2702,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a8e6b961-8f12-4679-a05c-0d72fdb4f755",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(749),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2678),
                             Description = "Shampoo para ropa",
                             SubCategoryName = "Shampoo para ropa",
                             state = 1
@@ -2615,7 +2711,7 @@ namespace DataModel.Migrations
                         {
                             Id = "7e36389e-2514-4c1a-9b02-956cccb72b7a",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(752),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2680),
                             Description = "Servilletas",
                             SubCategoryName = "Servilletas",
                             state = 1
@@ -2624,7 +2720,7 @@ namespace DataModel.Migrations
                         {
                             Id = "f7f2a895-0a64-4e47-bbab-9bd914eaa86e",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(754),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2681),
                             Description = "Servitoallas",
                             SubCategoryName = "Servitoallas",
                             state = 1
@@ -2633,7 +2729,7 @@ namespace DataModel.Migrations
                         {
                             Id = "d295440a-24c8-4a8f-879a-41f9c883fa4b",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(756),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2683),
                             Description = "Aromatizantes",
                             SubCategoryName = "Aromatizantes",
                             state = 1
@@ -2642,7 +2738,7 @@ namespace DataModel.Migrations
                         {
                             Id = "65bb2650-2d2a-46b4-841b-39bc67d3b132",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(759),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2684),
                             Description = "Cera para automóvil",
                             SubCategoryName = "Cera para automóvil",
                             state = 1
@@ -2651,7 +2747,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b83339e8-ec1b-44a4-8045-cb6e22905cd7",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(761),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2686),
                             Description = "Cera para calzados",
                             SubCategoryName = "Cera para calzados",
                             state = 1
@@ -2660,7 +2756,7 @@ namespace DataModel.Migrations
                         {
                             Id = "d6d038ac-c428-4761-8d24-dc0703e8e4c2",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(763),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2688),
                             Description = "Pastillas sanitarias",
                             SubCategoryName = "Pastillas sanitarias",
                             state = 1
@@ -2669,7 +2765,7 @@ namespace DataModel.Migrations
                         {
                             Id = "0dee8e1a-a3a8-411a-864a-542bf690fb34",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(766),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2689),
                             Description = "Limpiadores líquidos",
                             SubCategoryName = "Limpiadores líquidos",
                             state = 1
@@ -2678,7 +2774,7 @@ namespace DataModel.Migrations
                         {
                             Id = "76ac4c24-9bc2-4897-a9a2-60529d306a14",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(775),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2691),
                             Description = "Limpiadores para pisos",
                             SubCategoryName = "Limpiadores para pisos",
                             state = 1
@@ -2687,7 +2783,7 @@ namespace DataModel.Migrations
                         {
                             Id = "63eaca83-cacf-4d84-9b29-2fa454a9c206",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(778),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2692),
                             Description = "Jabón de barra",
                             SubCategoryName = "Jabón de barra",
                             state = 1
@@ -2696,7 +2792,7 @@ namespace DataModel.Migrations
                         {
                             Id = "4c1f4d08-7a4b-43d3-beca-4959700e41bc",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(780),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2694),
                             Description = "Detergentes para trastes",
                             SubCategoryName = "Detergentes para trastes",
                             state = 1
@@ -2705,7 +2801,7 @@ namespace DataModel.Migrations
                         {
                             Id = "2267271b-d123-4f63-8e8e-c1719a4ad20d",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(782),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2695),
                             Description = "Detergente para ropa",
                             SubCategoryName = "Detergente para ropa",
                             state = 1
@@ -2714,7 +2810,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b0c6bb87-7bb1-43d4-b6fa-43eb67694604",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(784),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2697),
                             Description = "Cerillos",
                             SubCategoryName = "Cerillos",
                             state = 1
@@ -2723,7 +2819,7 @@ namespace DataModel.Migrations
                         {
                             Id = "bb40a622-9e9e-4c19-ae9f-545dc86bef0d",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(787),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2698),
                             Description = "Cloro/Blanqueador",
                             SubCategoryName = "Cloro/Blanqueador",
                             state = 1
@@ -2732,7 +2828,7 @@ namespace DataModel.Migrations
                         {
                             Id = "cdea20ca-087d-4fb5-8553-105c1e2d9a84",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(789),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2700),
                             Description = "Cloro para ropa",
                             SubCategoryName = "Cloro para ropa",
                             state = 1
@@ -2741,7 +2837,7 @@ namespace DataModel.Migrations
                         {
                             Id = "add2357f-a4bd-480d-9652-df476b521e4c",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(791),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2701),
                             Description = "Insecticidas",
                             SubCategoryName = "Insecticidas",
                             state = 1
@@ -2750,7 +2846,7 @@ namespace DataModel.Migrations
                         {
                             Id = "11ae28fa-b2e2-44fb-8d65-aba73b937ead",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(793),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2703),
                             Description = "Fibras limpiadoras",
                             SubCategoryName = "Fibras limpiadoras",
                             state = 1
@@ -2759,7 +2855,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b4f45ffb-8b76-4304-bd06-706a228b5b10",
                             CategoryId = "21fcbb68-3e40-4550-b142-a302fc264a47",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(796),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2704),
                             Description = "Desinfectantes",
                             SubCategoryName = "Desinfectantes",
                             state = 1
@@ -2768,7 +2864,7 @@ namespace DataModel.Migrations
                         {
                             Id = "0c64f205-d9ca-4a4b-90ec-eac98fbf523c",
                             CategoryId = "db2ca371-5ba5-49d9-81cf-f04f49a61b0e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(798),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2706),
                             Description = "Paletas/ Helados",
                             SubCategoryName = "Paletas/ Helados",
                             state = 1
@@ -2777,7 +2873,7 @@ namespace DataModel.Migrations
                         {
                             Id = "f66ac072-f4db-4bae-9ad3-25afe5d653b8",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(800),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2707),
                             Description = "Veladoras/Velas",
                             SubCategoryName = "Veladoras/Velas",
                             state = 1
@@ -2786,7 +2882,7 @@ namespace DataModel.Migrations
                         {
                             Id = "422edf4a-d9e6-40f4-9cc1-9b0dcd0756ac",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(803),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2709),
                             Description = "Cepillo de plástico",
                             SubCategoryName = "Cepillo de plástico",
                             state = 1
@@ -2795,7 +2891,7 @@ namespace DataModel.Migrations
                         {
                             Id = "66c6219a-a5eb-49d5-9a73-d36bb76d821a",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(805),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2711),
                             Description = "Vasos desechables",
                             SubCategoryName = "Vasos desechables",
                             state = 1
@@ -2804,7 +2900,7 @@ namespace DataModel.Migrations
                         {
                             Id = "8ef9734c-7ed8-4ce0-9899-d96b3da864eb",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(807),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2712),
                             Description = "Cinta adhesiva",
                             SubCategoryName = "Cinta adhesiva",
                             state = 1
@@ -2813,7 +2909,7 @@ namespace DataModel.Migrations
                         {
                             Id = "fb894ec4-3008-46d0-bcbd-10c66df049af",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(809),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2714),
                             Description = "Cucharas de plástico",
                             SubCategoryName = "Cucharas de plástico",
                             state = 1
@@ -2822,7 +2918,7 @@ namespace DataModel.Migrations
                         {
                             Id = "9538e426-3d8a-4575-aaeb-671bfadfcf4c",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(811),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2715),
                             Description = "Escobas/Trapeadores/Mechudos",
                             SubCategoryName = "Escobas/Trapeadores/Mechudos",
                             state = 1
@@ -2831,7 +2927,7 @@ namespace DataModel.Migrations
                         {
                             Id = "df953e9b-49b2-4c98-bf43-c0b89ffd2671",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(814),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2717),
                             Description = "Trampas para ratas",
                             SubCategoryName = "Trampas para ratas",
                             state = 1
@@ -2840,7 +2936,7 @@ namespace DataModel.Migrations
                         {
                             Id = "6eea4362-7ae5-4631-b3ca-571d523b3176",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(816),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2718),
                             Description = "Tenedores de plástico",
                             SubCategoryName = "Tenedores de plástico",
                             state = 1
@@ -2849,7 +2945,7 @@ namespace DataModel.Migrations
                         {
                             Id = "3b2730ed-eee3-4d6a-b7e2-46934dd2cd25",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(818),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2720),
                             Description = "Extensiones/Multicontacto",
                             SubCategoryName = "Extensiones/Multicontacto",
                             state = 1
@@ -2858,7 +2954,7 @@ namespace DataModel.Migrations
                         {
                             Id = "4636fd58-00ad-4f6c-ab97-6a91a2a6e210",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(820),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2721),
                             Description = "Recogedor de metal/plástico",
                             SubCategoryName = "Recogedor de metal/plástico",
                             state = 1
@@ -2867,7 +2963,7 @@ namespace DataModel.Migrations
                         {
                             Id = "3ba56596-8256-46a0-85b1-fcedb255c8a2",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(823),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2722),
                             Description = "Popotes",
                             SubCategoryName = "Popotes",
                             state = 1
@@ -2876,7 +2972,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b1aac6b6-1e84-45a6-ac41-52e14a8ea1fa",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(825),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2724),
                             Description = "Platos desechables",
                             SubCategoryName = "Platos desechables",
                             state = 1
@@ -2885,7 +2981,7 @@ namespace DataModel.Migrations
                         {
                             Id = "19634b95-60be-45ec-8ca8-e508e273af05",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(827),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2726),
                             Description = "Focos",
                             SubCategoryName = "Focos",
                             state = 1
@@ -2894,7 +2990,7 @@ namespace DataModel.Migrations
                         {
                             Id = "aae444bc-4a86-4e9f-bfbd-71ad73da07a2",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(830),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2727),
                             Description = "Fusibles",
                             SubCategoryName = "Fusibles",
                             state = 1
@@ -2903,7 +2999,7 @@ namespace DataModel.Migrations
                         {
                             Id = "0d54b411-6a42-49b1-8a8a-ee2ac22aa1be",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(835),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2729),
                             Description = "Jergas/Franelas",
                             SubCategoryName = "Jergas/Franelas",
                             state = 1
@@ -2912,7 +3008,7 @@ namespace DataModel.Migrations
                         {
                             Id = "8c066537-f8d7-4031-9172-872081e1d0a3",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(839),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2730),
                             Description = "Matamoscas",
                             SubCategoryName = "Matamoscas",
                             state = 1
@@ -2921,7 +3017,7 @@ namespace DataModel.Migrations
                         {
                             Id = "591bac37-162a-4314-b0ae-46e9db02f691",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(841),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2732),
                             Description = "Pegamento",
                             SubCategoryName = "Pegamento",
                             state = 1
@@ -2930,7 +3026,7 @@ namespace DataModel.Migrations
                         {
                             Id = "dfce1885-ecbe-432e-9148-8a2d34809082",
                             CategoryId = "27d5e91e-1229-49cd-964b-cc812a81faeb",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(843),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2775),
                             Description = "Mecate/cuerda",
                             SubCategoryName = "Mecate/cuerda",
                             state = 1
@@ -2939,7 +3035,7 @@ namespace DataModel.Migrations
                         {
                             Id = "98a5dd90-ba52-4534-998f-5da2e95e38b4",
                             CategoryId = "9cb3d8c8-226e-4f1a-b04d-258db3329c75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(845),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2777),
                             Description = "Hielo",
                             SubCategoryName = "Hielo",
                             state = 1
@@ -2948,7 +3044,7 @@ namespace DataModel.Migrations
                         {
                             Id = "60366d57-cfe4-473a-a473-6e58fce5c928",
                             CategoryId = "9cb3d8c8-226e-4f1a-b04d-258db3329c75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(849),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2778),
                             Description = "Tarjetas telefónicas",
                             SubCategoryName = "Tarjetas telefónicas",
                             state = 1
@@ -2957,7 +3053,7 @@ namespace DataModel.Migrations
                         {
                             Id = "24a39fa6-79d3-47c7-9e55-180bf92c2d89",
                             CategoryId = "9cb3d8c8-226e-4f1a-b04d-258db3329c75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(851),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2780),
                             Description = "Recargas móviles",
                             SubCategoryName = "Recargas móviles",
                             state = 1
@@ -2966,14 +3062,14 @@ namespace DataModel.Migrations
                         {
                             Id = "62433dfd-835e-4651-99f5-78ea6eefec3f",
                             CategoryId = "9cb3d8c8-226e-4f1a-b04d-258db3329c75",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(853),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(2781),
                             Description = "Cigarros",
                             SubCategoryName = "Cigarros",
                             state = 1
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SubModule", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SubModule", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -3017,7 +3113,7 @@ namespace DataModel.Migrations
                         {
                             Id = "ee090c50-f4a4-4877-8df7-0a05abeaf1c8",
                             ActionName = "btnstartsale",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6691),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6338),
                             Description = "Iniciar venta",
                             ModuleId = "dc09b3c4-58ff-4483-91b7-89ed479e6d1a",
                             Name = "Iniciar venta",
@@ -3027,7 +3123,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b6960d25-b1d3-4a16-88b9-56ad9d8bd212",
                             ActionName = "btnconsultantsale",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6712),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6344),
                             Description = "Consultar precio",
                             ModuleId = "dc09b3c4-58ff-4483-91b7-89ed479e6d1a",
                             Name = "Consultar precio",
@@ -3037,7 +3133,7 @@ namespace DataModel.Migrations
                         {
                             Id = "371d3ef5-916f-4c5a-9bdb-4208febf7813",
                             ActionName = "btnconsultantprize",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6715),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6346),
                             Description = "Consultar venta",
                             ModuleId = "dc09b3c4-58ff-4483-91b7-89ed479e6d1a",
                             Name = "Consultar venta",
@@ -3047,7 +3143,7 @@ namespace DataModel.Migrations
                         {
                             Id = "0081ef4d-6b18-4e83-a443-b3b85abc6c47",
                             ActionName = "btndetailfiar",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6717),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6348),
                             Description = "Detalle Fiar",
                             ModuleId = "dc09b3c4-58ff-4483-91b7-89ed479e6d1a",
                             Name = "Detalle Fiar",
@@ -3055,9 +3151,19 @@ namespace DataModel.Migrations
                         },
                         new
                         {
+                            Id = "e29facaf-0fc6-418c-8cc5-d28504240c00",
+                            ActionName = "btnprinttiket",
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6350),
+                            Description = "Reimprimir tiket",
+                            ModuleId = "dc09b3c4-58ff-4483-91b7-89ed479e6d1a",
+                            Name = "Reimprimir tiket",
+                            state = 1
+                        },
+                        new
+                        {
                             Id = "dbb0673c-3589-4e98-a42a-103cb44697d9",
                             ActionName = "btnabmproduct",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6721),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6352),
                             Description = "ABM Producto",
                             ModuleId = "8178794d-5f0c-4255-b234-8f0f683e74dd",
                             Name = "ABM Producto",
@@ -3067,7 +3173,7 @@ namespace DataModel.Migrations
                         {
                             Id = "4a6f84a3-779c-4d2e-841a-88546fcdc0f1",
                             ActionName = "btnconsultantdateexpired",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6724),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6353),
                             Description = "Consultar Vencimiento",
                             ModuleId = "8178794d-5f0c-4255-b234-8f0f683e74dd",
                             Name = "Consultar Vencimiento",
@@ -3077,7 +3183,7 @@ namespace DataModel.Migrations
                         {
                             Id = "d4e2445b-c66a-4b70-9f4d-6c1cbbfdca40",
                             ActionName = "btndetailproduct",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6726),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6355),
                             Description = "Detalle Producto",
                             ModuleId = "8178794d-5f0c-4255-b234-8f0f683e74dd",
                             Name = "Detalle Producto",
@@ -3087,7 +3193,7 @@ namespace DataModel.Migrations
                         {
                             Id = "34c3d045-9e99-470c-822b-aa8caa9cdfe2",
                             ActionName = "btncreateoffer",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6731),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6357),
                             Description = "Crear Oferta",
                             ModuleId = "8178794d-5f0c-4255-b234-8f0f683e74dd",
                             Name = "Crear Oferta",
@@ -3097,7 +3203,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a0379995-cae9-47c6-95d0-4109dd6437e8",
                             ActionName = "btnupdateatock",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6736),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6358),
                             Description = "Actualizar stock",
                             ModuleId = "8178794d-5f0c-4255-b234-8f0f683e74dd",
                             Name = "Actualizar stock",
@@ -3107,7 +3213,7 @@ namespace DataModel.Migrations
                         {
                             Id = "a89f3ce0-000f-4525-8be6-48d417718f4c",
                             ActionName = "btnambproveedor",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6738),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6360),
                             Description = "ABM Proveedor",
                             ModuleId = "a9315906-f7bf-49eb-808e-d24cb39a04ba",
                             Name = "ABM Proveedor",
@@ -3117,7 +3223,7 @@ namespace DataModel.Migrations
                         {
                             Id = "b269ec21-d373-4698-8acc-f6c47d501987",
                             ActionName = "btnconsultantproducto",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6741),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6362),
                             Description = "Consultar producto",
                             ModuleId = "a9315906-f7bf-49eb-808e-d24cb39a04ba",
                             Name = "Consultar producto",
@@ -3127,7 +3233,7 @@ namespace DataModel.Migrations
                         {
                             Id = "db88181b-478e-4523-8f75-3ca66afba611",
                             ActionName = "btnsalereport",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6748),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6363),
                             Description = "Ventas",
                             ModuleId = "e64ac6a7-bf12-4d14-815f-e52cb8252878",
                             Name = "Ventas",
@@ -3137,7 +3243,7 @@ namespace DataModel.Migrations
                         {
                             Id = "1774917c-fb76-492f-9adc-846886d9ed0e",
                             ActionName = "btnproductreport",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6750),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6365),
                             Description = "Productos",
                             ModuleId = "e64ac6a7-bf12-4d14-815f-e52cb8252878",
                             Name = "Productos",
@@ -3147,7 +3253,7 @@ namespace DataModel.Migrations
                         {
                             Id = "9a3f1169-10b8-4d41-89ad-a6c24e917b52",
                             ActionName = "btnproveedorreport",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6752),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6366),
                             Description = "Proveedores",
                             ModuleId = "e64ac6a7-bf12-4d14-815f-e52cb8252878",
                             Name = "Proveedores",
@@ -3157,7 +3263,7 @@ namespace DataModel.Migrations
                         {
                             Id = "d8ca7cbe-0ace-4d44-b74f-e0bac19c7770",
                             ActionName = "btnabmgestionuser",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6755),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6368),
                             Description = "ABM Usuario",
                             ModuleId = "5017aded-60ac-45cc-89b1-993703cd91ab",
                             Name = "ABM Usuario",
@@ -3167,7 +3273,7 @@ namespace DataModel.Migrations
                         {
                             Id = "ad3aa3aa-0f57-4f6e-9d20-72a247a9abe7",
                             ActionName = "btnchangepassword",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6757),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6370),
                             Description = "Cambiar contraseña",
                             ModuleId = "5017aded-60ac-45cc-89b1-993703cd91ab",
                             Name = "Cambiar contraseña",
@@ -3177,7 +3283,7 @@ namespace DataModel.Migrations
                         {
                             Id = "08968b7c-3fc1-4bcc-9ff2-41336219ec69",
                             ActionName = "btnmouvment",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6760),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6371),
                             Description = "ABM movimiento",
                             ModuleId = "f01ea86d-5d66-493d-9df2-4fe211bc8509",
                             Name = "ABM movimiento",
@@ -3187,7 +3293,7 @@ namespace DataModel.Migrations
                         {
                             Id = "56672d96-1e2e-409e-b01f-f47d978fd286",
                             ActionName = "btntypemouvment",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6763),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6373),
                             Description = "ABM tipo movimiento",
                             ModuleId = "f01ea86d-5d66-493d-9df2-4fe211bc8509",
                             Name = "ABM tipo movimiento",
@@ -3197,17 +3303,17 @@ namespace DataModel.Migrations
                         {
                             Id = "fc374362-3c46-4600-b533-7854526353ec",
                             ActionName = "button23",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6765),
-                            Description = "ABM rol",
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6375),
+                            Description = "ABM Permiso",
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
-                            Name = "ABM rol",
+                            Name = "ABM Permiso",
                             state = 1
                         },
                         new
                         {
                             Id = "7d3afe88-1c0a-48f8-a9ca-90b9e76783ea",
                             ActionName = "button22",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6767),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6378),
                             Description = "ABM forma de pago",
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
                             Name = "ABM forma de pago",
@@ -3217,7 +3323,7 @@ namespace DataModel.Migrations
                         {
                             Id = "25a434b6-674f-47de-95ba-904c6b867318",
                             ActionName = "button25",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6770),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6380),
                             Description = "Gestionar turno",
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
                             Name = "Gestionar turno",
@@ -3227,7 +3333,7 @@ namespace DataModel.Migrations
                         {
                             Id = "44f91259-af42-431f-be8e-bea98a9bf6eb",
                             ActionName = "button9",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6772),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6381),
                             Description = "Incremento nocturno",
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
                             Name = "Incremento nocturno",
@@ -3237,7 +3343,7 @@ namespace DataModel.Migrations
                         {
                             Id = "c6139ff7-4b03-450c-8abc-457620c4714a",
                             ActionName = "button27",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6774),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6383),
                             Description = "Actualizar precio",
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
                             Name = "Actualizar precio",
@@ -3247,7 +3353,7 @@ namespace DataModel.Migrations
                         {
                             Id = "83824e9f-6d83-462b-b2a4-592502af5d60",
                             ActionName = "button28",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6777),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6385),
                             Description = "Abrir turno",
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
                             Name = "Abrir turno",
@@ -3257,7 +3363,7 @@ namespace DataModel.Migrations
                         {
                             Id = "cb364518-b564-4336-98d4-349c67f35531",
                             ActionName = "button29",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6779),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6387),
                             Description = "Cerrar turno",
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
                             Name = "Cerrar turno",
@@ -3267,7 +3373,7 @@ namespace DataModel.Migrations
                         {
                             Id = "023b4db0-a094-4fd8-b215-0f1941a5223f",
                             ActionName = "button26",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6782),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6388),
                             Description = "ABM categoria",
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
                             Name = "ABM categoria",
@@ -3277,25 +3383,25 @@ namespace DataModel.Migrations
                         {
                             Id = "0f44982b-bc5c-4ff8-a4cd-fc518baa3457",
                             ActionName = "button30",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6784),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6390),
                             Description = "Turno cerrado",
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
-                            Name = "Turno cerrado",
+                            Name = "ABM Negocio",
                             state = 1
                         },
                         new
                         {
                             Id = "27d6db63-5a85-438d-98f7-63c744059223",
                             ActionName = "btnmodifyrol",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 548, DateTimeKind.Local).AddTicks(6786),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(6392),
                             Description = "Modificar",
                             ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
-                            Name = "Modificar rol",
+                            Name = "Modificar permiso",
                             state = 1
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SubModuleAccount", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SubModuleAccount", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -3332,7 +3438,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "bd812379-dc7b-4439-b116-24467fd0b31c",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1647),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9040),
                             ModuleAccountId = "7151993b-b219-4e22-80f2-0ec8002e4b3f",
                             SubModuleId = "ee090c50-f4a4-4877-8df7-0a05abeaf1c8",
                             state = 1
@@ -3340,7 +3446,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "ca8743fd-6fed-4289-94d9-de8db265282a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1681),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9045),
                             ModuleAccountId = "7151993b-b219-4e22-80f2-0ec8002e4b3f",
                             SubModuleId = "b6960d25-b1d3-4a16-88b9-56ad9d8bd212",
                             state = 1
@@ -3348,7 +3454,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "5ab48144-1d40-44de-89c0-8813fa07520d",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1685),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9047),
                             ModuleAccountId = "7151993b-b219-4e22-80f2-0ec8002e4b3f",
                             SubModuleId = "371d3ef5-916f-4c5a-9bdb-4208febf7813",
                             state = 1
@@ -3356,15 +3462,23 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "8eed93e8-914c-440b-8eff-8a458f728318",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1687),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9048),
                             ModuleAccountId = "7151993b-b219-4e22-80f2-0ec8002e4b3f",
                             SubModuleId = "0081ef4d-6b18-4e83-a443-b3b85abc6c47",
                             state = 1
                         },
                         new
                         {
+                            Id = "90aa3aff-2601-44eb-80fc-cfa377c68376",
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9050),
+                            ModuleAccountId = "7151993b-b219-4e22-80f2-0ec8002e4b3f",
+                            SubModuleId = "e29facaf-0fc6-418c-8cc5-d28504240c00",
+                            state = 1
+                        },
+                        new
+                        {
                             Id = "41e9f11b-7959-40c2-99b3-f3fdf96a6c73",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1689),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9051),
                             ModuleAccountId = "6bd7fbf4-13b7-4dbc-a64f-caf40bb131fc",
                             SubModuleId = "dbb0673c-3589-4e98-a42a-103cb44697d9",
                             state = 1
@@ -3372,7 +3486,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "e1106fb8-3cb6-4c2a-99ca-ecabc7cf3d3c",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1691),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9053),
                             ModuleAccountId = "6bd7fbf4-13b7-4dbc-a64f-caf40bb131fc",
                             SubModuleId = "4a6f84a3-779c-4d2e-841a-88546fcdc0f1",
                             state = 1
@@ -3380,7 +3494,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "a10c5462-b220-4453-b9e4-dc8e8df48f01",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1693),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9054),
                             ModuleAccountId = "6bd7fbf4-13b7-4dbc-a64f-caf40bb131fc",
                             SubModuleId = "d4e2445b-c66a-4b70-9f4d-6c1cbbfdca40",
                             state = 1
@@ -3388,7 +3502,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "884e424a-b544-4bfc-bfc2-61bf3bf5109e",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1749),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9056),
                             ModuleAccountId = "6bd7fbf4-13b7-4dbc-a64f-caf40bb131fc",
                             SubModuleId = "34c3d045-9e99-470c-822b-aa8caa9cdfe2",
                             state = 1
@@ -3396,7 +3510,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "74297990-eb30-48c9-bb4c-c0893e7b90fd",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1751),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9057),
                             ModuleAccountId = "6bd7fbf4-13b7-4dbc-a64f-caf40bb131fc",
                             SubModuleId = "a0379995-cae9-47c6-95d0-4109dd6437e8",
                             state = 1
@@ -3404,7 +3518,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "9ee127bc-5fe2-4514-95f8-f4b8dc807956",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1752),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9060),
                             ModuleAccountId = "b871ccf3-2421-4861-b7a0-3ed6b070a3c3",
                             SubModuleId = "a89f3ce0-000f-4525-8be6-48d417718f4c",
                             state = 1
@@ -3412,7 +3526,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "791397f9-efd2-42e5-bc31-e9128f511e5a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1754),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9061),
                             ModuleAccountId = "b871ccf3-2421-4861-b7a0-3ed6b070a3c3",
                             SubModuleId = "b269ec21-d373-4698-8acc-f6c47d501987",
                             state = 1
@@ -3420,7 +3534,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "42a06f1e-8f39-4b14-9558-135fb275e68b",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1756),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9063),
                             ModuleAccountId = "a2585d96-d782-45c2-b8be-1edbfaaa160e",
                             SubModuleId = "db88181b-478e-4523-8f75-3ca66afba611",
                             state = 1
@@ -3428,7 +3542,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "f4cf1430-114a-4b41-9ef0-105740a49a4a",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1758),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9064),
                             ModuleAccountId = "a2585d96-d782-45c2-b8be-1edbfaaa160e",
                             SubModuleId = "1774917c-fb76-492f-9adc-846886d9ed0e",
                             state = 1
@@ -3436,7 +3550,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "a7ce0400-31e8-4c80-9ee5-7ed9d45437f6",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1760),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9071),
                             ModuleAccountId = "a2585d96-d782-45c2-b8be-1edbfaaa160e",
                             SubModuleId = "9a3f1169-10b8-4d41-89ad-a6c24e917b52",
                             state = 1
@@ -3444,7 +3558,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "eb7b9771-c370-4db8-adc1-b81ad53d7fa0",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1761),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9072),
                             ModuleAccountId = "ff020261-95e7-4695-90a0-a16f380aa2f7",
                             SubModuleId = "d8ca7cbe-0ace-4d44-b74f-e0bac19c7770",
                             state = 1
@@ -3452,7 +3566,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "14b05783-0b18-4652-97e7-fa2c1c437fef",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1763),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9074),
                             ModuleAccountId = "ff020261-95e7-4695-90a0-a16f380aa2f7",
                             SubModuleId = "ad3aa3aa-0f57-4f6e-9d20-72a247a9abe7",
                             state = 1
@@ -3460,7 +3574,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "f377f371-8c13-4d50-b314-045ad65188d8",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1769),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9075),
                             ModuleAccountId = "826e202c-ef1a-4be0-95eb-7eab6388f878",
                             SubModuleId = "08968b7c-3fc1-4bcc-9ff2-41336219ec69",
                             state = 1
@@ -3468,7 +3582,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "3e1ba887-d615-4958-9bdc-ce7b39bcf6a7",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1774),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9136),
                             ModuleAccountId = "826e202c-ef1a-4be0-95eb-7eab6388f878",
                             SubModuleId = "56672d96-1e2e-409e-b01f-f47d978fd286",
                             state = 1
@@ -3476,7 +3590,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "f83429b9-1691-4637-acf4-aa4801c8a746",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1780),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9137),
                             ModuleAccountId = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             SubModuleId = "fc374362-3c46-4600-b533-7854526353ec",
                             state = 1
@@ -3484,7 +3598,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "90feb00a-2728-4020-8f81-eb4cfe85e240",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1783),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9139),
                             ModuleAccountId = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             SubModuleId = "7d3afe88-1c0a-48f8-a9ca-90b9e76783ea",
                             state = 1
@@ -3492,7 +3606,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "af91cf42-e548-4642-8d30-cd485d4ea24b",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1787),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9141),
                             ModuleAccountId = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             SubModuleId = "25a434b6-674f-47de-95ba-904c6b867318",
                             state = 1
@@ -3500,7 +3614,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "11895374-db00-46fd-bc8c-aedc69810376",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1789),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9142),
                             ModuleAccountId = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             SubModuleId = "44f91259-af42-431f-be8e-bea98a9bf6eb",
                             state = 1
@@ -3508,7 +3622,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "13087490-c400-42eb-a3ea-0f0daac2617d",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1792),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9144),
                             ModuleAccountId = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             SubModuleId = "c6139ff7-4b03-450c-8abc-457620c4714a",
                             state = 1
@@ -3516,7 +3630,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "f2ac551e-c290-4639-ab53-6fdc47cf686d",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1794),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9145),
                             ModuleAccountId = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             SubModuleId = "83824e9f-6d83-462b-b2a4-592502af5d60",
                             state = 1
@@ -3524,7 +3638,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "6f618dbe-15aa-4b0e-9019-5f68b3b1d914",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1796),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9147),
                             ModuleAccountId = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             SubModuleId = "cb364518-b564-4336-98d4-349c67f35531",
                             state = 1
@@ -3532,7 +3646,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "9d7dc8da-f0eb-4b75-8a05-81c9ea040117",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1805),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9149),
                             ModuleAccountId = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             SubModuleId = "023b4db0-a094-4fd8-b215-0f1941a5223f",
                             state = 1
@@ -3540,7 +3654,7 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "433e441e-a77d-4dfd-a44e-7aea8e5725e3",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1806),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9150),
                             ModuleAccountId = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             SubModuleId = "0f44982b-bc5c-4ff8-a4cd-fc518baa3457",
                             state = 1
@@ -3548,14 +3662,14 @@ namespace DataModel.Migrations
                         new
                         {
                             Id = "57fbf086-6818-4b5c-9fcf-c9848b000077",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 549, DateTimeKind.Local).AddTicks(1808),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 756, DateTimeKind.Local).AddTicks(9152),
                             ModuleAccountId = "e30a699e-51c2-4f06-b1bc-7c076824db44",
                             SubModuleId = "27d6db63-5a85-438d-98f7-63c744059223",
                             state = 1
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Turns", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Turns", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -3609,7 +3723,7 @@ namespace DataModel.Migrations
                             Id = "c0ba7b4c-d292-48c7-9f78-8a2e83973053",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             BusinessId = "de07358c-3a51-42fb-8690-c383b91b5844",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(3945),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(4690),
                             DateFrom = 8,
                             DateTo = 14,
                             Description = "Se encarga de iniciar el dia",
@@ -3621,7 +3735,7 @@ namespace DataModel.Migrations
                             Id = "7a57db1f-3f77-4a25-8107-b73e668ab65a",
                             AccountId = "3e67c8f7-24ce-4f2e-bada-8344f5d0f8ca",
                             BusinessId = "de07358c-3a51-42fb-8690-c383b91b5844",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 546, DateTimeKind.Local).AddTicks(3954),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 755, DateTimeKind.Local).AddTicks(4696),
                             DateFrom = 14,
                             DateTo = 22,
                             Description = "Se encarga de iniciar el dia",
@@ -3630,7 +3744,7 @@ namespace DataModel.Migrations
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.User", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -3683,7 +3797,7 @@ namespace DataModel.Migrations
                             Id = "362c2637-2ad9-449a-9498-dbd74be87ee8",
                             Address = "Argentina",
                             BusinessId = "de07358c-3a51-42fb-8690-c383b91b5844",
-                            CreatedDate = new DateTime(2023, 7, 18, 1, 44, 29, 544, DateTimeKind.Local).AddTicks(2899),
+                            CreatedDate = new DateTime(2023, 12, 18, 19, 26, 18, 753, DateTimeKind.Local).AddTicks(9719),
                             Email = "almacen@gmail.com",
                             FirstName = "Pepito",
                             LastName = "Juancito",
@@ -3692,15 +3806,15 @@ namespace DataModel.Migrations
                         });
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Account", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Account", b =>
                 {
-                    b.HasOne("DataModel.Entities.Role", "Role")
+                    b.HasOne("ApplicationView.DataModel.Entities.Role", "Role")
                         .WithMany("Accounts")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataModel.Entities.User", "User")
+                    b.HasOne("ApplicationView.DataModel.Entities.User", "User")
                         .WithMany("Accounts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3711,9 +3825,9 @@ namespace DataModel.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Category", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Category", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany("Categories")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3722,9 +3836,9 @@ namespace DataModel.Migrations
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.History", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.History", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany("History")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3733,15 +3847,15 @@ namespace DataModel.Migrations
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.HistoryPrice", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.HistoryPrice", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany("HistoryPrice")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataModel.Entities.Product", "Product")
+                    b.HasOne("ApplicationView.DataModel.Entities.Product", "Product")
                         .WithMany("HistoryPrice")
                         .HasForeignKey("ProductId");
 
@@ -3750,9 +3864,9 @@ namespace DataModel.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.IncreasePriceAfterTwelve", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.IncreasePriceAfterTwelve", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany("IncreasePriceAfterTwelve")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3761,15 +3875,15 @@ namespace DataModel.Migrations
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Legit", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Legit", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany("Legit")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataModel.Entities.Sale", "Sale")
+                    b.HasOne("ApplicationView.DataModel.Entities.Sale", "Sale")
                         .WithMany("Legit")
                         .HasForeignKey("SaleId");
 
@@ -3778,24 +3892,24 @@ namespace DataModel.Migrations
                     b.Navigation("Sale");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Lot", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Lot", b =>
                 {
-                    b.HasOne("DataModel.Entities.Product", "Product")
+                    b.HasOne("ApplicationView.DataModel.Entities.Product", "Product")
                         .WithMany("Lots")
                         .HasForeignKey("ProductId");
 
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.ModuleAccount", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.ModuleAccount", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany("ModuleAccounts")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataModel.Entities.Module", "Module")
+                    b.HasOne("ApplicationView.DataModel.Entities.Module", "Module")
                         .WithMany("ModuleAccounts")
                         .HasForeignKey("ModuleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3806,15 +3920,15 @@ namespace DataModel.Migrations
                     b.Navigation("Module");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.OpenWorkTurn", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.OpenWorkTurn", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany("OpenWorkShifts")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataModel.Entities.Turns", "Turn")
+                    b.HasOne("ApplicationView.DataModel.Entities.Turns", "Turn")
                         .WithMany("OpenWorkShifts")
                         .HasForeignKey("TurnId")
                         .OnDelete(DeleteBehavior.ClientCascade)
@@ -3825,9 +3939,9 @@ namespace DataModel.Migrations
                     b.Navigation("Turn");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.PaymentType", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.PaymentType", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany("PaymentType")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3836,17 +3950,17 @@ namespace DataModel.Migrations
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Product", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Product", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany()
                         .HasForeignKey("AccountId");
 
-                    b.HasOne("DataModel.Entities.Category", "Categories")
+                    b.HasOne("ApplicationView.DataModel.Entities.Category", "Categories")
                         .WithMany()
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("DataModel.Entities.Provider", "Provider")
+                    b.HasOne("ApplicationView.DataModel.Entities.Provider", "Provider")
                         .WithMany()
                         .HasForeignKey("ProviderId");
 
@@ -3857,9 +3971,28 @@ namespace DataModel.Migrations
                     b.Navigation("Provider");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Provider", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.PromotionDetail", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Product", "Product")
+                        .WithMany("PromotionDetails")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ApplicationView.DataModel.Entities.Promotion", "Promotion")
+                        .WithMany("PromotionDetails")
+                        .HasForeignKey("PromotionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Promotion");
+                });
+
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Provider", b =>
+                {
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany("Providers")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3868,9 +4001,9 @@ namespace DataModel.Migrations
                     b.Navigation("Account");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Sale", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Sale", b =>
                 {
-                    b.HasOne("DataModel.Entities.PaymentType", "PaymentType")
+                    b.HasOne("ApplicationView.DataModel.Entities.PaymentType", "PaymentType")
                         .WithMany("Sale")
                         .HasForeignKey("PaymentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3879,13 +4012,13 @@ namespace DataModel.Migrations
                     b.Navigation("PaymentType");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SaleDetail", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SaleDetail", b =>
                 {
-                    b.HasOne("DataModel.Entities.Sale", "Sale")
+                    b.HasOne("ApplicationView.DataModel.Entities.Sale", "Sale")
                         .WithMany("SaleDetail")
                         .HasForeignKey("SaleId");
 
-                    b.HasOne("DataModel.Entities.Product", "Product")
+                    b.HasOne("ApplicationView.DataModel.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("productId");
 
@@ -3894,9 +4027,9 @@ namespace DataModel.Migrations
                     b.Navigation("Sale");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SettingBusiness", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SettingBusiness", b =>
                 {
-                    b.HasOne("DataModel.Entities.Business", "Business")
+                    b.HasOne("ApplicationView.DataModel.Entities.Business", "Business")
                         .WithMany()
                         .HasForeignKey("BusinessId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3905,9 +4038,9 @@ namespace DataModel.Migrations
                     b.Navigation("Business");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SubCategory", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SubCategory", b =>
                 {
-                    b.HasOne("DataModel.Entities.Category", "Category")
+                    b.HasOne("ApplicationView.DataModel.Entities.Category", "Category")
                         .WithMany("SubCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3916,9 +4049,9 @@ namespace DataModel.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SubModule", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SubModule", b =>
                 {
-                    b.HasOne("DataModel.Entities.Module", "Module")
+                    b.HasOne("ApplicationView.DataModel.Entities.Module", "Module")
                         .WithMany("SubModules")
                         .HasForeignKey("ModuleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3927,15 +4060,15 @@ namespace DataModel.Migrations
                     b.Navigation("Module");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SubModuleAccount", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SubModuleAccount", b =>
                 {
-                    b.HasOne("DataModel.Entities.ModuleAccount", "ModuleAccount")
+                    b.HasOne("ApplicationView.DataModel.Entities.ModuleAccount", "ModuleAccount")
                         .WithMany("SubModuleAccounts")
                         .HasForeignKey("ModuleAccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataModel.Entities.SubModule", "SubModule")
+                    b.HasOne("ApplicationView.DataModel.Entities.SubModule", "SubModule")
                         .WithMany("SubModuleAccounts")
                         .HasForeignKey("SubModuleId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -3946,15 +4079,15 @@ namespace DataModel.Migrations
                     b.Navigation("SubModule");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Turns", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Turns", b =>
                 {
-                    b.HasOne("DataModel.Entities.Account", "Account")
+                    b.HasOne("ApplicationView.DataModel.Entities.Account", "Account")
                         .WithMany("Turns")
                         .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataModel.Entities.Business", "Business")
+                    b.HasOne("ApplicationView.DataModel.Entities.Business", "Business")
                         .WithMany("Turns")
                         .HasForeignKey("BusinessId")
                         .OnDelete(DeleteBehavior.ClientCascade)
@@ -3965,9 +4098,9 @@ namespace DataModel.Migrations
                     b.Navigation("Business");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.User", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.User", b =>
                 {
-                    b.HasOne("DataModel.Entities.Business", "Business")
+                    b.HasOne("ApplicationView.DataModel.Entities.Business", "Business")
                         .WithMany("Users")
                         .HasForeignKey("BusinessId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3976,7 +4109,7 @@ namespace DataModel.Migrations
                     b.Navigation("Business");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Account", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Account", b =>
                 {
                     b.Navigation("Categories");
 
@@ -3999,65 +4132,72 @@ namespace DataModel.Migrations
                     b.Navigation("Turns");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Business", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Business", b =>
                 {
                     b.Navigation("Turns");
 
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Category", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Category", b =>
                 {
                     b.Navigation("SubCategories");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Module", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Module", b =>
                 {
                     b.Navigation("ModuleAccounts");
 
                     b.Navigation("SubModules");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.ModuleAccount", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.ModuleAccount", b =>
                 {
                     b.Navigation("SubModuleAccounts");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.PaymentType", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.PaymentType", b =>
                 {
                     b.Navigation("Sale");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Product", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Product", b =>
                 {
                     b.Navigation("HistoryPrice");
 
                     b.Navigation("Lots");
+
+                    b.Navigation("PromotionDetails");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Role", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Promotion", b =>
+                {
+                    b.Navigation("PromotionDetails");
+                });
+
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Role", b =>
                 {
                     b.Navigation("Accounts");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Sale", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Sale", b =>
                 {
                     b.Navigation("Legit");
 
                     b.Navigation("SaleDetail");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.SubModule", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.SubModule", b =>
                 {
                     b.Navigation("SubModuleAccounts");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.Turns", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.Turns", b =>
                 {
                     b.Navigation("OpenWorkShifts");
                 });
 
-            modelBuilder.Entity("DataModel.Entities.User", b =>
+            modelBuilder.Entity("ApplicationView.DataModel.Entities.User", b =>
                 {
                     b.Navigation("Accounts");
                 });

@@ -44,7 +44,9 @@ namespace ApplicationView.DataModel.Repositories.Repository
                                 isfirst = 0,
                                 saleId = sale.Id,
                                 lotId = lotId,
+                                SaleType = CashierState.GetStateCashier(1),
                                 saledetailId = sale.SaleDetail[0].Id,
+                                openWorkTurnId = sale.OpenWorkTurnId,
                                 AccountId = sale.AccountId,
                                 PaymentTypeId = sale.PaymentTypeId,
                                 Total = 0.0,
@@ -53,6 +55,15 @@ namespace ApplicationView.DataModel.Repositories.Repository
                                 quantity = sale.SaleDetail.FirstOrDefault().quantity
                             };
                             IEnumerable<SaleDetailEntityDto> entity = ctx.Query<SaleDetailEntityDto>("[dbo].[Sp_Insert_Sale]", values, commandType: CommandType.StoredProcedure);
+                            if (entity.Any())
+                            {
+                                var resulterror = entity.Where(u => u.ErrorMessage == "No tiene stock para ese producto.").ToList();
+                                if (resulterror.Any())
+                                {
+                                    ctx.Close();
+                                    throw new ApiBusinessException("3000", entity.FirstOrDefault().ErrorMessage, System.Net.HttpStatusCode.NotFound, "Http");
+                                }
+                            }
                             ctx.Close();
                             return entity;
                         }
@@ -95,13 +106,13 @@ namespace ApplicationView.DataModel.Repositories.Repository
             }
         }
 
-        public IEnumerable<SearchSaleSP> GetAllSaleHistoric(DateTime datefrom, DateTime dateto, string turn, int page, int pageSize)        
+        public IEnumerable<SearchSaleSP> GetAllSaleHistoric(DateTime datefrom, DateTime dateto, string user, int page, int pageSize)        
         {
             try
             {                             
                 var values = new
                 {
-                    turnId = turn,
+                    user= user,
                     datefrom = datefrom,
                     dateto = dateto,
                     page = page,
@@ -112,16 +123,78 @@ namespace ApplicationView.DataModel.Repositories.Repository
             }
             catch (ApiBusinessException ex)
             {
-                LogsInfo.WriteLog("ApiBusinessException repo ", ex);
+                //LogsInfo.WriteLog("ApiBusinessException repo ", ex);
                 throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
             }
             catch (Exception ex)
             {
-                LogsInfo.WriteLog("Exception repo ", ex);
+                //LogsInfo.WriteLog("Exception repo ", ex);
                 throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
             }
         }
 
+        public ClossCashier GetCashier(string AccountId)
+        {
+            try
+            {
+                var values = new
+                {
+                    AccountId = AccountId
+                };
+                ClossCashier resp = null;
+                IEnumerable<ClossCashierSP> entity = _context.Database.GetDbConnection().Query<ClossCashierSP>("[dbo].[Sp_Sale_By_Day]", values, commandType: CommandType.StoredProcedure);
+                if (entity.Any())
+                {
+                    resp = new ClossCashier();
+                    resp.Cash = entity.Where(u => u.TypePay == "Efectivo").Sum(u => u.AmountSold);
+                    resp.ElectronicPay = entity.Where(u => u.TypePay == "Pago Electronico").Sum(u => u.AmountSold);
+                    resp.Started = entity.FirstOrDefault().Started;
+                }
+                return resp;
+            }
+            catch (ApiBusinessException ex)
+            {
+                //LogsInfo.WriteLog("GetCashier repo ", ex);
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                //LogsInfo.WriteLog("Exception repo ", ex);
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
+
+        public ClossCashier GetAccountredemption(string AccountId, string OpenWorkTurnid)
+        {
+            try
+            {
+                var values = new
+                {
+                    AccountId = AccountId,
+                    OpenWorkTurnid = OpenWorkTurnid
+                };
+                ClossCashier resp = null;
+                IEnumerable<ClossCashierSP> entity = _context.Database.GetDbConnection().Query<ClossCashierSP>("[dbo].[Sp_Sale_By_Turn]", values, commandType: CommandType.StoredProcedure);
+                if (entity.Any())
+                {
+                    resp = new ClossCashier();
+                    resp.Cash = entity.Where(u => u.TypePay == "Efectivo").Sum(u => u.AmountSold);
+                    resp.ElectronicPay = entity.Where(u => u.TypePay == "Pago Electronico").Sum(u => u.AmountSold);
+                    resp.Started = entity.FirstOrDefault().Started;
+                }
+                return resp;
+            }
+            catch (ApiBusinessException ex)
+            {
+                //LogsInfo.WriteLog("GetCashier repo ", ex);
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                //LogsInfo.WriteLog("Exception repo ", ex);
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
         public IEnumerable<SearchSaleSP> GetAllSaleHistoricExport(DateTime datefrom, DateTime dateto, string turn)
         {
             try
@@ -254,8 +327,16 @@ namespace ApplicationView.DataModel.Repositories.Repository
                             SaleDetail.quantity = SaleDetail.quantity - 1;
                         else
                         {
-                            _context.SaleDetails.Remove(SaleDetail);
-                            _context.Sales.Remove(entity);
+                            var resp = _context.SaleDetails.Where(u => u.SaleId == saleDetailId.SaleId).ToList();
+                            if (resp.Count > 1)
+                            {
+                                _context.SaleDetails.Remove(SaleDetail);
+                            }
+                            else
+                            {
+                                _context.SaleDetails.Remove(SaleDetail);
+                                _context.Sales.Remove(entity);
+                            }
                         }
                             
                         _context.SaveChanges();

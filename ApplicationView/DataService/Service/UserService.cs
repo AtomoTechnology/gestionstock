@@ -69,6 +69,34 @@ namespace ApplicationView.DataService.Service
                 throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
             }
         }
+
+        public List<AccountBE> GetAllAccounts()
+        {
+            try
+            {
+                var entities = _repo.GetAllAccounts();
+
+                if (entities.Count > 0)
+                {
+                    entities.Add(new Account()
+                    {
+                        UserName = "All",
+                        Id = "All"
+                    });
+                }
+
+                return _maapper.Map<List<AccountBE>>(entities);
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
+
         public UserBE GetById(string id)
         {
             try

@@ -9,6 +9,8 @@ namespace ApplicationView.DataModel.Entities
     {
         public String AccountId { get; set; }
         public String? PaymentTypeId { get; set; }
+        public String? OpenWorkTurnId { get; set; }
+
         public Int64 InvoiceCode { get; set; }
         [Precision(14, 2)]
         public Decimal Total { get; set; }

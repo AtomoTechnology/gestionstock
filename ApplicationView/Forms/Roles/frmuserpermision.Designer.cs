@@ -30,7 +30,6 @@
         {
             this.pnlsecurity = new System.Windows.Forms.Panel();
             this.chkmodifyrol = new System.Windows.Forms.CheckBox();
-            this.chkturnclose = new System.Windows.Forms.CheckBox();
             this.chkgestionturn = new System.Windows.Forms.CheckBox();
             this.chkupdateprice = new System.Windows.Forms.CheckBox();
             this.chkcloseturn = new System.Windows.Forms.CheckBox();
@@ -95,6 +94,9 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btncancel = new System.Windows.Forms.Button();
             this.btnsave = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnclose = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.pnlsecurity.SuspendLayout();
             this.panel11.SuspendLayout();
             this.pnlmouvment.SuspendLayout();
@@ -110,13 +112,13 @@
             this.panel1.SuspendLayout();
             this.pnlpermission.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlsecurity
             // 
             this.pnlsecurity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlsecurity.Controls.Add(this.chkmodifyrol);
-            this.pnlsecurity.Controls.Add(this.chkturnclose);
             this.pnlsecurity.Controls.Add(this.chkgestionturn);
             this.pnlsecurity.Controls.Add(this.chkupdateprice);
             this.pnlsecurity.Controls.Add(this.chkcloseturn);
@@ -125,9 +127,9 @@
             this.pnlsecurity.Controls.Add(this.chkopenturn);
             this.pnlsecurity.Controls.Add(this.chkabmrol);
             this.pnlsecurity.Controls.Add(this.chkabtcategory);
-            this.pnlsecurity.Location = new System.Drawing.Point(12, 665);
+            this.pnlsecurity.Location = new System.Drawing.Point(741, 267);
             this.pnlsecurity.Name = "pnlsecurity";
-            this.pnlsecurity.Size = new System.Drawing.Size(735, 138);
+            this.pnlsecurity.Size = new System.Drawing.Size(351, 167);
             this.pnlsecurity.TabIndex = 26;
             // 
             // chkmodifyrol
@@ -135,25 +137,15 @@
             this.chkmodifyrol.AutoSize = true;
             this.chkmodifyrol.Location = new System.Drawing.Point(14, 105);
             this.chkmodifyrol.Name = "chkmodifyrol";
-            this.chkmodifyrol.Size = new System.Drawing.Size(117, 24);
+            this.chkmodifyrol.Size = new System.Drawing.Size(153, 24);
             this.chkmodifyrol.TabIndex = 21;
-            this.chkmodifyrol.Text = "Modificar rol";
+            this.chkmodifyrol.Text = "Modificar permiso";
             this.chkmodifyrol.UseVisualStyleBackColor = true;
-            // 
-            // chkturnclose
-            // 
-            this.chkturnclose.AutoSize = true;
-            this.chkturnclose.Location = new System.Drawing.Point(450, 75);
-            this.chkturnclose.Name = "chkturnclose";
-            this.chkturnclose.Size = new System.Drawing.Size(124, 24);
-            this.chkturnclose.TabIndex = 18;
-            this.chkturnclose.Text = "Turno cerrado";
-            this.chkturnclose.UseVisualStyleBackColor = true;
             // 
             // chkgestionturn
             // 
             this.chkgestionturn.AutoSize = true;
-            this.chkgestionturn.Location = new System.Drawing.Point(450, 12);
+            this.chkgestionturn.Location = new System.Drawing.Point(174, 105);
             this.chkgestionturn.Name = "chkgestionturn";
             this.chkgestionturn.Size = new System.Drawing.Size(133, 24);
             this.chkgestionturn.TabIndex = 19;
@@ -163,7 +155,7 @@
             // chkupdateprice
             // 
             this.chkupdateprice.AutoSize = true;
-            this.chkupdateprice.Location = new System.Drawing.Point(450, 45);
+            this.chkupdateprice.Location = new System.Drawing.Point(14, 135);
             this.chkupdateprice.Name = "chkupdateprice";
             this.chkupdateprice.Size = new System.Drawing.Size(143, 24);
             this.chkupdateprice.TabIndex = 20;
@@ -173,7 +165,7 @@
             // chkcloseturn
             // 
             this.chkcloseturn.AutoSize = true;
-            this.chkcloseturn.Location = new System.Drawing.Point(238, 75);
+            this.chkcloseturn.Location = new System.Drawing.Point(174, 75);
             this.chkcloseturn.Name = "chkcloseturn";
             this.chkcloseturn.Size = new System.Drawing.Size(110, 24);
             this.chkcloseturn.TabIndex = 15;
@@ -183,7 +175,7 @@
             // chkpayform
             // 
             this.chkpayform.AutoSize = true;
-            this.chkpayform.Location = new System.Drawing.Point(238, 12);
+            this.chkpayform.Location = new System.Drawing.Point(174, 12);
             this.chkpayform.Name = "chkpayform";
             this.chkpayform.Size = new System.Drawing.Size(167, 24);
             this.chkpayform.TabIndex = 16;
@@ -193,7 +185,7 @@
             // chkincrementnigth
             // 
             this.chkincrementnigth.AutoSize = true;
-            this.chkincrementnigth.Location = new System.Drawing.Point(238, 45);
+            this.chkincrementnigth.Location = new System.Drawing.Point(174, 45);
             this.chkincrementnigth.Name = "chkincrementnigth";
             this.chkincrementnigth.Size = new System.Drawing.Size(169, 24);
             this.chkincrementnigth.TabIndex = 17;
@@ -215,9 +207,9 @@
             this.chkabmrol.AutoSize = true;
             this.chkabmrol.Location = new System.Drawing.Point(14, 12);
             this.chkabmrol.Name = "chkabmrol";
-            this.chkabmrol.Size = new System.Drawing.Size(85, 24);
+            this.chkabmrol.Size = new System.Drawing.Size(119, 24);
             this.chkabmrol.TabIndex = 13;
-            this.chkabmrol.Text = "ABM rol";
+            this.chkabmrol.Text = "ABM Permiso";
             this.chkabmrol.UseVisualStyleBackColor = true;
             // 
             // chkabtcategory
@@ -235,9 +227,9 @@
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel11.Controls.Add(this.chkselectallsecurity);
             this.panel11.Controls.Add(this.chksecurity);
-            this.panel11.Location = new System.Drawing.Point(12, 614);
+            this.panel11.Location = new System.Drawing.Point(741, 216);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(334, 45);
+            this.panel11.Size = new System.Drawing.Size(351, 45);
             this.panel11.TabIndex = 25;
             // 
             // chkselectallsecurity
@@ -249,6 +241,7 @@
             this.chkselectallsecurity.TabIndex = 15;
             this.chkselectallsecurity.Text = "Seleccionar todos";
             this.chkselectallsecurity.UseVisualStyleBackColor = true;
+            this.chkselectallsecurity.CheckedChanged += new System.EventHandler(this.chkselectallsecurity_CheckedChanged);
             // 
             // chksecurity
             // 
@@ -259,13 +252,14 @@
             this.chksecurity.TabIndex = 11;
             this.chksecurity.Text = "Seguridades";
             this.chksecurity.UseVisualStyleBackColor = true;
+            this.chksecurity.CheckedChanged += new System.EventHandler(this.chksecurity_CheckedChanged_1);
             // 
             // pnlmouvment
             // 
             this.pnlmouvment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlmouvment.Controls.Add(this.chkabmmouvement);
             this.pnlmouvment.Controls.Add(this.chktipomouv);
-            this.pnlmouvment.Location = new System.Drawing.Point(396, 572);
+            this.pnlmouvment.Location = new System.Drawing.Point(741, 484);
             this.pnlmouvment.Name = "pnlmouvment";
             this.pnlmouvment.Size = new System.Drawing.Size(351, 82);
             this.pnlmouvment.TabIndex = 24;
@@ -295,7 +289,7 @@
             this.pnlgestionuser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlgestionuser.Controls.Add(this.chkambuser);
             this.pnlgestionuser.Controls.Add(this.chkchangepaass);
-            this.pnlgestionuser.Location = new System.Drawing.Point(12, 510);
+            this.pnlgestionuser.Location = new System.Drawing.Point(22, 559);
             this.pnlgestionuser.Name = "pnlgestionuser";
             this.pnlgestionuser.Size = new System.Drawing.Size(334, 83);
             this.pnlgestionuser.TabIndex = 22;
@@ -325,7 +319,7 @@
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.chkselectallmouvment);
             this.panel9.Controls.Add(this.chkmouvement);
-            this.panel9.Location = new System.Drawing.Point(396, 528);
+            this.panel9.Location = new System.Drawing.Point(741, 440);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(351, 38);
             this.panel9.TabIndex = 23;
@@ -339,6 +333,7 @@
             this.chkselectallmouvment.TabIndex = 13;
             this.chkselectallmouvment.Text = "Seleccionar todos";
             this.chkselectallmouvment.UseVisualStyleBackColor = true;
+            this.chkselectallmouvment.CheckedChanged += new System.EventHandler(this.chkselectallmouvment_CheckedChanged);
             // 
             // chkmouvement
             // 
@@ -349,6 +344,7 @@
             this.chkmouvement.TabIndex = 14;
             this.chkmouvement.Text = "Movimientos";
             this.chkmouvement.UseVisualStyleBackColor = true;
+            this.chkmouvement.CheckedChanged += new System.EventHandler(this.chkmouvement_CheckedChanged_1);
             // 
             // pnlproduct
             // 
@@ -358,7 +354,7 @@
             this.pnlproduct.Controls.Add(this.chkcreateoffer);
             this.pnlproduct.Controls.Add(this.chkabmproduct);
             this.pnlproduct.Controls.Add(this.chkconsultantexpired);
-            this.pnlproduct.Location = new System.Drawing.Point(396, 187);
+            this.pnlproduct.Location = new System.Drawing.Point(374, 251);
             this.pnlproduct.Name = "pnlproduct";
             this.pnlproduct.Size = new System.Drawing.Size(351, 158);
             this.pnlproduct.TabIndex = 19;
@@ -378,9 +374,9 @@
             this.chkdetailproduct.AutoSize = true;
             this.chkdetailproduct.Location = new System.Drawing.Point(24, 67);
             this.chkdetailproduct.Name = "chkdetailproduct";
-            this.chkdetailproduct.Size = new System.Drawing.Size(139, 24);
+            this.chkdetailproduct.Size = new System.Drawing.Size(143, 24);
             this.chkdetailproduct.TabIndex = 7;
-            this.chkdetailproduct.Text = "DetalleProducto";
+            this.chkdetailproduct.Text = "Detalle Producto";
             this.chkdetailproduct.UseVisualStyleBackColor = true;
             // 
             // chkcreateoffer
@@ -398,9 +394,9 @@
             this.chkabmproduct.AutoSize = true;
             this.chkabmproduct.Location = new System.Drawing.Point(24, 9);
             this.chkabmproduct.Name = "chkabmproduct";
-            this.chkabmproduct.Size = new System.Drawing.Size(128, 24);
+            this.chkabmproduct.Size = new System.Drawing.Size(127, 24);
             this.chkabmproduct.TabIndex = 5;
-            this.chkabmproduct.Text = "ABM producto";
+            this.chkabmproduct.Text = "ABM Producto";
             this.chkabmproduct.UseVisualStyleBackColor = true;
             // 
             // chkconsultantexpired
@@ -408,9 +404,9 @@
             this.chkconsultantexpired.AutoSize = true;
             this.chkconsultantexpired.Location = new System.Drawing.Point(24, 39);
             this.chkconsultantexpired.Name = "chkconsultantexpired";
-            this.chkconsultantexpired.Size = new System.Drawing.Size(178, 24);
+            this.chkconsultantexpired.Size = new System.Drawing.Size(179, 24);
             this.chkconsultantexpired.TabIndex = 6;
-            this.chkconsultantexpired.Text = "Consultar vencimiento";
+            this.chkconsultantexpired.Text = "Consultar Vencimiento";
             this.chkconsultantexpired.UseVisualStyleBackColor = true;
             // 
             // pnlsubsale
@@ -420,7 +416,7 @@
             this.pnlsubsale.Controls.Add(this.chkconsultantsale);
             this.pnlsubsale.Controls.Add(this.chkstartsale);
             this.pnlsubsale.Controls.Add(this.chkfiar);
-            this.pnlsubsale.Location = new System.Drawing.Point(12, 187);
+            this.pnlsubsale.Location = new System.Drawing.Point(22, 251);
             this.pnlsubsale.Name = "pnlsubsale";
             this.pnlsubsale.Size = new System.Drawing.Size(334, 130);
             this.pnlsubsale.TabIndex = 17;
@@ -470,7 +466,7 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.chkselectallgestionuser);
             this.panel6.Controls.Add(this.chkgestionuser);
-            this.panel6.Location = new System.Drawing.Point(12, 463);
+            this.panel6.Location = new System.Drawing.Point(22, 512);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(334, 41);
             this.panel6.TabIndex = 20;
@@ -478,22 +474,24 @@
             // chkselectallgestionuser
             // 
             this.chkselectallgestionuser.AutoSize = true;
-            this.chkselectallgestionuser.Location = new System.Drawing.Point(161, 12);
+            this.chkselectallgestionuser.Location = new System.Drawing.Point(178, 12);
             this.chkselectallgestionuser.Name = "chkselectallgestionuser";
             this.chkselectallgestionuser.Size = new System.Drawing.Size(149, 24);
             this.chkselectallgestionuser.TabIndex = 12;
             this.chkselectallgestionuser.Text = "Seleccionar todos";
             this.chkselectallgestionuser.UseVisualStyleBackColor = true;
+            this.chkselectallgestionuser.CheckedChanged += new System.EventHandler(this.chkselectallgestionuser_CheckedChanged);
             // 
             // chkgestionuser
             // 
             this.chkgestionuser.AutoSize = true;
-            this.chkgestionuser.Location = new System.Drawing.Point(14, 14);
+            this.chkgestionuser.Location = new System.Drawing.Point(9, 14);
             this.chkgestionuser.Name = "chkgestionuser";
-            this.chkgestionuser.Size = new System.Drawing.Size(133, 24);
+            this.chkgestionuser.Size = new System.Drawing.Size(162, 24);
             this.chkgestionuser.TabIndex = 11;
-            this.chkgestionuser.Text = "Gestion usuario";
+            this.chkgestionuser.Text = "Gestion de Usuarios";
             this.chkgestionuser.UseVisualStyleBackColor = true;
+            this.chkgestionuser.CheckedChanged += new System.EventHandler(this.chkgestionuser_CheckedChanged_1);
             // 
             // pnlreport
             // 
@@ -501,7 +499,7 @@
             this.pnlreport.Controls.Add(this.chkproviderreport);
             this.pnlreport.Controls.Add(this.chksalereport);
             this.pnlreport.Controls.Add(this.chkproductreport);
-            this.pnlreport.Location = new System.Drawing.Point(396, 411);
+            this.pnlreport.Location = new System.Drawing.Point(374, 458);
             this.pnlreport.Name = "pnlreport";
             this.pnlreport.Size = new System.Drawing.Size(351, 100);
             this.pnlreport.TabIndex = 21;
@@ -541,7 +539,7 @@
             this.pnlprovider.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlprovider.Controls.Add(this.chkabmprovider);
             this.pnlprovider.Controls.Add(this.chkconsultantproviderproduct);
-            this.pnlprovider.Location = new System.Drawing.Point(12, 375);
+            this.pnlprovider.Location = new System.Drawing.Point(22, 433);
             this.pnlprovider.Name = "pnlprovider";
             this.pnlprovider.Size = new System.Drawing.Size(334, 71);
             this.pnlprovider.TabIndex = 18;
@@ -571,7 +569,7 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.chkselectallreport);
             this.panel3.Controls.Add(this.chkreport);
-            this.panel3.Location = new System.Drawing.Point(396, 366);
+            this.panel3.Location = new System.Drawing.Point(374, 413);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(351, 43);
             this.panel3.TabIndex = 14;
@@ -585,6 +583,7 @@
             this.chkselectallreport.TabIndex = 10;
             this.chkselectallreport.Text = "Seleccionar todos";
             this.chkselectallreport.UseVisualStyleBackColor = true;
+            this.chkselectallreport.CheckedChanged += new System.EventHandler(this.chkselectallreport_CheckedChanged);
             // 
             // chkreport
             // 
@@ -595,13 +594,14 @@
             this.chkreport.TabIndex = 11;
             this.chkreport.Text = "Reportes";
             this.chkreport.UseVisualStyleBackColor = true;
+            this.chkreport.CheckedChanged += new System.EventHandler(this.chkreport_CheckedChanged_1);
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.chkselectallprovider);
             this.panel2.Controls.Add(this.chkprovider);
-            this.panel2.Location = new System.Drawing.Point(12, 332);
+            this.panel2.Location = new System.Drawing.Point(22, 390);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(334, 38);
             this.panel2.TabIndex = 16;
@@ -615,6 +615,7 @@
             this.chkselectallprovider.TabIndex = 4;
             this.chkselectallprovider.Text = "Seleccionar todos";
             this.chkselectallprovider.UseVisualStyleBackColor = true;
+            this.chkselectallprovider.CheckedChanged += new System.EventHandler(this.chkselectallprovider_CheckedChanged);
             // 
             // chkprovider
             // 
@@ -625,13 +626,14 @@
             this.chkprovider.TabIndex = 9;
             this.chkprovider.Text = "Proveedores";
             this.chkprovider.UseVisualStyleBackColor = true;
+            this.chkprovider.CheckedChanged += new System.EventHandler(this.chkprovider_CheckedChanged_1);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.chkselectallproduct);
             this.panel1.Controls.Add(this.chkproduct);
-            this.panel1.Location = new System.Drawing.Point(396, 152);
+            this.panel1.Location = new System.Drawing.Point(374, 216);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(351, 33);
             this.panel1.TabIndex = 15;
@@ -652,17 +654,18 @@
             this.chkproduct.AutoSize = true;
             this.chkproduct.Location = new System.Drawing.Point(24, 4);
             this.chkproduct.Name = "chkproduct";
-            this.chkproduct.Size = new System.Drawing.Size(91, 24);
+            this.chkproduct.Size = new System.Drawing.Size(97, 24);
             this.chkproduct.TabIndex = 3;
-            this.chkproduct.Text = "Producto";
+            this.chkproduct.Text = "Productos";
             this.chkproduct.UseVisualStyleBackColor = true;
+            this.chkproduct.CheckedChanged += new System.EventHandler(this.chkproduct_CheckedChanged_1);
             // 
             // pnlpermission
             // 
             this.pnlpermission.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlpermission.Controls.Add(this.chkselectallsale);
             this.pnlpermission.Controls.Add(this.chksale);
-            this.pnlpermission.Location = new System.Drawing.Point(12, 153);
+            this.pnlpermission.Location = new System.Drawing.Point(22, 217);
             this.pnlpermission.Name = "pnlpermission";
             this.pnlpermission.Size = new System.Drawing.Size(334, 32);
             this.pnlpermission.TabIndex = 13;
@@ -687,12 +690,13 @@
             this.chksale.TabIndex = 0;
             this.chksale.Text = "Ventas";
             this.chksale.UseVisualStyleBackColor = true;
+            this.chksale.CheckedChanged += new System.EventHandler(this.Chksale_CheckedChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(22, 73);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 28);
             this.label1.TabIndex = 27;
@@ -702,7 +706,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(12, 44);
+            this.label2.Location = new System.Drawing.Point(22, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 28);
             this.label2.TabIndex = 28;
@@ -712,7 +716,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(12, 80);
+            this.label3.Location = new System.Drawing.Point(22, 144);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(165, 28);
             this.label3.TabIndex = 29;
@@ -722,7 +726,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(14, 117);
+            this.label4.Location = new System.Drawing.Point(24, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 28);
             this.label4.TabIndex = 30;
@@ -733,7 +737,7 @@
             this.lblfirstname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblfirstname.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblfirstname.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblfirstname.Location = new System.Drawing.Point(224, 9);
+            this.lblfirstname.Location = new System.Drawing.Point(566, 73);
             this.lblfirstname.Name = "lblfirstname";
             this.lblfirstname.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblfirstname.Size = new System.Drawing.Size(520, 29);
@@ -744,7 +748,7 @@
             this.lbllastname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbllastname.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lbllastname.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbllastname.Location = new System.Drawing.Point(224, 42);
+            this.lbllastname.Location = new System.Drawing.Point(566, 106);
             this.lbllastname.Name = "lbllastname";
             this.lbllastname.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lbllastname.Size = new System.Drawing.Size(520, 29);
@@ -755,7 +759,7 @@
             this.lblusername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblusername.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblusername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblusername.Location = new System.Drawing.Point(224, 75);
+            this.lblusername.Location = new System.Drawing.Point(566, 139);
             this.lblusername.Name = "lblusername";
             this.lblusername.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblusername.Size = new System.Drawing.Size(520, 29);
@@ -766,7 +770,7 @@
             this.lblrol.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblrol.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.lblrol.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblrol.Location = new System.Drawing.Point(224, 109);
+            this.lblrol.Location = new System.Drawing.Point(566, 173);
             this.lblrol.Name = "lblrol";
             this.lblrol.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblrol.Size = new System.Drawing.Size(520, 29);
@@ -776,7 +780,7 @@
             // 
             this.groupBox5.Controls.Add(this.btncancel);
             this.groupBox5.Controls.Add(this.btnsave);
-            this.groupBox5.Location = new System.Drawing.Point(42, 809);
+            this.groupBox5.Location = new System.Drawing.Point(387, 579);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(705, 63);
             this.groupBox5.TabIndex = 35;
@@ -790,6 +794,7 @@
             this.btncancel.TabIndex = 9;
             this.btncancel.Text = "Cancelar";
             this.btncancel.UseVisualStyleBackColor = true;
+            this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
             // 
             // btnsave
             // 
@@ -799,22 +804,66 @@
             this.btnsave.TabIndex = 8;
             this.btnsave.Text = "Actualizar permiso";
             this.btnsave.UseVisualStyleBackColor = true;
+            this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.panel4.Controls.Add(this.btnclose);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1114, 66);
+            this.panel4.TabIndex = 36;
+            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel4_MouseDown);
+            // 
+            // btnclose
+            // 
+            this.btnclose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnclose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnclose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnclose.FlatAppearance.BorderSize = 0;
+            this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnclose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnclose.ForeColor = System.Drawing.Color.White;
+            this.btnclose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnclose.Location = new System.Drawing.Point(1064, 0);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(50, 66);
+            this.btnclose.TabIndex = 24;
+            this.btnclose.Text = "X";
+            this.btnclose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnclose.UseVisualStyleBackColor = false;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(276, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(458, 55);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Actualizar permiso";
+            this.label5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label5_MouseDown);
             // 
             // frmuserpermision
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(756, 877);
+            this.ClientSize = new System.Drawing.Size(1114, 665);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.lblrol);
             this.Controls.Add(this.lblusername);
             this.Controls.Add(this.lbllastname);
+            this.Controls.Add(this.pnlsecurity);
             this.Controls.Add(this.lblfirstname);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pnlsecurity);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.pnlmouvment);
             this.Controls.Add(this.pnlgestionuser);
@@ -828,10 +877,17 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlpermission);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "frmuserpermision";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmuserpermision_Load);
+            this.ResizeEnd += new System.EventHandler(this.frmuserpermision_ResizeEnd);
+            this.SizeChanged += new System.EventHandler(this.frmuserpermision_SizeChanged);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmuserpermision_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmuserpermision_MouseDown);
+            this.Validated += new System.EventHandler(this.frmuserpermision_Validated);
             this.pnlsecurity.ResumeLayout(false);
             this.pnlsecurity.PerformLayout();
             this.panel11.ResumeLayout(false);
@@ -861,6 +917,8 @@
             this.pnlpermission.ResumeLayout(false);
             this.pnlpermission.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -870,7 +928,6 @@
 
         private System.Windows.Forms.Panel pnlsecurity;
         private System.Windows.Forms.CheckBox chkmodifyrol;
-        private System.Windows.Forms.CheckBox chkturnclose;
         private System.Windows.Forms.CheckBox chkgestionturn;
         private System.Windows.Forms.CheckBox chkupdateprice;
         private System.Windows.Forms.CheckBox chkcloseturn;
@@ -935,5 +992,8 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btncancel;
         private System.Windows.Forms.Button btnsave;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnclose;
+        private System.Windows.Forms.Label label5;
     }
 }

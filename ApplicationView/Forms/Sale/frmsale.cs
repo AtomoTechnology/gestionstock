@@ -2,11 +2,13 @@
 using ApplicationView.BusnessEntities.Dtos;
 using ApplicationView.Forms.MsgBox;
 using ApplicationView.Forms.RedesignForm;
+using ApplicationView.Forms.turnswork;
 using ApplicationView.Patern.singleton;
 using ApplicationView.print;
 using ApplicationView.Resolver.Enums;
 using ApplicationView.Resolver.Helper;
 using ApplicationView.Resolver.HelperError.IExceptions;
+using ApplicationView.Resolver.log;
 using ApplicationView.VariableSeesion;
 using System;
 using System.Collections.Generic;
@@ -22,14 +24,14 @@ namespace ApplicationView.Forms.Sale
 {
     public partial class frmsale : Form
     {
-        decimal price = 0;
-        int count = 0;
-        String saleId = "";
-        String lotId = "";
-
+        private decimal price = 0;
+        private int count = 0;
+        private String saleId = "";
+        private String lotId = "";
+        private int Quantity = 0;
+        string codesale;
         private int borderRadius = 20;
         private int borderSize = 2;
-        //private Color borderColor = Color.White;
         private Color borderColor = Color.FromArgb(128, 128, 255);
 
         public frmsale()
@@ -46,8 +48,6 @@ namespace ApplicationView.Forms.Sale
             this.FormBorderStyle = FormBorderStyle.None;
             this.Padding = new Padding(borderSize);
             this.btnclose.FlatAppearance.BorderSize = 0;
-            //this.panelTitleBar.BackColor = borderColor;
-            //this.BackColor = borderColor;
 
         }
         private void HideColumn()
@@ -60,6 +60,7 @@ namespace ApplicationView.Forms.Sale
                 this.dataList.Columns["InvoiceCode"].Visible = false;
                 this.dataList.Columns["ProductCode"].Visible = false;
                 this.dataList.Columns["PaymentName"].Visible = false;
+                this.dataList.Columns["CreatedDate"].Visible = false;
             }        
         }       
         private void Frmsale_Shown(object sender, EventArgs e)
@@ -88,9 +89,6 @@ namespace ApplicationView.Forms.Sale
                     if (dataList.Rows.Count == 0)
                     {
 
-                        var lastfactnro = RepoPathern.ProductService.LastFactNro();
-                        this.InvoiceCodeFormat(lastfactnro);
-
                         var be = new SaleBE()
                         {
                             AccountId = LoginInfo.IdAccount,
@@ -98,6 +96,7 @@ namespace ApplicationView.Forms.Sale
                             PaymentTypeId = "f5f737fd-860c-485b-972a-927d385f4ab5",
                             finalizeSale = false,
                             Total = 0,
+                            OpenWorkTurnId = LoginInfo.OpenWorkTurnId,
                             state = (Int32)StateEnum.Activeted,
                             SaleDetail = new List<SaleDetailBE>()
                             {
@@ -107,18 +106,13 @@ namespace ApplicationView.Forms.Sale
                                     CreatedDate = DateTime.Now,
                                     price =  result.SalePrice,
                                     productId = result.Id,
-                                    quantity = 1
+                                    quantity = this.Quantity == 0 ? 1 : this.Quantity
                                 }
                             }
                         };
                         this.lotId = result.LotId;
                         list = RepoPathern.SaleService.Create(be, result.LotId);
-                        if (chckprinttiket.Checked)
-                        {
-                            var busniss = RepoPathern.BusnessService.GetById(LoginInfo.IdBusiness);
-                            PrintHead.Head(busniss.BusinessName, busniss.Address, busniss.Cuit_Cuil, busniss.Grossrevenue, busniss.CreatedDate.Date.ToShortDateString(), LoginInfo.UserName, lastfactnro.ToString());
-                            PrintSaleBody.Body(result.ProductName, result.SalePrice);
-                        }
+                        this.Quantity = 0;
                     }
                     else
                     {
@@ -129,26 +123,24 @@ namespace ApplicationView.Forms.Sale
                             CreatedDate = DateTime.Now,
                             price =  result.SalePrice,
                             productId = result.Id,
-                            quantity = 1,
+                            quantity = this.Quantity == 0 ? 1 : this.Quantity,
                             SaleId = saleid.SaleId
                         };
                         this.saleId = be.SaleId;
                         this.lotId = result.LotId;
                         list = RepoPathern.SaleDetailService.Create(be, result.LotId);
-                        if (chckprinttiket.Checked)
-                        {
-                            PrintSaleBody.Body(result.ProductName, result.SalePrice);
-                        }
+                        this.Quantity = 0;
                     }
                     txtreadcode.Text = String.Empty;
                     txtreadcode.Focus();
-                    price = price + result.SalePrice;
 
                     if (list.Count > 0)
                     {
+                        price = list.Sum(u => (u.SalePrice * u.quantity));
+
                         this.dataList.DataSource = list;
                         this.saleId = ((SaleDetailDto)dataList.Rows[0].DataBoundItem).SaleId;
-                        this.productqquantity.Text = ((!string.IsNullOrEmpty(this.productqquantity.Text) ? Convert.ToInt32(this.productqquantity.Text) : 0) + 1).ToString();
+                        this.productqquantity.Text =  Convert.ToInt32(list.Sum(u => (u.quantity))).ToString();
                         this.lblStatus.Text = price.ToString("0,0.00");
                     }
 
@@ -166,11 +158,13 @@ namespace ApplicationView.Forms.Sale
             }
             catch (ApiBusinessException ex)
             {
+                this.Quantity = 0;
                 txtreadcode.Text = String.Empty;
                 RJMessageBox.Show(ex.MessageError, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
+                this.Quantity = 0;
                 txtreadcode.Text = String.Empty;
                 RJMessageBox.Show(ex.Message, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -179,7 +173,9 @@ namespace ApplicationView.Forms.Sale
         private void InvoiceCodeFormat(Int64 InvoiceCode)
         {
             string fmt = "000-0000-00000";
-            this.nrofact.Text = InvoiceCode.ToString(fmt);
+            codesale = InvoiceCode.ToString();
+            string result = InvoiceCode.ToString(fmt);
+            textBox1.Text = result;
         }
         public bool IsWithinTime(string stringNowTime, string stringStartTime, string stringEndTime, bool isActive)
         {
@@ -194,12 +190,14 @@ namespace ApplicationView.Forms.Sale
         }
         private void frmsale_Load(object sender, EventArgs e)
         {
-            txtreadcode.Focus();
+            txtreadcode.Focus(); 
+            var lastfactnro = RepoPathern.ProductService.LastFactNro();
+            this.InvoiceCodeFormat(lastfactnro);
         }
             
         private void btnpay_Click(object sender, EventArgs e)
         {
-            frmclosepay frm = new frmclosepay(this.lblStatus.Text, this.saleId, Convert.ToInt32(productqquantity.Text));
+            frmclosepay frm = new frmclosepay(this.lblStatus.Text, this.saleId, Convert.ToInt32(productqquantity.Text), codesale, chckprinttiket.Checked);
             frm.ShowDialog();
             if (frm.iscorrectSale)
             {
@@ -207,9 +205,12 @@ namespace ApplicationView.Forms.Sale
                 this.lblStatus.Text = "";
                 this.btnpay.Enabled = false;
                 this.productqquantity.Text = "";
-                this.nrofact.Text = "";
+                this.textBox1.Text = "";
                 this.price = 0;
+                this.Quantity = 0;
                 this.txtreadcode.Focus();
+                var lastfactnro = RepoPathern.ProductService.LastFactNro();
+                this.InvoiceCodeFormat(lastfactnro);
             }
         }
 
@@ -229,11 +230,8 @@ namespace ApplicationView.Forms.Sale
                     if (result == DialogResult.Yes)
                     {
                         RepoPathern.SaleService.RemoveNoneSale(sale, this.lotId, LoginInfo.IdAccount, Resolver.Enums.DeleteSaleEnum.Admin);
-
-                        if (chckprinttiket.Checked)
-                            PrintSaleBody.Body(sale.ProductName, -sale.SalePrice);
-
                         dto = RepoPathern.SaleDetailService.SearchAllDetailByCode(this.saleId);
+                        price = price - sale.SalePrice;
                     }
                     else
                         return;
@@ -252,10 +250,6 @@ namespace ApplicationView.Forms.Sale
                                 dto = RepoPathern.SaleDetailService.SearchAllDetailByCode(this.saleId);
                                 txtreadcode.Text = String.Empty;
                                 txtreadcode.Focus(); 
-
-                                if (chckprinttiket.Checked)
-                                    PrintSaleBody.Body(sale.ProductName, -sale.SalePrice);
-
                                 price = price - sale.SalePrice;
                             }
                             else
@@ -272,14 +266,18 @@ namespace ApplicationView.Forms.Sale
                     this.dataList.DataSource = dto;
                 if (dto.Count > 0)
                 {
-                    this.productqquantity.Text = Convert.ToInt32(dataList.RowCount).ToString();
+                    this.productqquantity.Text = Convert.ToInt32(dto.Sum(u => (u.quantity))).ToString();
                     this.lblStatus.Text = price.ToString();
                 }
                 else
                 {
                     this.productqquantity.Text = "";
                     this.lblStatus.Text = "";
-                    this.nrofact.Text = "";
+                    this.textBox1.Text = "";
+                    this.btnpay.Enabled = false;
+                    this.Quantity = 0;
+                    var lastfactnro = RepoPathern.ProductService.LastFactNro();
+                    this.InvoiceCodeFormat(lastfactnro);
                 }
             }
             catch (ApiBusinessException ex)
@@ -601,6 +599,23 @@ namespace ApplicationView.Forms.Sale
                 chckprinttiket.Checked = false;
                 return;
             }
+        }
+
+        private void txtreadcode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F7)
+            {
+                frmmorethenone frm = new frmmorethenone();
+                frm.ShowDialog();
+                this.Quantity = frm.Quantity;
+                this.txtreadcode.Text = String.Empty;
+            }
+        }
+
+        private void btndetailturn_Click(object sender, EventArgs e)
+        {
+            frmdetailturn frm = new frmdetailturn();
+            frm.ShowDialog();
         }
     }
 }

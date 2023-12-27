@@ -4,6 +4,7 @@ using ApplicationView.Forms.RedesignForm;
 using ApplicationView.Patern.singleton;
 using ApplicationView.Resolver.Enums;
 using ApplicationView.Resolver.HelperError.IExceptions;
+using ApplicationView.Resolver.Security;
 using ApplicationView.Share;
 using ApplicationView.VariableSeesion;
 using System;
@@ -388,7 +389,7 @@ namespace ApplicationView.Forms.Business
                                     new AccountBE()
                                     {
                                         UserName = txtusername.Text.Trim(),
-                                        UserPass = txtpassword.Text.Trim(),
+                                        UserPass = PassValidation.GetInstance().Encypt(txtpassword.Text.Trim()),
                                         Confirm = false
                                     }
                                 }

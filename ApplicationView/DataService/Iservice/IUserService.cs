@@ -12,5 +12,6 @@ namespace ApplicationView.DataService.Iservice
         String Create(UserBE user, List<ModuleAccountBE> mabe);
         String Update(string id, UserBE user);
         Boolean Delete(string id);
+        List<AccountBE> GetAllAccounts();
     }
 }

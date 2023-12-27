@@ -148,7 +148,8 @@ namespace ApplicationView.DataService.Service
         {
             try
             {
-                return _repo.LastFactNro();
+                Int64 nro = _repo.LastFactNro();
+                return nro;
             }
             catch (ApiBusinessException ex)
             {

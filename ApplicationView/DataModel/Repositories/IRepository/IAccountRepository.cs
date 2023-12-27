@@ -9,6 +9,7 @@ namespace ApplicationView.DataModel.Repositories.IRepository
     public interface IAccountRepository
     {
         Task<Account> Login(string username, string userpass);
+        Account GetPermisoAfterLogin(string AccountId);
         String ChangePassword(Account entity);
         String UpdatePassword(string oldpass, Business business);
         List<Account> FilterAccountByBusinessId(int state, int page, int top, string businessId, string orderBy, string ascending, string name, ref int count);

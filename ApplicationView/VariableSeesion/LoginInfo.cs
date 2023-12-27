@@ -8,6 +8,7 @@ namespace ApplicationView.VariableSeesion
     {
         public static string IdAccount;
         public static string TurnId;
+        public static string OpenWorkTurnId;
         public static string IdUser;
         public static string IdRole;
         public static string IdBusiness;
@@ -30,5 +31,6 @@ namespace ApplicationView.VariableSeesion
         public static Int32 skipamount = 1;
         public static Boolean isSearch = false;
         public static string amountdayremaining;
+        public static bool IscashierOpen = false;
     }
 }

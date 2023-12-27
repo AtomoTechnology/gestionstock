@@ -156,6 +156,7 @@
             this.dataList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataList.Size = new System.Drawing.Size(962, 411);
             this.dataList.TabIndex = 26;
+            this.dataList.DoubleClick += new System.EventHandler(this.dataList_DoubleClick);
             // 
             // ProductName
             // 

@@ -4,9 +4,11 @@ using ApplicationView.Forms.MsgBox;
 using ApplicationView.Forms.RedesignForm;
 using ApplicationView.Patern.singleton;
 using ApplicationView.print;
+using ApplicationView.print.TiketInfo;
 using ApplicationView.Resolver.Helper;
 using ApplicationView.Resolver.HelperError.IExceptions;
 using ApplicationView.VariableSeesion;
+using BarControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,8 +39,6 @@ namespace ApplicationView.Forms.Sale
             this.FormBorderStyle = FormBorderStyle.None;
             this.Padding = new Padding(borderSize);
             this.btnclose.FlatAppearance.BorderSize = 0;
-            //this.panelTitleBar.BackColor = borderColor;
-            //this.BackColor = borderColor;
         }
 
         private void btnclose_Click(object sender, EventArgs e)
@@ -173,20 +173,11 @@ namespace ApplicationView.Forms.Sale
                 this.ShowLoading();
                 this.btnprint.Enabled = false;
                 var busniss = RepoPathern.BusnessService.GetById(LoginInfo.IdBusiness);
-                PrintHead.Head(busniss.BusinessName, busniss.Address, busniss.Cuit_Cuil, busniss.Grossrevenue, busniss.CreatedDate.Date.ToShortDateString(), LoginInfo.UserName, txtnrofact.Text);
-                decimal total = 0;
-                string mode = "";
-                int productquantity = 0;
-                foreach (DataGridViewRow row in dataList.Rows)
-                {
-                    var dto = (SaleDetailDto)row.DataBoundItem;
-                    total += dto.Subtotal;
-                    productquantity += dto.quantity;
-                    mode = dto.PaymentName;
-
-                    PrintSaleBody.Body(dto.ProductName, dto.SalePrice);
-                }
-                PrintFinishSale.Finish(total, mode, productquantity);
+                List<SaleDetailDto> saledetaildto = dataList.DataSource as List<SaleDetailDto>;
+                TiketWithPort.GetInstance().print(busniss.BusinessName, busniss.Address, busniss.Cuit_Cuil, busniss.Grossrevenue, busniss.CreatedDate.Date.ToShortDateString(), LoginInfo.UserName, txtnrofact.Text, saledetaildto);
+                this.txtnrofact.Text = String.Empty;
+                this.txtnrofact.Focus();
+                dataList.DataSource = null;
                 this.CloseLoading();
             }
         }
@@ -218,7 +209,12 @@ namespace ApplicationView.Forms.Sale
         }
         private void LoadList()
         {
-            this.dataList.DataSource = RepoPathern.SaleService.GetReprintTicket(txtnrofact.Text);
+
+            string fac = string.Concat(txtnrofact.Text.Where(c => !Char.IsWhiteSpace(c)));
+            List<SaleDetailDto> result = RepoPathern.SaleService.GetReprintTicket(fac);
+            if (result.Any())
+                this.dataList.DataSource = result;
+
             if (dataList.Rows.Count > 0)
             {
                 this.btnprint.Enabled = true;
@@ -236,6 +232,7 @@ namespace ApplicationView.Forms.Sale
                 this.dataList.Columns["InvoiceCode"].Visible = false;
                 this.dataList.Columns["ProductCode"].Visible = false;
                 this.dataList.Columns["PaymentName"].Visible = false;
+                this.dataList.Columns["CreatedDate"].Visible = false;
             }
         }
 
@@ -250,6 +247,11 @@ namespace ApplicationView.Forms.Sale
         {
             if (this.loading != null)
                 this.loading.Close();
+        }
+
+        private void dataList_DoubleClick(object sender, EventArgs e)
+        {
+
         }
     }
 }

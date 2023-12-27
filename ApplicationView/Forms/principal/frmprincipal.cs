@@ -37,8 +37,8 @@ namespace ApplicationView
             this.SegundVersion();
 
             random = new Random();
-            btnCloseChildForm.Visible = false;
-            btnCloseChildForm.Visible = false;
+            //btnCloseChildForm.Visible = false;
+            //btnCloseChildForm.Visible = false;
             this.ControlBox = false;
             //this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
@@ -81,10 +81,20 @@ namespace ApplicationView
         #region MediaSubMenu
         private void button2_Click(object sender, EventArgs e)
         {
-            this.ShowLoading();
-            //DisableButton(panelSaleSubMenu.Controls);
-            openChildForm(new frmsale(), sender, panelSaleSubMenu.Controls);
-            this.CloseLoading();
+            var result = RepoPathern.SaleService.GetCashier(LoginInfo.IdAccount);
+            if (result == null && LoginInfo.IscashierOpen)
+            {
+                this.btnstartsale.Enabled = false;
+                return;
+            }
+            else
+            {
+                this.ShowLoading();
+                //DisableButton(panelSaleSubMenu.Controls);
+                openChildForm(new frmsale(), sender, panelSaleSubMenu.Controls);
+                this.CloseLoading();
+            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -99,7 +109,9 @@ namespace ApplicationView
         {
             this.ShowLoading();
             //DisableButton(panelSaleSubMenu.Controls);
-            openChildForm(new frmcheckprice(), sender, panelSaleSubMenu.Controls);
+            //openChildForm(new frmcheckprice(), sender, panelSaleSubMenu.Controls);
+            frmcheckprice frm = new frmcheckprice();
+            frm.ShowDialog();
             this.CloseLoading();
         }
 
@@ -204,8 +216,8 @@ namespace ApplicationView
                 if (activeForm != null)
                     activeForm.Close();
 
-                if (!LoginInfo.IsSaleNoneClose)
-                    return;
+                //if (!LoginInfo.IsSaleNoneClose)
+                //    return;
 
                 ActivateButton(btnSender, Controls);
                 activeForm = childForm;
@@ -214,6 +226,12 @@ namespace ApplicationView
                 //childForm.Dock = DockStyle.Fill;
                 //panelChildForm.Controls.Add(childForm);
                 //panelChildForm.Tag = childForm;
+                var btn = (Button)btnSender;
+                if (LoginInfo.IscashierOpen && btn.Name == "btnstartsale")
+                {
+                    this.btnstartsale.Enabled = false;
+                    return;
+                }
                 childForm.BringToFront();
                 childForm.MdiParent = this;
                 childForm.Show();
@@ -282,8 +300,8 @@ namespace ApplicationView
                 }
                 else if (LoginInfo.changesession == true && LoginInfo.ischange == true)
                 {
-                    if (string.IsNullOrEmpty(LoginInfo.messegeaftercreateturn))
-                    {
+                    //if (string.IsNullOrEmpty(LoginInfo.messegeaftercreateturn))
+                    //{
                         String message = "Estas seguro quieres cambiar session";
                         String captacion = "Cambiar sessión";
                         MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -303,16 +321,20 @@ namespace ApplicationView
                             frm.label1.Text = "Cambiar sesión";
                             frm.Show();
                         }
-                    }
-                    else
-                    {
-                        RJMessageBox.Show(LoginInfo.messegeaftercreateturn, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoginInfo.messegeaftercreateturn = string.Empty;
-                        this.CloseLoading();
-                        newfrmlogin frm = new newfrmlogin();
-                        frm.label1.Text = "Iniciar sesión";
-                        frm.Show();
-                    }
+                    //}
+                    //else
+                    //{
+                    //    //RJMessageBox.Show(LoginInfo.messegeaftercreateturn, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //    //LoginInfo.messegeaftercreateturn = string.Empty;
+                    //    //this.CloseLoading();
+                    //    //newfrmlogin frm = new newfrmlogin();
+                    //    //frm.label1.Text = "Iniciar sesión";
+                    //    //frm.Show();
+
+
+                    //    //this.Close();
+                    //    Application.Restart();
+                    //}
                 }
                 this.CloseLoading();
             }
@@ -340,6 +362,10 @@ namespace ApplicationView
             this.ShowLoading();
             LoginInfo.ischange = true;
             LoginInfo.changesession = true;
+            var resp = RepoPathern.SaleService.GetCashier(LoginInfo.IdAccount);
+            if (resp != null)
+                LoginInfo.IscashierOpen = false;
+
             this.CloseLoading();
             this.Close();
         }
@@ -360,24 +386,43 @@ namespace ApplicationView
             {
 
                 #region Cerrar caja
-                Boolean isOpen= RepoPathern.OpenWorkRepoService.ChechCashierOpen(LoginInfo.IdAccount, LoginInfo.TurnId);
-                if (isOpen)
+                var resp = RepoPathern.SaleService.GetCashier(LoginInfo.IdAccount);
+                if (resp != null)
                 {
-                    String closemss = "Esta abierto el turno.\n¿Desee hacer cierre de caja?";
-                    String closecaptacion = "Salir";
-                    MessageBoxButtons closebuttons = MessageBoxButtons.YesNo;
-                    DialogResult clossresult = RJMessageBox.Show(closemss, closecaptacion, closebuttons);
-                    if (clossresult == System.Windows.Forms.DialogResult.Yes)
+                    frmclosecachier frm = new frmclosecachier();
+                    frm.ShowDialog();
+
+                    if (frm.isClosed)
                     {
-                        RepoPathern.OpenWorkRepoService.CloseCashier(LoginInfo.IdAccount, LoginInfo.TurnId);
+                        String msgnoneclose = "Hay una caja abierta, deseas salir del sistema?";
+                        String capta = "Salir";
+                        MessageBoxButtons btn = MessageBoxButtons.YesNo;
+                        DialogResult res = RJMessageBox.Show(msgnoneclose, capta, btn);
+
+                        if (res == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            this.CloseLoading();
+                            Environment.Exit(0);
+                            Application.Exit();
+                        }
+                        
                     }
                 }
-                #endregion
-                this.CloseLoading();
+                else
+                {
 
+                    this.CloseLoading();
+                    Environment.Exit(0);
+                    Application.Exit();
+                }
+                #endregion
+                if (LoginInfo.IscashierOpen == true)
+                {
+                    this.CloseLoading();
+                    Environment.Exit(0);
+                    Application.Exit();
+                }
                 this.CloseLoading();
-                Environment.Exit(0);
-                Application.Exit();
             }            
             this.CloseLoading();
         }
@@ -432,6 +477,7 @@ namespace ApplicationView
 
         private void frmprincipal_Load(object sender, EventArgs e)
         {
+            tmhour.Start();
             var isTurnOpenForUser = RepoPathern.OpenWorkRepoService.IsTurnOpenForUser(LoginInfo.IdAccount, LoginInfo.IdBusiness);
             if (isTurnOpenForUser != null)
             {
@@ -673,7 +719,7 @@ namespace ApplicationView
                     panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     ThemeColor.PrimaryColor = color;
                     ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
-                    btnCloseChildForm.Visible = true;
+                    //btnCloseChildForm.Visible = true;
                 }
             }
         }
@@ -778,7 +824,7 @@ namespace ApplicationView
         {
             this.ShowLoading();
             //DisableButton(panelSeguridySubMenu.Controls);
-            openChildForm(new frmopenworkturns(2), sender, panelSeguridySubMenu.Controls);
+            openChildForm(new frmclosecachier(), sender, panelSeguridySubMenu.Controls);
             this.CloseLoading();
         }
 
@@ -788,6 +834,19 @@ namespace ApplicationView
             //DisableButton(panelSeguridySubMenu.Controls);
             openChildForm(new frmbusiness(), sender, panelSeguridySubMenu.Controls);
             this.CloseLoading();
+        }
+
+        private void button20_Click_2(object sender, EventArgs e)
+        {
+            this.ShowLoading();
+            //DisableButton(panelSaleSubMenu.Controls);            
+            openChildForm(new frmreprinttiket(), sender, panelSaleSubMenu.Controls);
+            this.CloseLoading();
+        }
+
+        private void tmhour_Tick(object sender, EventArgs e)
+        {
+            lbltime.Text = DateTime.Now.ToLongTimeString(); // hora actual 
         }
     }
 }

@@ -6,6 +6,7 @@ using ApplicationView.Patern.singleton;
 using ApplicationView.Resolver.Enums;
 using ApplicationView.Resolver.Helper;
 using ApplicationView.Resolver.HelperError.IExceptions;
+using ApplicationView.Resolver.Security;
 using ApplicationView.Share;
 using ApplicationView.VariableSeesion;
 using System;
@@ -44,11 +45,11 @@ namespace ApplicationView.Forms.User
         {
             this.dataList.DataSource = RepoPathern.UserService.GetAll(1, LoginInfo.pageactual, LoginInfo.pagesize, "Id", "asc","", ref count);
             this.HideColumn();
-            this.GetPagination(Convert.ToInt32(dataList.Rows.Count));
+            this.GetPagination();
         }
-        private void GetPagination(int quantity)
+        private void GetPagination()
         {
-            if (quantity > 0)
+            if (count > 0)
             {
                 LoginInfo.pageamount = count;
                 LoginInfo.page = Math.Ceiling(LoginInfo.pageamount / LoginInfo.pagesize);
@@ -170,7 +171,7 @@ namespace ApplicationView.Forms.User
             if (!this.txtsearch.Text.Trim().Equals(""))
             {
                 this.dataList.DataSource = RepoPathern.UserService.GetAll(1, LoginInfo.pageactual, LoginInfo.pagesize, "Id", "asc", this.txtsearch.Text.Trim(), ref count);
-                this.GetPagination(Convert.ToInt32(dataList.Rows.Count));
+                this.GetPagination();
             }
             else
                 this.LoadList();
@@ -399,7 +400,7 @@ namespace ApplicationView.Forms.User
                             new AccountBE()
                             {
                                 UserName = this.txtusername.Text.Trim(),
-                                UserPass = this.txtpassword.Text.Trim(),
+                                UserPass = PassValidation.GetInstance().Encypt(this.txtpassword.Text.Trim()),
                                 RoleId = this.txtroleid.Text.Trim(),
                                 Confirm = false
                             }
@@ -460,11 +461,6 @@ namespace ApplicationView.Forms.User
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        //private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
-        //{
-        //    ReleaseCapture();
-        //    SendMessage(this.Handle, 0x112, 0xf012, 0);
-        //}
 
         protected override CreateParams CreateParams
         {
@@ -578,6 +574,30 @@ namespace ApplicationView.Forms.User
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnFirst_Click(object sender, EventArgs e)
+        {
+            ShareMethod.GetInstance().goFirst();
+            LoadList();
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            ShareMethod.GetInstance().goPrevious();
+            LoadList();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            ShareMethod.GetInstance().goNext();
+            LoadList();
+        }
+
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            ShareMethod.GetInstance().goLast(this.count);
+            LoadList();
         }
     }
 }

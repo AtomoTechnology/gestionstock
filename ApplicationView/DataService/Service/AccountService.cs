@@ -57,6 +57,23 @@ namespace ApplicationView.DataService.Service
             }
         }
 
+        public AccountBE GetPermisoAfterLogin(string AccountId)
+        {
+            try
+            {
+                var entity =  _repo.GetPermisoAfterLogin(AccountId);
+                return _maapper.Map<AccountBE>(entity);
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
+
         public async Task<AccountBE> Login(string username, string userpass) {
             try
             {

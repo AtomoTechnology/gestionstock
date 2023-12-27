@@ -43,7 +43,8 @@ namespace ApplicationView.DataService.Profiles
             CreateMap<Role, RoleBE>().ReverseMap();
             CreateMap<Sale, SaleBE>().ReverseMap();
             CreateMap<SaleDetail, SaleDetailBE>().ReverseMap();
-            CreateMap<SaleDetail, SaleDetailDto>().ReverseMap();
+            CreateMap<SaleDetail, SaleDetailDto>().ReverseMap(); 
+            CreateMap<ClossCashier, ClossCashierBE>().ReverseMap();
 
             CreateMap<SettingBusiness, SettingBusinessBE>().ReverseMap();
             CreateMap<SubModuleAccount, SubModuleAccountBE>().ReverseMap();

@@ -78,11 +78,11 @@ namespace ApplicationView.DataService.Service
             }
         }
 
-        public List<SearchSaleSPDTO> GetAllSaleHistoric(DateTime datefrom, DateTime dateto, string turn, int page, int pageSize)
+        public List<SearchSaleSPDTO> GetAllSaleHistoric(DateTime datefrom, DateTime dateto, string user, int page, int pageSize)
         {
             try
             {
-                var entity = _repo.GetAllSaleHistoric(datefrom, dateto, turn, page, pageSize).ToList();                
+                var entity = _repo.GetAllSaleHistoric(datefrom, dateto,user, page, pageSize).ToList();                
                 return _maapper.Map<List<SearchSaleSPDTO>>(entity);
             }
             catch (ApiBusinessException ex)
@@ -112,11 +112,52 @@ namespace ApplicationView.DataService.Service
             }
         }
 
+        public ClossCashierBE GetCashier(string AccountId)
+        {
+            try
+            {
+                var entities = _repo.GetCashier(AccountId);
+                return _maapper.Map<ClossCashierBE>(entities);
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
+
+        public ClossCashierBE GetAccountredemption(string AccountId, string OpenWorkTurnid)
+        {
+            try
+            {
+                var entities = _repo.GetAccountredemption(AccountId, OpenWorkTurnid);
+                return _maapper.Map<ClossCashierBE>(entities);
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
         public List<TurnsBE> GetAllTurn()
         {
             try
             {
                 var entities = _repo.GetAllTurn();
+                if (entities.Count > 0)
+                {
+                    entities.Add(new Turns()
+                    {
+                        TurnName = "All",
+                        Id = "All"
+                    });
+                }
                 return _maapper.Map<List<TurnsBE>>(entities);
             }
             catch (ApiBusinessException ex)
@@ -167,7 +208,8 @@ namespace ApplicationView.DataService.Service
                             InvoiceCode = item.InvoiceCode,
                             ProductCode = item.ProductCode,
                             PaymentName = item.PaymentName,
-                            Subtotal = item.SalePrice * item.quantity
+                            Subtotal = item.SalePrice * item.quantity,
+                            CreatedDate = item.CreatedDate
                         });
                     }
                 }

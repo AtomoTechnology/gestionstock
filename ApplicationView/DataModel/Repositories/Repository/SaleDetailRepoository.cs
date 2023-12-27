@@ -1,6 +1,7 @@
 ﻿using ApplicationView.DataModel.Context;
 using ApplicationView.DataModel.Entities;
 using ApplicationView.DataModel.Repositories.IRepository;
+using ApplicationView.Resolver.Enums;
 using ApplicationView.Resolver.HelperError.Handlers;
 using ApplicationView.Resolver.HelperError.IExceptions;
 using Dapper;
@@ -40,6 +41,7 @@ namespace ApplicationView.DataModel.Repositories.Repository
                                 isfirst = 1,
                                 saleId = saleDetail.SaleId,
                                 lotId = lotId,
+                                SaleType = CashierState.GetStateCashier(1),
                                 saledetailId = saleDetail.Id,
                                 AccountId = "",
                                 PaymentTypeId = "",
@@ -50,6 +52,15 @@ namespace ApplicationView.DataModel.Repositories.Repository
                             };
 
                             IEnumerable<SaleDetailEntityDto> entity = ctx.Query<SaleDetailEntityDto>("[dbo].[Sp_Insert_Sale]", values, commandType: CommandType.StoredProcedure);
+                            if (entity.Any())
+                            {
+                                var resulterror = entity.Where(u => u.ErrorMessage == "No tiene stock para ese producto.").ToList();
+                                if (resulterror.Any())
+                                {
+                                    ctx.Close();
+                                    throw new ApiBusinessException("3000", entity.FirstOrDefault().ErrorMessage, System.Net.HttpStatusCode.NotFound, "Http");
+                                }
+                            }
                             ctx.Close();
                             return entity;
                         }

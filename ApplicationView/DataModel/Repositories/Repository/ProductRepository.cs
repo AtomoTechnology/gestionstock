@@ -38,7 +38,14 @@ namespace ApplicationView.DataModel.Repositories.Repository
                 if (lot.Product.SalePrice <= 0)
                     throw new ApiBusinessException("6000", "Debe ingresar el precio de venta", System.Net.HttpStatusCode.NotFound, "Http");
 
-                var lote = _context.Lots.Where(u => u.LotCode == lot.LotCode);
+                IQueryable<Lot> lote = _context.Lots.Where(u => u.LotCode == lot.LotCode);
+                IQueryable<Product> code = _context.Products.Where(u => u.ProductCode == lot.Product.ProductCode);
+                IQueryable<Product> ProductName = _context.Products.Where(u => u.ProductName == lot.Product.ProductName);
+
+                if (ProductName.Any())
+                    throw new ApiBusinessException("3000", "Ya existe un producto con ese nombre", System.Net.HttpStatusCode.NotFound, "Http");
+                if (code.Any())
+                    throw new ApiBusinessException("3000", "Este codigo de producto ya pertenezca a otro producto.\n Le corresponde al producto: " + "'" + code.FirstOrDefault().ProductName + "'", System.Net.HttpStatusCode.NotFound, "Http");
                 if (lote.Any())
                     throw new ApiBusinessException("3000", "Este número de lote ya pertenezca a otro producto.\n Le corresponde al producto: " + "'" + lote.FirstOrDefault().Product.ProductName + "'", System.Net.HttpStatusCode.NotFound, "Http");
 
@@ -145,11 +152,18 @@ namespace ApplicationView.DataModel.Repositories.Repository
                         try
                         {
                             ctx.Open();
-                            var values = new
+                            List<ProductWithStock> entity;                            
+
+                            if (codeRef.Contains("Pro"))
                             {
-                                codeRef = codeRef
-                            };
-                            List<ProductWithStock> entity = ctx.Query<ProductWithStock>("[dbo].[Sp_Get_Product_CodRef]", values, commandType: CommandType.StoredProcedure).ToList();
+                                var values = new { codeRef = codeRef };
+                                entity = ctx.Query<ProductWithStock>("[dbo].[Sp_Get_Product_CodRef_Pro]", values, commandType: CommandType.StoredProcedure).ToList();
+                            }
+                            else
+                            {
+                                var values = new{ codeRef = codeRef };
+                                entity = ctx.Query<ProductWithStock>("[dbo].[Sp_Get_Product_CodRef]", values, commandType: CommandType.StoredProcedure).ToList();
+                            }
                             if (entity.Any())
                             {
                                 int sum = entity.Sum(u => u.Stock);
@@ -514,9 +528,9 @@ namespace ApplicationView.DataModel.Repositories.Repository
         {
             try
             {
-                var result = _context.Sales.OrderByDescending(u => u.InvoiceCode).ToList();
+                var result = _context.Sales.ToList();
                 if (result.Any())
-                    return result.FirstOrDefault().InvoiceCode + 1;
+                    return result.Max(u => u.InvoiceCode) + 1;
                 return 1;
             }
             catch (ApiBusinessException ex)

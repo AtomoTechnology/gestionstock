@@ -69,7 +69,7 @@ namespace ApplicationView.DataModel.Configuration
                             },                            
                         #endregion
 
-            #region Product
+                        #region Product
                                 new SubModule()
                                 {
                                     Id = "dbb0673c-3589-4e98-a42a-103cb44697d9",
@@ -320,7 +320,7 @@ namespace ApplicationView.DataModel.Configuration
                                  {
                                      Id = "27d6db63-5a85-438d-98f7-63c744059223",
                                      ModuleId = "efa9e573-4308-4d88-99cf-d2c51c85cd54",
-                                     Name = "Modificar rol",
+                                     Name = "Modificar permiso",
                                      ActionName = "btnmodifyrol",
                                      Description = "Modificar",
                                      CreatedDate = System.DateTime.Now,

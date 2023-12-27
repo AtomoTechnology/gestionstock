@@ -68,7 +68,7 @@ namespace ApplicationView.DataModel.Repositories.Repository
 
                 _context.Add(entity);
                 _context.SaveChanges();
-                return "La Promocion fue guardada con exito - " + entity.PromoCode;
+                return "La Promocion fue guardada con exito _ " + finalcode;
             }
             catch (ApiBusinessException ex)
             {

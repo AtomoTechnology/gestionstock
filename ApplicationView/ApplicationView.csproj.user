@@ -40,6 +40,9 @@
     <Compile Update="Forms\principal\frmprincipal.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Product\frmcodebara.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Product\frmiexpiredDate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,13 +91,22 @@
     <Compile Update="Forms\Sale\frmcheckprice.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Sale\frmclosecachier.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Sale\frmclosepay.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Sale\frmdetailLegit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Sale\frmdetailxturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Sale\frmlegit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Sale\frmmorethenone.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Sale\frmreprinttiket.cs">
@@ -104,6 +116,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Sale\frmsalehistoric.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\turnswork\frmdetailturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\turnswork\frmdetailturnlist.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\turnswork\frmopenworkturns.cs">

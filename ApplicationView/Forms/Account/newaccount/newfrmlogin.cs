@@ -147,6 +147,7 @@ namespace PlayerUI.Forms
                     }
                     else if (Datos.Confirm == false)
                     {
+
                         LoginInfo.IdAccount = Datos.Id;
                         LoginInfo.IdUser = Datos.UserId;
                         LoginInfo.IdRole = Datos.RoleId;
@@ -160,6 +161,12 @@ namespace PlayerUI.Forms
 
                         this.txtuser.Text = String.Empty;
                         this.txtpass.Text = String.Empty;
+                        var openwornturn = RepoPathern.OpenWorkRepoService.GetOpenWorkTurnByAccountId(Datos.Id);
+                        if (openwornturn != null)
+                        {
+                            LoginInfo.OpenWorkTurnId = openwornturn.Id;
+                            LoginInfo.TurnId = openwornturn.TurnId;
+                        }
 
                         LoginInfo.isChangeCancelPass = true;
                         if (this.loading != null)
@@ -183,6 +190,13 @@ namespace PlayerUI.Forms
 
                         LoginInfo.FirstName = Datos.FirstName;
                         LoginInfo.LastName = Datos.LastName;
+
+                        var openwornturn = RepoPathern.OpenWorkRepoService.GetOpenWorkTurnByAccountId(Datos.Id);
+                        if (openwornturn != null)
+                        {
+                            LoginInfo.OpenWorkTurnId = openwornturn.Id;
+                            LoginInfo.TurnId = openwornturn.TurnId;
+                        }
 
                         this.txtuser.Text = String.Empty;
                         this.txtpass.Text = String.Empty;

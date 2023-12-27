@@ -85,11 +85,11 @@ namespace ApplicationView.Forms.Roles
                                     this.chkstartsale.Tag = submod.Id;
                                     this.chkstartsale.CheckedChanged += Chkstartsale_CheckedChanged;
                                     break;
-                                case "Consultar precio":
+                                case "Consultar venta":
                                     this.chkconsultantsale.Tag = submod.Id;
                                     this.chkconsultantsale.CheckedChanged += Chkconsultantsale_CheckedChanged;
                                     break;
-                                case "Consultar venta":
+                                case "Consultar precio":
                                     this.chkconsultantprice.Tag = submod.Id;
                                     this.chkconsultantprice.CheckedChanged += Chkconsultantprice_CheckedChanged;
                                     break;
@@ -197,7 +197,7 @@ namespace ApplicationView.Forms.Roles
                                     this.chkcloseturn.Tag = submod.Id;
                                     this.chkcloseturn.CheckedChanged += Chkcloseturn_CheckedChanged;
                                     break;
-                                case "Modificar rol":
+                                case "Modificar permiso":
                                     this.chkmodifyrol.Tag = submod.Id;
                                     this.chkmodifyrol.CheckedChanged += Chkmodifyrol_CheckedChanged; ;
                                     break;

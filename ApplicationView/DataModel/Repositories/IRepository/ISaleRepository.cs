@@ -11,7 +11,7 @@ namespace ApplicationView.DataModel.Repositories.IRepository
     {
         List<Sale> GetAll(int state, int page, int top, string orderBy, string ascending, string name, ref int count);
         List<PaymentType> GetAllPaymentType(int state);
-        IEnumerable<SearchSaleSP> GetAllSaleHistoric(DateTime datefrom, DateTime dateto, string turn, int page, int pageSize);
+        IEnumerable<SearchSaleSP> GetAllSaleHistoric(DateTime datefrom, DateTime dateto,string user, int page, int pageSize);
         IEnumerable<SearchSaleSP> GetAllSaleHistoricExport(DateTime datefrom, DateTime dateto, string turn);
         Sale GetById(string id);
         List<Turns> GetAllTurn();
@@ -21,5 +21,7 @@ namespace ApplicationView.DataModel.Repositories.IRepository
         String Delete(string id);
         String RemoveNoneSale(SaleDetail saleDetailId, string LotId, string accountId, DeleteSaleEnum enumtype);
         String UpdateWithLegit(SaleWithLogit entity);
+        ClossCashier GetCashier(string AccountId);
+        ClossCashier GetAccountredemption(string AccountId, string OpenWorkTurnid);
     }
 }

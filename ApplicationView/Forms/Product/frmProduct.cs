@@ -28,7 +28,6 @@ namespace ApplicationView.Forms.Product
         int count = 0;
         private int borderRadius = 20;
         private int borderSize = 2;
-        //private Color borderColor = Color.White;
         private Color borderColor = Color.FromArgb(128, 128, 255);
         public frmProduct()
         {
@@ -39,8 +38,6 @@ namespace ApplicationView.Forms.Product
             this.FormBorderStyle = FormBorderStyle.None;
             this.Padding = new Padding(borderSize);
             this.btnclose.FlatAppearance.BorderSize = 0;
-            //this.panelTitleBar.BackColor = borderColor;
-            //this.BackColor = borderColor;
         }
         private void LoadList()
         {
@@ -429,10 +426,14 @@ namespace ApplicationView.Forms.Product
                     RJMessageBox.Show(ex.MessageError, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     dtTP.Value = DateTime.Now;
                 }
-                if (ex.MessageError.Equals("Esta vencido el producto para ese lote"))
+                else if (ex.MessageError.Equals("Esta vencido el producto para ese lote"))
                 {
                     RJMessageBox.Show(ex.MessageError, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     dtTP.Value = DateTime.Now;
+                }
+                else
+                {
+                    RJMessageBox.Show(ex.MessageError, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
             }

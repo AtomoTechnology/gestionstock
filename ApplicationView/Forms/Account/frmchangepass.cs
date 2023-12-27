@@ -62,7 +62,7 @@ namespace ApplicationView.Forms.Account
                 {
                     var be = new AccountBE()
                     {
-                        UserPass = txtnewpass.Text,
+                        UserPass = PassValidation.GetInstance().Encypt(txtnewpass.Text.Trim()),
                         Confirm = true,
                         Id = LoginInfo.IdAccount,
                     };
@@ -70,15 +70,15 @@ namespace ApplicationView.Forms.Account
                     if (!string.IsNullOrEmpty(result))
                     {
                         LoginInfo.isChangePass = true;
-                        RJMessageBox.Show(result, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RJMessageBox.Show(result+"\n Recuarda el proximo logueo, hay que usar la nueva contraseña.", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     
-                    frmPrincipal frm = new frmPrincipal();
-                    frm.Close();
+                    //frmPrincipal frm = new frmPrincipal();
+                    //frm.Close();
 
-                    newfrmlogin frmlog = new newfrmlogin();
+                    //newfrmlogin frmlog = new newfrmlogin();
                     this.Close();
-                    frmlog.ShowDialog();
+                    //frmlog.ShowDialog();
                 }
             }
             catch (ApiBusinessException ex)

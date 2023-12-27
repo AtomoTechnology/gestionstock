@@ -1,5 +1,6 @@
 ﻿using ApplicationView.BusnessEntities.Dtos;
 using ApplicationView.exportExcel;
+using ApplicationView.Forms.Loading;
 using ApplicationView.Forms.MsgBox;
 using ApplicationView.Forms.RedesignForm;
 using ApplicationView.Patern.singleton;
@@ -24,10 +25,13 @@ namespace ApplicationView.Forms.Sale
         private int borderSize = 2;
         //private Color borderColor = Color.White;
         private Color borderColor = Color.FromArgb(128, 128, 255);
+
+        SplashForm loading;
         public frmsalehistoric()
         {
             InitializeComponent();
-            LoadTurns();
+            //LoadTurns();
+            LoadUser();
             this.dtpfrom.Value = DateTime.Now.AddDays(-1);
             LoginInfo.pageactual = 1;
 
@@ -117,17 +121,29 @@ namespace ApplicationView.Forms.Sale
         {
             try
             {
-                var result = RepoPathern.SaleService.GetAllSaleHistoric(dtpfrom.Value, dtpto.Value, cbturns.SelectedValue.ToString(), LoginInfo.pageactual, LoginInfo.pagesize);
+                if (dtpfrom.Value >= dtpto.Value)
+                {
+                    RJMessageBox.Show("La fecha hasta no puede ser menor que la fecha desde", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                var result = RepoPathern.SaleService.GetAllSaleHistoric(dtpfrom.Value, dtpto.Value, cbuser.SelectedValue.ToString(), LoginInfo.pageactual, LoginInfo.pagesize);
+                if (result.Count > 0)
+                {
+                    this.dataList.DataSource = result;
+                    if (this.dataList.Columns.Count == 0)
+                        this.btnexport.Enabled = false;
+                    else
+                        this.btnexport.Enabled = true;
 
-                this.dataList.DataSource = result;
-                if (this.dataList.Columns.Count == 0)
-                    this.btnexport.Enabled = false;
+                    this.LoadGraph(result);
+                    this.HideColumn();
+                    this.GetPagination(Convert.ToInt32(dataList.Rows.Count));
+                }
                 else
-                    this.btnexport.Enabled = true;
-
-                this.LoadGraph(result);
-                this.HideColumn();
-                this.GetPagination(Convert.ToInt32(dataList.Rows.Count));
+                {
+                    RJMessageBox.Show("No hubo venta para este rango de fecha para este usuario", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+               
             }
             catch (ApiBusinessException ex)
             {
@@ -138,13 +154,31 @@ namespace ApplicationView.Forms.Sale
                 RJMessageBox.Show(ex.Message, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void LoadTurns()
+        //private void LoadTurns()
+        //{
+        //    try
+        //    {
+        //        this.cbturns.DataSource = RepoPathern.SaleService.GetAllTurn();
+        //        this.cbturns.DisplayMember = "TurnName";
+        //        this.cbturns.ValueMember = "Id";
+        //    }
+        //    catch (ApiBusinessException ex)
+        //    {
+        //        RJMessageBox.Show(ex.MessageError, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        RJMessageBox.Show(ex.Message, "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
+        private void LoadUser()
         {
             try
             {
-                this.cbturns.DataSource = RepoPathern.SaleService.GetAllTurn();
-                this.cbturns.DisplayMember = "TurnName";
-                this.cbturns.ValueMember = "Id";
+                this.cbuser.DataSource = RepoPathern.UserService.GetAllAccounts();
+                this.cbuser.DisplayMember = "UserName";
+                this.cbuser.ValueMember = "Id";
             }
             catch (ApiBusinessException ex)
             {
@@ -205,18 +239,32 @@ namespace ApplicationView.Forms.Sale
 
         private void frmsalehistoric_Load(object sender, EventArgs e)
         {
-            this.LoadList();
+            //this.LoadList();
         }
 
         private void btnsearch_Click(object sender, EventArgs e)
         {
+            this.ShowLoading();
+            LoginInfo.pageactual = 1;
             this.LoadList();
+            this.CloseLoading();
         }
 
         private void btnFirst_Click(object sender, EventArgs e)
         {
             ShareMethod.GetInstance().goFirst();
             LoadList();
+        }
+        private void ShowLoading()
+        {
+            loading = new SplashForm();
+            loading.Show();
+        }
+
+        private void CloseLoading()
+        {
+            if (this.loading != null)
+                this.loading.Close();
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
@@ -370,16 +418,26 @@ namespace ApplicationView.Forms.Sale
                     //LogicaExcel.Instancia.getExcellFromPlus(campo, form.FileName);
                     //_servicereporte.
                     ExportData pro = new ExportData();
-                    fields = RepoPathern.SaleService.GetAllSaleHistoricExport(dtpfrom.Value, dtpto.Value, cbturns.SelectedValue.ToString());
-                    pro.ExportExcel(form.FileName, fields, "Prueba");
-                    if (RJMessageBox.Show(this, "¿Desea abrir el archivo?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        System.Diagnostics.Process.Start(form.FileName);
-                    }
+                    //fields = RepoPathern.SaleService.GetAllSaleHistoricExport(dtpfrom.Value, dtpto.Value, cbturns.SelectedValue.ToString());
+                    //pro.ExportExcel(form.FileName, fields, "Prueba");
+                    //if (RJMessageBox.Show(this, "¿Desea abrir el archivo?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    //{
+                    //    System.Diagnostics.Process.Start(form.FileName);
+                    //}
                 }
             //}
         }
-      
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btndetailturn_Click(object sender, EventArgs e)
+        {
+            frmdetailxturn frm = new frmdetailxturn();
+            frm.ShowDialog();
+        }
     }
     public class HistoricSale
     {

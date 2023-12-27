@@ -6,6 +6,7 @@ using ApplicationView.Resolver.Helper;
 using ApplicationView.Resolver.HelperError.IExceptions;
 using ApplicationView.Share;
 using ApplicationView.VariableSeesion;
+//using IronBarCode;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -312,7 +313,14 @@ namespace ApplicationView.Forms.Product
                     be.Price = Convert.ToDecimal(txtSalePrice.Text);
 
                     if (Isnuevo)
+                    {
                         resp = RepoPathern.PromotionService.Create(be);
+                        var split = resp.Split('_');
+                        //frmcodebara frm = new frmcodebara(split[1], BarcodeWriterEncoding.Code128);
+                        //frm.ShowDialog();
+                        RJMessageBox.Show(split[0], "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                     else
                         resp = RepoPathern.PromotionService.Update(txtcode.Text.Trim(), be).ToString();
 

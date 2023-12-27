@@ -112,7 +112,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 70);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1123, 790);
+            this.tabControl1.Size = new System.Drawing.Size(1123, 697);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -129,7 +129,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1115, 757);
+            this.tabPage1.Size = new System.Drawing.Size(1115, 664);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Lista";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -157,7 +157,7 @@
             this.groupBox5.Controls.Add(this.btnLast);
             this.groupBox5.Controls.Add(this.btnPrevious);
             this.groupBox5.Controls.Add(this.btnFirst);
-            this.groupBox5.Location = new System.Drawing.Point(401, 674);
+            this.groupBox5.Location = new System.Drawing.Point(401, 591);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(705, 63);
             this.groupBox5.TabIndex = 2;
@@ -322,7 +322,7 @@
             this.dataList.RowHeadersWidth = 51;
             this.dataList.RowTemplate.Height = 29;
             this.dataList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataList.Size = new System.Drawing.Size(1101, 547);
+            this.dataList.Size = new System.Drawing.Size(1101, 475);
             this.dataList.TabIndex = 0;
             this.dataList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataList_CellContentClick);
             this.dataList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataList_CellDoubleClick);
@@ -390,7 +390,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1115, 757);
+            this.tabPage2.Size = new System.Drawing.Size(1115, 664);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -404,9 +404,9 @@
             this.groupBox1.Controls.Add(this.btnedit);
             this.groupBox1.Controls.Add(this.btnsave);
             this.groupBox1.Controls.Add(this.btnnew);
-            this.groupBox1.Location = new System.Drawing.Point(6, 16);
+            this.groupBox1.Location = new System.Drawing.Point(6, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1106, 725);
+            this.groupBox1.Size = new System.Drawing.Size(1106, 655);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -416,9 +416,9 @@
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.txtpassword);
             this.groupBox4.Controls.Add(this.label16);
-            this.groupBox4.Location = new System.Drawing.Point(15, 497);
+            this.groupBox4.Location = new System.Drawing.Point(15, 485);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1076, 115);
+            this.groupBox4.Size = new System.Drawing.Size(1076, 98);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos del usuario";
@@ -470,7 +470,7 @@
             this.groupBox3.Controls.Add(this.txtlastname);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Location = new System.Drawing.Point(15, 260);
+            this.groupBox3.Location = new System.Drawing.Point(15, 249);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1076, 231);
             this.groupBox3.TabIndex = 16;
@@ -711,7 +711,7 @@
             this.btncancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btncancel.Image = global::ApplicationView.Properties.Resources.error;
             this.btncancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btncancel.Location = new System.Drawing.Point(881, 644);
+            this.btncancel.Location = new System.Drawing.Point(941, 593);
             this.btncancel.Name = "btncancel";
             this.btncancel.Size = new System.Drawing.Size(151, 48);
             this.btncancel.TabIndex = 7;
@@ -725,7 +725,7 @@
             this.btnedit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnedit.Image = global::ApplicationView.Properties.Resources.documentediting_editdocuments_text_documentedi_2820;
             this.btnedit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnedit.Location = new System.Drawing.Point(725, 644);
+            this.btnedit.Location = new System.Drawing.Point(785, 593);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(151, 48);
             this.btnedit.TabIndex = 6;
@@ -739,7 +739,7 @@
             this.btnsave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnsave.Image = global::ApplicationView.Properties.Resources.GuardarComVen;
             this.btnsave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnsave.Location = new System.Drawing.Point(569, 644);
+            this.btnsave.Location = new System.Drawing.Point(629, 593);
             this.btnsave.Name = "btnsave";
             this.btnsave.Size = new System.Drawing.Size(151, 48);
             this.btnsave.TabIndex = 5;
@@ -753,7 +753,7 @@
             this.btnnew.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnnew.Image = global::ApplicationView.Properties.Resources.cancelcomvent;
             this.btnnew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnnew.Location = new System.Drawing.Point(412, 644);
+            this.btnnew.Location = new System.Drawing.Point(472, 593);
             this.btnnew.Name = "btnnew";
             this.btnnew.Size = new System.Drawing.Size(151, 48);
             this.btnnew.TabIndex = 4;
@@ -806,7 +806,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1137, 862);
+            this.ClientSize = new System.Drawing.Size(1137, 771);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

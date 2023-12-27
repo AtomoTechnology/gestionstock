@@ -7,7 +7,10 @@ namespace ApplicationView.DataModel.Repositories.IRepository
     public interface IOpenWorkTurnsRepository
     {
         List<OpenWorkTurn> GetAll(int state, int page, int top, string orderBy, string ascending, string name, ref int count);
+        List<OpenWorkTurn> GetAll(string AccountId, int page, int top, string orderBy, string ascending, string name, ref int count);
         OpenWorkTurn GetById(string id);
+        OpenWorkTurn GetOpenWorkTurnByAccountId(string AccountId);
+        bool CloseWorkUser(string accountId);
         bool GetFilterOpenWorkTurnById(string id);
         OpenWorkTurn IsTurnOpenForUser(string accountid, string busnissid);
         String Create(OpenWorkTurn openturns);

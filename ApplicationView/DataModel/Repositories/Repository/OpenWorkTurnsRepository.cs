@@ -31,7 +31,7 @@ namespace ApplicationView.DataModel.Repositories.Repository
                     throw new ApiBusinessException("2000", "Debe selecionar el turno", System.Net.HttpStatusCode.NotFound, "Http");
                 if (string.IsNullOrEmpty(openturns.AccountId))
                     throw new ApiBusinessException("2000", "Debe selecionar el usuario", System.Net.HttpStatusCode.NotFound, "Http");
-                var  entiity = _context.OpenWorkTurns.Where(u => u.AccountId == openturns.AccountId && u.TurnId == openturns.TurnId && u.state == (Int32)StateEnum.Activeted).ToList();
+                var  entiity = _context.OpenWorkTurns.Where(u => u.AccountId == openturns.AccountId && u.state == (Int32)StateEnum.Activeted).ToList();
                 if (entiity.Any()) 
                     throw new ApiBusinessException("2000", "Ya existe un turno abierto para ese usuario", System.Net.HttpStatusCode.NotFound, "Http");
 
@@ -42,7 +42,7 @@ namespace ApplicationView.DataModel.Repositories.Repository
 
                 _context.Add(openturns);
                 _context.SaveChanges();
-                return "El turno fue abierto con exito";
+                return "El turno fue abierto con exito-"+ openturns.Id;
             }
             catch (ApiBusinessException ex)
             {
@@ -112,6 +112,10 @@ namespace ApplicationView.DataModel.Repositories.Repository
 
                 return entities.ToList();
             }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
             catch (Exception ex)
             {
                 throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
@@ -123,6 +127,10 @@ namespace ApplicationView.DataModel.Repositories.Repository
             {
                 var result = _context.OpenWorkTurns.SingleOrDefault(u => u.Id == id && u.state == (Int32)TurnEnum.Activeted);
                 return result;
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
             }
             catch (Exception ex)
             {
@@ -149,9 +157,9 @@ namespace ApplicationView.DataModel.Repositories.Repository
         {
             try
             {
-                var result = _context.OpenWorkTurns.SingleOrDefault(u => u.AccountId == accountid && u.Account.User.BusinessId == busnissid && u.state == (Int32)TurnEnum.Activeted);
-                if (result != null)
-                    return result;
+                var result = _context.OpenWorkTurns.Where(u => u.AccountId == accountid && u.Account.User.BusinessId == busnissid && u.state == (Int32)TurnEnum.Activeted);
+                if (result.Any())
+                    return result.FirstOrDefault();
                 return null;
             }
             catch (Exception ex)
@@ -201,9 +209,88 @@ namespace ApplicationView.DataModel.Repositories.Repository
                     return false;
                 return true;
             }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
             catch (Exception ex)
             {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
+
+        public Boolean CloseWorkUser(string accountId)
+        {
+            try
+            {
+                var result = _context.OpenWorkTurns.SingleOrDefault(u => u.AccountId == accountId && u.state == (Int32)TurnEnum.Activeted);
+                var sale = _context.Sales.Where(u => u.AccountId == accountId && u.SaleType == CashierState.GetStateCashier(1));
+                if (result == null)
+                    throw new ApiBusinessException("2000", "No hay caja abierta para cerrar", System.Net.HttpStatusCode.NotFound, "Http");
+                result.state = (Int32)TurnEnum.CloseTurn;
+                result.FinalDate = DateTime.Now;
+                if (sale.Any())
+                {
+                    foreach (var item in sale)
+                    {
+                        item.SaleType = CashierState.GetStateCashier(2);
+                    }
+                }
+                var p = _context.SaveChanges();
+                if (result != null)
+                    return true;
                 return false;
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
+        public List<OpenWorkTurn> GetAll(string AccountId, int page, int top, string orderBy, string ascending, string name, ref int count)
+        {
+            try
+            {
+                var entities = _context.OpenWorkTurns.Include(u => u.Turn).Include(p => p.Account.User).Where(u => u.AccountId == AccountId && (u.Turn.TurnName == name || string.IsNullOrEmpty(name)));
+                count = entities.Count();
+                var skipAmount = 0;
+                if (page > 0)
+                    skipAmount = top * (page - 1);
+
+                entities = entities
+               .OrderByPropertyOrField(orderBy, ascending)
+               .Skip(skipAmount)
+               .Take(top);
+
+                return entities.ToList();
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+        }
+
+        public OpenWorkTurn GetOpenWorkTurnByAccountId(string AccountId)
+        {
+            try
+            {
+                var result = _context.OpenWorkTurns.SingleOrDefault(u => u.AccountId == AccountId && u.state == (Int32)TurnEnum.Activeted && u.FinalDate == null);
+                return result;
+            }
+            catch (ApiBusinessException ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
+            }
+            catch (Exception ex)
+            {
+                throw HandlerExceptions.GetInstance().RunCustomExceptions(ex);
             }
         }
     }

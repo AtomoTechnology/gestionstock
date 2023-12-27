@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.btnLast = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnFirst = new System.Windows.Forms.Button();
-            this.btnsearch = new System.Windows.Forms.Button();
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataList = new System.Windows.Forms.DataGridView();
@@ -46,16 +46,20 @@
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnclose = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(3, 12);
+            this.tabControl1.Location = new System.Drawing.Point(3, 63);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(964, 538);
@@ -63,8 +67,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.groupBox5);
-            this.tabPage1.Controls.Add(this.btnsearch);
             this.tabPage1.Controls.Add(this.txtsearch);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.dataList);
@@ -75,6 +79,19 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Lista";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Image = global::ApplicationView.Properties.Resources.Detective_icon_icons_com_54187;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(754, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(161, 53);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Visualizar";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -127,6 +144,7 @@
             this.btnNext.TabIndex = 3;
             this.btnNext.Text = ">";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnLast
             // 
@@ -136,6 +154,7 @@
             this.btnLast.TabIndex = 2;
             this.btnLast.Text = ">|";
             this.btnLast.UseVisualStyleBackColor = true;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
             // 
             // btnPrevious
             // 
@@ -145,6 +164,7 @@
             this.btnPrevious.TabIndex = 1;
             this.btnPrevious.Text = "<";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnFirst
             // 
@@ -154,21 +174,14 @@
             this.btnFirst.TabIndex = 0;
             this.btnFirst.Text = "|<";
             this.btnFirst.UseVisualStyleBackColor = true;
-            // 
-            // btnsearch
-            // 
-            this.btnsearch.Location = new System.Drawing.Point(668, 16);
-            this.btnsearch.Name = "btnsearch";
-            this.btnsearch.Size = new System.Drawing.Size(171, 29);
-            this.btnsearch.TabIndex = 3;
-            this.btnsearch.Text = "Buscar";
-            this.btnsearch.UseVisualStyleBackColor = true;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
             // txtsearch
             // 
-            this.txtsearch.Location = new System.Drawing.Point(94, 18);
+            this.txtsearch.Location = new System.Drawing.Point(137, 6);
+            this.txtsearch.Multiline = true;
             this.txtsearch.Name = "txtsearch";
-            this.txtsearch.Size = new System.Drawing.Size(568, 27);
+            this.txtsearch.Size = new System.Drawing.Size(568, 53);
             this.txtsearch.TabIndex = 2;
             // 
             // label1
@@ -235,20 +248,73 @@
             this.Phone.Name = "Phone";
             this.Phone.ReadOnly = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.btnclose);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(973, 66);
+            this.panel1.TabIndex = 15;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // btnclose
+            // 
+            this.btnclose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnclose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnclose.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnclose.FlatAppearance.BorderSize = 0;
+            this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnclose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnclose.ForeColor = System.Drawing.Color.White;
+            this.btnclose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnclose.Location = new System.Drawing.Point(923, 0);
+            this.btnclose.Name = "btnclose";
+            this.btnclose.Size = new System.Drawing.Size(50, 66);
+            this.btnclose.TabIndex = 24;
+            this.btnclose.Text = "X";
+            this.btnclose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnclose.UseVisualStyleBackColor = false;
+            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(31, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(438, 55);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Modificar permiso";
+            this.label3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label3_MouseDown);
+            // 
             // frmmodifyrol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(973, 555);
+            this.ClientSize = new System.Drawing.Size(973, 615);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmmodifyrol";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Modificar permiso";
             this.Load += new System.EventHandler(this.frmmodifyrol_Load);
+            this.ResizeEnd += new System.EventHandler(this.frmmodifyrol_ResizeEnd);
+            this.SizeChanged += new System.EventHandler(this.frmmodifyrol_SizeChanged);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmmodifyrol_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmmodifyrol_MouseDown);
+            this.Validated += new System.EventHandler(this.frmmodifyrol_Validated);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -265,7 +331,6 @@
         private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnFirst;
-        private System.Windows.Forms.Button btnsearch;
         private System.Windows.Forms.TextBox txtsearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataList;
@@ -273,5 +338,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnclose;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
     }
 }

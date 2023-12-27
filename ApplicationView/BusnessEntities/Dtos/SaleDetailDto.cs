@@ -15,6 +15,7 @@ namespace ApplicationView.BusnessEntities.Dtos
         public String ProductName { get; set; }
         public Decimal SalePrice { get; set; }
         public Int32 quantity { get; set; }
-        public decimal Subtotal { get; set; }  
+        public decimal Subtotal { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

@@ -55,6 +55,7 @@
             this.txtconfirmpass.PasswordChar = '*';
             this.txtconfirmpass.Size = new System.Drawing.Size(345, 27);
             this.txtconfirmpass.TabIndex = 5;
+            this.txtconfirmpass.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -75,6 +76,7 @@
             this.txtnewpass.PasswordChar = '*';
             this.txtnewpass.Size = new System.Drawing.Size(345, 27);
             this.txtnewpass.TabIndex = 3;
+            this.txtnewpass.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtoldpass
             // 
@@ -84,6 +86,7 @@
             this.txtoldpass.PasswordChar = '*';
             this.txtoldpass.Size = new System.Drawing.Size(345, 27);
             this.txtoldpass.TabIndex = 2;
+            this.txtoldpass.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
             // 

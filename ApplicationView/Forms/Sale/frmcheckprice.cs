@@ -176,18 +176,6 @@ namespace ApplicationView.Forms.Sale
             int mWidht = rectForm.Width / 2;
             int mHeight = rectForm.Height / 2;
             var fbColors = GetFormBoundsColors();
-            ////Top Left
-            //Redesign.GetInstancia().DrawPath(rectForm, e.Graphics, fbColors.TopLeftColor);
-            ////Top Right
-            //Rectangle rectTopRight = new Rectangle(mWidht, rectForm.Y, mWidht, mHeight);
-            //Redesign.GetInstancia().DrawPath(rectTopRight, e.Graphics, fbColors.TopRightColor);
-            ////Bottom Left
-            //Rectangle rectBottomLeft = new Rectangle(rectForm.X, rectForm.X + mHeight, mWidht, mHeight);
-            //Redesign.GetInstancia().DrawPath(rectBottomLeft, e.Graphics, fbColors.BottomLeftColor);
-            ////Bottom Right
-            //Rectangle rectBottomRight = new Rectangle(mWidht, rectForm.Y + mHeight, mWidht, mHeight);
-            //Redesign.GetInstancia().DrawPath(rectBottomRight, e.Graphics, fbColors.BottomRightColor);
-            //-> SET ROUNDED REGION AND BORDER
             FormRegionAndBorder(this, borderRadius, e.Graphics, borderColor, borderSize);
         }
 

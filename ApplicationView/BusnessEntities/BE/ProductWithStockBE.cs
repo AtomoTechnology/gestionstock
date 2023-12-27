@@ -10,5 +10,6 @@ namespace ApplicationView.BusnessEntities.BE
     {
         public int Stock { get; set; }
         public string LotId { get; set; }
+        public int Quantity { get; set; }
     }
 }

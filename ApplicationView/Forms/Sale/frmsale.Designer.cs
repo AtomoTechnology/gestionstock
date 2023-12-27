@@ -40,7 +40,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.productqquantity = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.nrofact = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtcajeroname = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -49,6 +48,8 @@
             this.btnclose = new System.Windows.Forms.Button();
             this.chckprinttiket = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btndetailturn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataList)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -146,6 +147,7 @@
             this.txtreadcode.Size = new System.Drawing.Size(450, 65);
             this.txtreadcode.TabIndex = 1;
             this.txtreadcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtreadcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtreadcode_KeyDown);
             this.txtreadcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // lblStatus
@@ -195,19 +197,6 @@
             this.label4.Size = new System.Drawing.Size(314, 38);
             this.label4.TabIndex = 8;
             this.label4.Text = "Cantidad de productos";
-            // 
-            // nrofact
-            // 
-            this.nrofact.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.nrofact.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.nrofact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nrofact.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.nrofact.ForeColor = System.Drawing.Color.White;
-            this.nrofact.Location = new System.Drawing.Point(7, 112);
-            this.nrofact.Name = "nrofact";
-            this.nrofact.Size = new System.Drawing.Size(306, 56);
-            this.nrofact.TabIndex = 11;
-            this.nrofact.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
             // 
@@ -306,12 +295,41 @@
             this.label3.TabIndex = 23;
             this.label3.Text = "¿Deseas imprimir tiket de venta?";
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.InfoText;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(12, 112);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(306, 57);
+            this.textBox1.TabIndex = 24;
+            // 
+            // btndetailturn
+            // 
+            this.btndetailturn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btndetailturn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btndetailturn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btndetailturn.Image = global::ApplicationView.Properties.Resources.closecashier__3_;
+            this.btndetailturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btndetailturn.Location = new System.Drawing.Point(769, 170);
+            this.btndetailturn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btndetailturn.Name = "btndetailturn";
+            this.btndetailturn.Size = new System.Drawing.Size(193, 46);
+            this.btndetailturn.TabIndex = 49;
+            this.btndetailturn.Text = "Detalle del turno";
+            this.btndetailturn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btndetailturn.UseVisualStyleBackColor = true;
+            this.btndetailturn.Click += new System.EventHandler(this.btndetailturn_Click);
+            // 
             // frmsale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(980, 801);
+            this.Controls.Add(this.btndetailturn);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.chckprinttiket);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
@@ -319,7 +337,6 @@
             this.Controls.Add(this.txtcajeroname);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.nrofact);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.productqquantity);
             this.Controls.Add(this.groupBox5);
@@ -359,7 +376,6 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label productqquantity;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label nrofact;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label txtcajeroname;
         private System.Windows.Forms.Label label7;
@@ -374,5 +390,7 @@
         private System.Windows.Forms.Button btnclose;
         private System.Windows.Forms.CheckBox chckprinttiket;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btndetailturn;
     }
 }

@@ -11,6 +11,8 @@ namespace ApplicationView.DataModel.Context
     {
         public DbGestionStockContext(DbContextOptions<DbGestionStockContext> options) : base(options)
         {
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
         public DbGestionStockContext() : base()
         {
